@@ -7,6 +7,13 @@
  */
 window.Ladda = (function() {
 
+	/**
+	 * Creates a new instance of Ladda which wraps the 
+	 * target button element.
+	 *
+	 * @return An API object that can be used to control
+	 * the loading animation state.
+	 */
 	function create( button ) {
 
 		if( typeof button === 'undefined' ) {
@@ -54,10 +61,41 @@ window.Ladda = (function() {
 
 	}
 
+	/**
+	 * Binds the target buttons to automatically enter the 
+	 * loading state when clicked.
+	 *
+	 * @param target Either an HTML element or a CSS selector.
+	 */
+	function bind( target ) {
+
+		var targets = [];
+
+		if( typeof target === 'string' ) {
+			targets = [].slice.call( document.querySelectorAll( target ) );
+		}
+		else if( typeof target === 'object' && typeof target.nodeName === 'string' ) {
+			targets = [ targets ];
+		}
+
+		for( var i = 0, len = targets.length; i < len; i++ ) {
+
+			var element = targets[i];
+			var instance = Ladda.create( element );
+
+			if( typeof element.addEventListener === 'function' ) {
+				element.addEventListener( 'click', instance.start, false );
+			}
+
+		}
+
+	}
+
 	// Public API
 	return {
 
-		create: create
+		create: create,
+		bind: bind
 
 	}
 
