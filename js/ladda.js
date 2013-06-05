@@ -66,8 +66,13 @@ window.Ladda = (function() {
 	 * loading state when clicked.
 	 *
 	 * @param target Either an HTML element or a CSS selector.
+	 * @param options 
+	 *          - timeout Number of milliseconds to wait before
+	 *            automatically cancelling the animation.
 	 */
-	function bind( target ) {
+	function bind( target, options ) {
+
+		options = options || {};
 
 		var targets = [];
 
@@ -80,12 +85,27 @@ window.Ladda = (function() {
 
 		for( var i = 0, len = targets.length; i < len; i++ ) {
 
-			var element = targets[i];
-			var instance = Ladda.create( element );
+			(function() {
+				var element = targets[i];
 
-			if( typeof element.addEventListener === 'function' ) {
-				element.addEventListener( 'click', instance.start, false );
-			}
+				// Make sure we're working with a DOM element
+				if( typeof element.addEventListener === 'function' ) {
+					var instance = Ladda.create( element );
+					var timeout = -1;
+
+					element.addEventListener( 'click', function() {
+						
+						instance.start();
+
+						// Set a loading timeout if one is specified
+						if( typeof options.timeout === 'number' ) {
+							clearTimeout( timeout );
+							timeout = setTimeout( instance.stop, 2000 );
+						}
+
+					}, false );
+				}
+			})();
 
 		}
 
@@ -94,8 +114,8 @@ window.Ladda = (function() {
 	// Public API
 	return {
 
-		create: create,
-		bind: bind
+		bind: bind,
+		create: create
 
 	}
 
