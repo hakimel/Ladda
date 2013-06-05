@@ -15,7 +15,7 @@ window.Ladda = (function() {
 
 		return {
 
-			start: function( status ) {
+			start: function() {
 
 				button.setAttribute( 'data-loading', '' );
 
@@ -27,7 +27,20 @@ window.Ladda = (function() {
 
 				button.removeAttribute( 'data-loading' );
 
+				// TODO use status (success/error) to exit in different ways
+
 				return this; // chain
+
+			},
+
+			toggle: function() {
+
+				if( this.isLoading() ) {
+					this.stop();
+				}
+				else {
+					this.start();
+				}
 
 			},
 
