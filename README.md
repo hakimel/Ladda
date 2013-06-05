@@ -7,7 +7,19 @@ A set of buttons which merge loading indicators into themselves to bridge the ga
 
 ## Instructions
 
-Make sure the ladda.css and ladda.js files are included on the page. You will then be able to control the loading states of buttons using the following JavaScript API.
+Make sure the ladda.css and ladda.js files are included on your page. 
+
+If you will be using the loading animation for a form that is submitted to the server (always resulting in a page reload) you can use the ```bind()``` method:
+
+```javascript
+// Automatically trigger the loading animation on click
+Ladda.bind( 'input[type=submit]' );
+
+// Same as the above but automatically stops after two seconds
+Ladda.bind( 'input[type=submit]', { timeout: 2000 } );
+```
+
+If you want JavaScript control over your buttons you can use the following approach:
 
 ```javascript
 // Create a new instance of ladda for the specified button
@@ -24,6 +36,12 @@ l.toggle();
 
 // Check the current state
 l.isLoading();
+```
+
+All loading animations on the page can be stopped by using:
+
+```javascript
+Ladda.stopAll();
 ```
 
 
