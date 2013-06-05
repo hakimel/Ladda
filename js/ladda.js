@@ -7,6 +7,8 @@
  */
 window.Ladda = (function() {
 
+	var ALL_INSTANCES = [];
+
 	/**
 	 * Creates a new instance of Ladda which wraps the 
 	 * target button element.
@@ -20,7 +22,7 @@ window.Ladda = (function() {
 			throw "Button target must be defined.";
 		}
 
-		return {
+		var instance = {
 
 			start: function() {
 
@@ -60,6 +62,10 @@ window.Ladda = (function() {
 			}
 
 		};
+
+		ALL_INSTANCES.push( instance );
+
+		return instance;
 
 	}
 
@@ -113,11 +119,23 @@ window.Ladda = (function() {
 
 	}
 
+	/**
+	 * Stops ALL current loading animations.
+	 */
+	function stopAll() {
+
+		for( var i = 0, len = ALL_INSTANCES.length; i < len; i++ ) {
+			ALL_INSTANCES[i].stop();
+		}
+
+	}
+
 	// Public API
 	return {
 
 		bind: bind,
-		create: create
+		create: create,
+		stopAll: stopAll
 
 	}
 
