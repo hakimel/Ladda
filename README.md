@@ -7,9 +7,11 @@ A set of buttons which merge loading indicators into themselves to bridge the ga
 
 ## Instructions
 
+Make sure the ladda.css and ladda.js files are included on the page. You will then be able to control the loading states of buttons using the following JavaScript API.
+
 ```javascript
 // Create a new instance of ladda for the specified button
-var l = Ladda.create( button );
+var l = Ladda.create( document.querySelector( '.my-button' ) );
 
 // Start loading
 l.start();
