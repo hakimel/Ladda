@@ -1,23 +1,51 @@
-var buttons = document.querySelectorAll( '.ladda-button' );
+/*!
+ * Ladda 0.2.0
+ * http://lab.hakim.se/ladda
+ * MIT licensed
+ *
+ * Copyright (C) 2013 Hakim El Hattab, http://hakim.se
+ */
+window.Ladda = (function() {
 
-Array.prototype.slice.call( buttons ).forEach( function( button ) {
+	function create( button ) {
 
-	var resetTimeout;
-
-	button.addEventListener( 'click', function() {
-		
-		if( typeof button.getAttribute( 'data-loading' ) === 'string' ) {
-			button.removeAttribute( 'data-loading' );
+		if( typeof button === 'undefined' ) {
+			throw "Button target must be defined.";
 		}
-		else {
-			button.setAttribute( 'data-loading', '' );
-		}
 
-		clearTimeout( resetTimeout );
-		resetTimeout = setTimeout( function() {
-			button.removeAttribute( 'data-loading' );			
-		}, 2000 );
+		return {
 
-	}, false );
+			start: function( status ) {
 
-} );
+				button.setAttribute( 'data-loading', '' );
+
+				return this; // chain
+
+			},
+
+			stop: function( status ) {
+
+				button.removeAttribute( 'data-loading' );
+
+				return this; // chain
+
+			},
+
+			isLoading: function() {
+
+				return button.hasAttribute( 'data-loading' );
+
+			}
+
+		};
+
+	}
+
+	// Public API
+	return {
+
+		create: create
+
+	}
+
+})();

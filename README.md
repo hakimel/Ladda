@@ -7,7 +7,10 @@ A set of buttons which merge loading indicators into themselves to bridge the ga
 
 ## History
 
-#### 0.1
+#### 0.2.0
+- JS API
+
+#### 0.1.0
 - Initial release
 
 ## License
