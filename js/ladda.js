@@ -24,6 +24,7 @@ window.Ladda = (function() {
 
 			start: function() {
 
+				button.setAttribute( 'disabled', '' );
 				button.setAttribute( 'data-loading', '' );
 
 				return this; // chain
@@ -32,6 +33,7 @@ window.Ladda = (function() {
 
 			stop: function( status ) {
 
+				button.removeAttribute( 'disabled', '' );
 				button.removeAttribute( 'data-loading' );
 
 				// TODO use status (success/error) to exit in different ways
