@@ -44,6 +44,9 @@ All loading animations on the page can be stopped by using:
 Ladda.stopAll();
 ```
 
+## Browser support
+
+The project is tested in Chrome and Firefox. It Should Work™ in the current stable releases of Chrome, Firefox, Safari as well as IE9 and up.
 
 ## History
 
