@@ -5,6 +5,26 @@ A set of buttons which merge loading indicators into themselves to bridge the ga
 [Check out the demo page](http://lab.hakim.se/ladda/).
 
 
+## Instructions
+
+```javascript
+// Create a new instance of ladda for the specified button
+var l = Ladda.create( button );
+
+// Start loading
+l.start();
+
+// Stop loading
+l.stop();
+
+// Toggle between loading/not loading states
+l.toggle();
+
+// Check the current state
+l.isLoading();
+```
+
+
 ## History
 
 #### 0.2.0
