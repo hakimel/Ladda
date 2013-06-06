@@ -53,6 +53,8 @@ window.Ladda = (function() {
 				clearTimeout( spinnerTimeout );
 				spinner.spin( spinnerWrapper );
 
+				this.setProgress( 0 );
+
 				return this; // chain
 
 			},
@@ -88,13 +90,19 @@ window.Ladda = (function() {
 
 				var progressElement = button.querySelector( '.ladda-progress' );
 
-				if( !progressElement ) {
-					progressElement = document.createElement( 'div' );
-					progressElement.className = 'ladda-progress';
-					button.appendChild( progressElement );
+				// Remove the progress bar if we're at 0 progress
+				if( progress === 0 && progressElement && progressElement.parentNode ) {
+					progressElement.parentNode.removeChild( progressElement );
 				}
+				else {
+					if( !progressElement ) {
+						progressElement = document.createElement( 'div' );
+						progressElement.className = 'ladda-progress';
+						button.appendChild( progressElement );
+					}
 
-				progressElement.style.width = ( ( progress || 0 ) * button.offsetWidth ) + 'px';
+					progressElement.style.width = ( ( progress || 0 ) * button.offsetWidth ) + 'px';
+				}
 
 			},
 
