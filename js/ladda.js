@@ -37,7 +37,7 @@ window.Ladda = (function() {
 
 		// Wrapper element for the spinner
 		var spinnerWrapper = document.createElement( 'span' );
-		spinnerWrapper.className = 'spinner';
+		spinnerWrapper.className = 'ladda-spinner';
 		button.appendChild( spinnerWrapper );
 
 		// Timeout used to delay stopping of the spin animation
