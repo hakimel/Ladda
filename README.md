@@ -28,6 +28,9 @@ var l = Ladda.create( document.querySelector( '.my-button' ) );
 // Start loading
 l.start();
 
+// Will display a progress bar for 50% of the button width
+l.setProgress( 0.5 );
+
 // Stop loading
 l.stop();
 
@@ -53,6 +56,7 @@ The project is tested in Chrome and Firefox. It Should Work™ in the current st
 #### 0.3.0
 - Replace spinner GIF with spin.js
 - ```spinner``` and ```label``` classes are now prefixed with ```ladda-```
+- Built-in progress bars
 
 #### 0.2.0
 - JS API

@@ -18,6 +18,7 @@
 	padding: 0.8em 1em;
 	font-size: 1.3em;
 	cursor: pointer;
+	overflow: hidden;
 
 	-webkit-appearance: none;
 	-webkit-font-smoothing: antialiased;
@@ -79,6 +80,7 @@
 /* Spinner animation */
 .ladda-button .ladda-spinner {
 	position: absolute;
+	z-index: 2;
 	display: inline-block;
 	width: 32px;
 	height: 32px;
@@ -86,6 +88,34 @@
 	margin-top: -16px;
 	opacity: 0;
 }
+
+/* Button label */
+.ladda-button .ladda-label {
+	position: relative;
+	z-index: 3;
+}
+
+/* Progress bar */
+.ladda-button .ladda-progress {
+	position: absolute;
+	width: 0;
+	height: 100%;
+	left: 0;
+	top: 0;
+	background: rgba( 0, 0, 0, 0.2 );
+
+	visibility: hidden;
+	opacity: 0;
+
+	-webkit-transition: 0.1s linear all;
+	   -moz-transition: 0.1s linear all;
+	    -ms-transition: 0.1s linear all;
+	        transition: 0.1s linear all;
+}
+	.ladda-button[data-loading] .ladda-progress {
+		opacity: 1;
+		visibility: visible;
+	}
 
 
 /*************************************

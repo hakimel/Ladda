@@ -84,6 +84,20 @@ window.Ladda = (function() {
 
 			},
 
+			setProgress: function( progress ) {
+
+				var progressElement = button.querySelector( '.ladda-progress' );
+
+				if( !progressElement ) {
+					progressElement = document.createElement( 'div' );
+					progressElement.className = 'ladda-progress';
+					button.appendChild( progressElement );
+				}
+
+				progressElement.style.width = ( ( progress || 0 ) * button.offsetWidth ) + 'px';
+
+			},
+
 			isLoading: function() {
 
 				return button.hasAttribute( 'data-loading' );
@@ -138,6 +152,11 @@ window.Ladda = (function() {
 						if( typeof options.timeout === 'number' ) {
 							clearTimeout( timeout );
 							timeout = setTimeout( instance.stop, 2000 );
+						}
+
+						// Invoke callbacks
+						if( typeof options.callback === 'function' ) {
+							options.callback.apply( null, [ instance ] );
 						}
 
 					}, false );
