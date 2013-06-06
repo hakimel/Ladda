@@ -50,6 +50,9 @@ The project is tested in Chrome and Firefox. It Should Work™ in the current st
 
 ## History
 
+#### 0.3.0
+- Replace spinner GIF with spin.js
+
 #### 0.2.0
 - JS API
 
