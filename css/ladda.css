@@ -60,18 +60,34 @@
 		background-color: #999;
 	}
 
-/* Orange button */
-.ladda-button.orange {
+/* Red button */
+.ladda-button.red {
 	background: #ea8557;
 	color: #fff;
 	border-radius: 2px;
 	border: 1px solid transparent;
 }
-	.ladda-button.orange:hover {
+	.ladda-button.red:hover {
 		border-color: rgba( 0, 0, 0, 0.07 );
 		background-color: #ffa96c;
 	}
-	.ladda-button.orange[data-loading] {
+	.ladda-button.red[data-loading] {
+		border-color: rgba( 0, 0, 0, 0.07 );
+		background-color: #999;
+	}
+
+/* Purple button */
+.ladda-button.purple {
+	background: #9973C2;
+	color: #fff;
+	border-radius: 2px;
+	border: 1px solid transparent;
+}
+	.ladda-button.purple:hover {
+		border-color: rgba( 0, 0, 0, 0.07 );
+		background-color: #b084df;
+	}
+	.ladda-button.purple[data-loading] {
 		border-color: rgba( 0, 0, 0, 0.07 );
 		background-color: #999;
 	}
