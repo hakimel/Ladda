@@ -7,7 +7,7 @@ A set of buttons which merge loading indicators into themselves to bridge the ga
 
 ## Instructions
 
-Make sure the ladda.css and ladda.js files are included on your page. 
+Make sure the ladda.css, spin.js, and ladda.js files are included on your page. 
 
 If you will be using the loading animation for a form that is submitted to the server (always resulting in a page reload) you can use the ```bind()``` method:
 
@@ -47,6 +47,16 @@ All loading animations on the page can be stopped by using:
 Ladda.stopAll();
 ```
 
+## Module
+
+The spinner and Ladda can be loaded as a module using either Common.js or AMD. 
+
+```javascript
+// Using Require.js
+define(['ladda'], function(Ladda) {
+	// Make Buttons Here
+}
+```
 ## Browser support
 
 The project is tested in Chrome and Firefox. It Should Work™ in the current stable releases of Chrome, Firefox, Safari as well as IE9 and up.
