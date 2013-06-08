@@ -159,7 +159,7 @@ window.Ladda = (function() {
 						// Set a loading timeout if one is specified
 						if( typeof options.timeout === 'number' ) {
 							clearTimeout( timeout );
-							timeout = setTimeout( instance.stop, 2000 );
+							timeout = setTimeout( instance.stop, options.timeout );
 						}
 
 						// Invoke callbacks
