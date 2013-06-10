@@ -110,6 +110,21 @@ window.Ladda = (function() {
 
 				return button.hasAttribute( 'data-loading' );
 
+			},
+
+			enable: function() {
+				// Stop loading and set button up to be clicked:
+				this.stop();
+
+				return this; // chain
+			},
+
+			disable: function () {
+				// Stop loading and prevent button from clicked:
+				this.stop();
+				button.setAttribute( 'disabled', '' );
+
+				return this; // chain
 			}
 
 		};
