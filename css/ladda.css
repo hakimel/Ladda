@@ -20,6 +20,10 @@
 	cursor: pointer;
 	overflow: hidden;
 
+	color: #fff;
+	border-radius: 2px;
+	border: 1px solid transparent;
+
 	-webkit-appearance: none;
 	-webkit-font-smoothing: antialiased;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -31,66 +35,46 @@
 /* Green button */
 .ladda-button.green {
 	background: #2aca76;
-	color: #fff;
-	border-radius: 2px;
-	border: 1px solid transparent;
 }
 	.ladda-button.green:hover {
-		border-color: rgba( 0, 0, 0, 0.07 );
 		background-color: #2fe688;
-	}
-	.ladda-button.green[data-loading] {
-		border-color: rgba( 0, 0, 0, 0.07 );
-		background-color: #999;
 	}
 
 /* Blue button */
 .ladda-button.blue {
 	background: #53b5e6;
-	color: #fff;
-	border-radius: 2px;
-	border: 1px solid transparent;
 }
 	.ladda-button.blue:hover {
-		border-color: rgba( 0, 0, 0, 0.07 );
 		background-color: #58c2f8;
-	}
-	.ladda-button.blue[data-loading] {
-		border-color: rgba( 0, 0, 0, 0.07 );
-		background-color: #999;
 	}
 
 /* Red button */
 .ladda-button.red {
 	background: #ea8557;
-	color: #fff;
-	border-radius: 2px;
-	border: 1px solid transparent;
 }
 	.ladda-button.red:hover {
-		border-color: rgba( 0, 0, 0, 0.07 );
 		background-color: #ffa96c;
-	}
-	.ladda-button.red[data-loading] {
-		border-color: rgba( 0, 0, 0, 0.07 );
-		background-color: #999;
 	}
 
 /* Purple button */
 .ladda-button.purple {
 	background: #9973C2;
-	color: #fff;
-	border-radius: 2px;
-	border: 1px solid transparent;
 }
 	.ladda-button.purple:hover {
-		border-color: rgba( 0, 0, 0, 0.07 );
 		background-color: #b084df;
 	}
-	.ladda-button.purple[data-loading] {
-		border-color: rgba( 0, 0, 0, 0.07 );
-		background-color: #999;
-	}
+
+/* Hover state */
+.ladda-button:hover {
+	border-color: rgba( 0, 0, 0, 0.07 );
+}
+
+/* Disabled button */
+.ladda-button[disabled], .ladda-button[disabled]:hover {
+	border-color: rgba( 0, 0, 0, 0.07 );
+	background-color: #999;
+	cursor: default;
+}
 
 
 /* Spinner animation */
