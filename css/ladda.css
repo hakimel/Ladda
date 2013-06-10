@@ -92,6 +92,12 @@
 		background-color: #999;
 	}
 
+/* Disabled button */
+.ladda-button[disabled], .ladda-button[disabled]:hover {
+	background-color: #999;
+	cursor: default;
+}
+
 
 /* Spinner animation */
 .ladda-button .ladda-spinner {
