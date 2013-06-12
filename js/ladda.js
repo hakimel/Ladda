@@ -15,7 +15,7 @@
   /* Browser global */
   else root.Ladda = factory()
 }
-(this, function() {
+(this, function(Spinner) {
   "use strict";
   var Ladda;
   var ALL_INSTANCES = [];
