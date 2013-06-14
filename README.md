@@ -63,6 +63,9 @@ The project is tested in Chrome and Firefox. It Should Work™ in the current st
 
 ## History
 
+#### 0.4.0
+- Common.js / AMD module
+
 #### 0.3.0
 - Replace spinner GIF with spin.js
 - ```spinner``` and ```label``` classes are now prefixed with ```ladda-```
