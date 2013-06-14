@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="css/demo.css">
-		<link rel="stylesheet" href="css/ladda.css">
+		<link rel="stylesheet" href="dist/ladda.min.css">
 
 	</head>
 
@@ -36,7 +36,7 @@
 				<h3>expand-left</h3>
 				<button class="ladda-button green expand-left"><span class="ladda-label">Submit</span></button>
 			</section>
-			
+
 			<section>
 				<h3>expand-right</h3>
 				<button class="ladda-button green expand-right"><span class="ladda-label">Submit</span></button>
@@ -114,8 +114,8 @@
 			</footer>
 
 		</article>
-		<script src="js/spin.js"></script>
-		<script src="js/ladda.js"></script>
+		<script src="dist/spin.min.js"></script>
+		<script src="dist/ladda.min.js"></script>
 
 		<script>
 
@@ -123,7 +123,7 @@
 			Ladda.bind( 'section:not(.progress-demo) button', { timeout: 2000 } );
 
 			// Bind progress buttons and simulate loading progress
-			Ladda.bind( 'section.progress-demo button', { 
+			Ladda.bind( 'section.progress-demo button', {
 				callback: function( instance ) {
 					var progress = 0;
 					var interval = setInterval( function() {
@@ -135,7 +135,7 @@
 							clearInterval( interval );
 						}
 					}, 200 );
-				} 
+				}
 			} );
 
 			// You can control loading explicitly using the JavaScript API

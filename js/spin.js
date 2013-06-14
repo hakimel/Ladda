@@ -1,6 +1,6 @@
 //fgnass.github.com/spin.js#v1.3
 
-/**
+/*!
  * Copyright (c) 2011-2013 Felix Gnass
  * Licensed under the MIT license
  */

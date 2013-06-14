@@ -7,7 +7,7 @@ A set of buttons which merge loading indicators into themselves to bridge the ga
 
 ## Instructions
 
-Make sure the ladda.css, spin.js, and ladda.js files are included on your page. 
+Make sure the files in **/dist** (ladda.min.css, ladda.min.js and spin.min.js) are all included on your page.
 
 If you will be using the loading animation for a form that is submitted to the server (always resulting in a page reload) you can use the ```bind()``` method:
 
@@ -65,6 +65,7 @@ The project is tested in Chrome and Firefox. It Should Work™ in the current st
 
 #### 0.4.0
 - Common.js / AMD module
+- Grunt build file
 
 #### 0.3.0
 - Replace spinner GIF with spin.js
