@@ -49,7 +49,7 @@ Ladda.stopAll();
 
 ## Module
 
-The spinner and Ladda can be loaded as a module using either Common.js or AMD. 
+The spinner and Ladda can be loaded as a module using either Common.js or AMD.
 
 ```javascript
 // Using Require.js

@@ -5,27 +5,33 @@
  *
  * Copyright (C) 2013 Hakim El Hattab, http://hakim.se
  */
-(function(root, factory) {
+(function( root, factory ) {
 
-  /* CommonJS */
-  if (typeof exports == 'object')  module.exports = factory()
+	// CommonJS
+	if( typeof exports === 'object' )  {
+		module.exports = factory();
+	}
+	// AMD module
+	else if( typeof define === 'function' && define.amd ) {
+		define( [ './spin' ], factory );
+	}
+	// Browser global
+	else {
+		root.Ladda = factory();
+	}
 
-  /* AMD module */
-  else if (typeof define == 'function' && define.amd) define(['./spin'],factory)
-
-  /* Browser global */
-  else root.Ladda = factory()
 }
-(this, function(Spinner) {
-  "use strict";
-  var Ladda;
-  var ALL_INSTANCES = [];
-  if(Spinner === undefined ) {
-  	Spinner = window.Spinner;
-  }
+(this, function( Spinner ) {
+	'use strict';
+
+	// If spinner isn't passed it, grab from window scope
+	Spinner = Spinner || window.Spinner;
+
+	// All currently instantiated instances of Ladda
+	var ALL_INSTANCES = [];
 
 	/**
-	 * Creates a new instance of Ladda which wraps the 
+	 * Creates a new instance of Ladda which wraps the
 	 * target button element.
 	 *
 	 * @return An API object that can be used to control
@@ -136,11 +142,11 @@
 	}
 
 	/**
-	 * Binds the target buttons to automatically enter the 
+	 * Binds the target buttons to automatically enter the
 	 * loading state when clicked.
 	 *
 	 * @param target Either an HTML element or a CSS selector.
-	 * @param options 
+	 * @param options
 	 *          - timeout Number of milliseconds to wait before
 	 *            automatically cancelling the animation.
 	 */
@@ -164,11 +170,11 @@
 
 				// Make sure we're working with a DOM element
 				if( typeof element.addEventListener === 'function' ) {
-					var instance = Ladda.create( element );
+					var instance = create( element );
 					var timeout = -1;
 
 					element.addEventListener( 'click', function() {
-						
+
 						instance.start();
 
 						// Set a loading timeout if one is specified
@@ -202,13 +208,12 @@
 	}
 
 	// Public API
-	 Ladda = {
+	return {
 
-    bind: bind,
-    create: create,
-    stopAll: stopAll
+		bind: bind,
+		create: create,
+		stopAll: stopAll
 
-  };
-  return Ladda
+	};
 
 }));
