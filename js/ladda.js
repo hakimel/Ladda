@@ -17,15 +17,12 @@
 	}
 	// Browser global
 	else {
-		root.Ladda = factory();
+		root.Ladda = factory( root.Spinner );
 	}
 
 }
 (this, function( Spinner ) {
 	'use strict';
-
-	// If spinner isn't passed it, grab from window scope
-	Spinner = Spinner || window.Spinner;
 
 	// All currently instantiated instances of Ladda
 	var ALL_INSTANCES = [];
