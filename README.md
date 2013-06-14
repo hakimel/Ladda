@@ -66,6 +66,7 @@ The project is tested in Chrome and Firefox. It Should Work™ in the current st
 #### 0.4.0
 - Common.js / AMD module
 - Grunt build file
+- Now using Sass
 
 #### 0.3.0
 - Replace spinner GIF with spin.js
