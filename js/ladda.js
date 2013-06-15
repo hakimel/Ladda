@@ -82,7 +82,7 @@
 
 			stop: function() {
 
-				button.removeAttribute( 'disabled', '' );
+				button.removeAttribute( 'disabled' );
 				button.removeAttribute( 'data-loading' );
 
 				// Kill the animation after a delay to make sure it
@@ -124,6 +124,23 @@
 
 					progressElement.style.width = ( ( progress || 0 ) * button.offsetWidth ) + 'px';
 				}
+
+			},
+
+			enable: function() {
+
+				this.stop();
+
+				return this; // chain
+
+			},
+
+			disable: function () {
+
+				this.stop();
+				button.setAttribute( 'disabled', '' );
+
+				return this; // chain
 
 			},
 

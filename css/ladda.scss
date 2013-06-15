@@ -82,12 +82,14 @@ $purple: #9973C2;
 		border-color: rgba( 0, 0, 0, 0.07 );
 	}
 
+	&[disabled],
 	&[data-loading] {
-		cursor: default;
 		border-color: rgba( 0, 0, 0, 0.07 );
+		cursor: default;
 		background-color: #999;
 
 		&:hover {
+			cursor: default;
 			background-color: #999;
 		}
 	}

@@ -63,6 +63,9 @@ The project is tested in Chrome and Firefox. It Should Work™ in the current st
 
 ## History
 
+#### 0.4.1
+- Add disable/enable buttons
+
 #### 0.4.0
 - Common.js / AMD module
 - Grunt build file
