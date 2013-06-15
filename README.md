@@ -66,6 +66,7 @@ The project is tested in Chrome and Firefox. It Should Work™ in the current st
 #### 0.4.2
 - Add size options
 - Add mint color
+- All settings now applied via data-* attributes
 
 #### 0.4.1
 - Add disable/enable buttons

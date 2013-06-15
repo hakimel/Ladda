@@ -45,7 +45,7 @@ $spinnerSize: 32px;
 }
 
 @mixin buttonColor( $name, $color ) {
-	&.#{$name} {
+	&[data-color=#{$name}] {
 		background: $color;
 
 		&:hover {
@@ -61,7 +61,7 @@ $spinnerSize: 32px;
 
 .ladda-button {
 	position: relative;
-	background: none;
+	background: #666;
 	border: 0;
 	padding: 14px 18px;
 	font-size: 18px;
@@ -76,15 +76,16 @@ $spinnerSize: 32px;
 	-webkit-font-smoothing: antialiased;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
+	&:hover {
+		border-color: rgba( 0, 0, 0, 0.07 );
+		background-color: #888;
+	}
+
 	@include buttonColor( 'green', $green );
 	@include buttonColor( 'blue', $blue );
 	@include buttonColor( 'red', $red );
 	@include buttonColor( 'purple', $purple );
 	@include buttonColor( 'mint', $mint );
-
-	&:hover {
-		border-color: rgba( 0, 0, 0, 0.07 );
-	}
 
 	&[disabled],
 	&[data-loading] {
@@ -172,12 +173,12 @@ $spinnerSize: 32px;
 	@include transition( 0.3s cubic-bezier(0.175, 0.885, 0.320, 1.275) all );
 }
 
-.ladda-button.zoom-in,
-.ladda-button.zoom-in .ladda-spinner,
-.ladda-button.zoom-in .ladda-label,
-.ladda-button.zoom-out,
-.ladda-button.zoom-out .ladda-spinner,
-.ladda-button.zoom-out .ladda-label {
+.ladda-button[data-style=zoom-in],
+.ladda-button[data-style=zoom-in] .ladda-spinner,
+.ladda-button[data-style=zoom-in] .ladda-label,
+.ladda-button[data-style=zoom-out],
+.ladda-button[data-style=zoom-out] .ladda-spinner,
+.ladda-button[data-style=zoom-out] .ladda-label {
 	@include transition( 0.3s ease all );
 }
 
@@ -186,7 +187,7 @@ $spinnerSize: 32px;
  * EXPAND LEFT
  */
 
-.ladda-button.expand-right {
+.ladda-button[data-style=expand-right] {
 	.ladda-spinner {
 		right: 14px;
 	}
@@ -215,7 +216,7 @@ $spinnerSize: 32px;
  * EXPAND RIGHT
  */
 
-.ladda-button.expand-left {
+.ladda-button[data-style=expand-left] {
 	.ladda-spinner {
 		left: 14px;
 	}
@@ -244,7 +245,7 @@ $spinnerSize: 32px;
  * EXPAND UP
  */
 
-.ladda-button.expand-up {
+.ladda-button[data-style=expand-up] {
 	overflow: hidden;
 
 	.ladda-spinner {
@@ -278,7 +279,7 @@ $spinnerSize: 32px;
  * EXPAND DOWN
  */
 
- .ladda-button.expand-down {
+ .ladda-button[data-style=expand-down] {
  	overflow: hidden;
 
  	.ladda-spinner {
@@ -310,7 +311,7 @@ $spinnerSize: 32px;
 /*************************************
  * SLIDE LEFT
  */
-.ladda-button.slide-left {
+.ladda-button[data-style=slide-left] {
 	overflow: hidden;
 
 	.ladda-label {
@@ -320,16 +321,16 @@ $spinnerSize: 32px;
 		left: 100%;
 		margin-left: -$spinnerSize/2;
 	}
-}
 
-.ladda-button.slide-left[data-loading] {
-	.ladda-label {
-		opacity: 0;
-		left: -100%;
-	}
-	.ladda-spinner {
-		opacity: 1;
-		left: 50%;
+	&[data-loading] {
+		.ladda-label {
+			opacity: 0;
+			left: -100%;
+		}
+		.ladda-spinner {
+			opacity: 1;
+			left: 50%;
+		}
 	}
 }
 
@@ -337,7 +338,7 @@ $spinnerSize: 32px;
 /*************************************
  * SLIDE RIGHT
  */
-.ladda-button.slide-right {
+.ladda-button[data-style=slide-right] {
 	overflow: hidden;
 
 	.ladda-label {
@@ -347,16 +348,16 @@ $spinnerSize: 32px;
 		right: 100%;
 		margin-left: -$spinnerSize/2;
 	}
-}
 
-.ladda-button.slide-right[data-loading] {
-	.ladda-label {
-		opacity: 0;
-		left: 100%;
-	}
-	.ladda-spinner {
-		opacity: 1;
-		left: 50%;
+	&[data-loading] {
+		.ladda-label {
+			opacity: 0;
+			left: 100%;
+		}
+		.ladda-spinner {
+			opacity: 1;
+			left: 50%;
+		}
 	}
 }
 
@@ -364,7 +365,7 @@ $spinnerSize: 32px;
 /*************************************
  * SLIDE UP
  */
-.ladda-button.slide-up {
+.ladda-button[data-style=slide-up] {
 	overflow: hidden;
 
 	.ladda-label {
@@ -375,16 +376,16 @@ $spinnerSize: 32px;
 		margin-left: -$spinnerSize/2;
 		margin-top: 1em;
 	}
-}
 
-.ladda-button.slide-up[data-loading] {
-	.ladda-label {
-		opacity: 0;
-		top: -1em;
-	}
-	.ladda-spinner {
-		opacity: 1;
-		margin-top: -$spinnerSize/2;
+	&[data-loading] {
+		.ladda-label {
+			opacity: 0;
+			top: -1em;
+		}
+		.ladda-spinner {
+			opacity: 1;
+			margin-top: -$spinnerSize/2;
+		}
 	}
 }
 
@@ -392,7 +393,7 @@ $spinnerSize: 32px;
 /*************************************
  * SLIDE DOWN
  */
-.ladda-button.slide-down {
+.ladda-button[data-style=slide-down] {
 	overflow: hidden;
 
 	.ladda-label {
@@ -403,16 +404,16 @@ $spinnerSize: 32px;
 		margin-left: -$spinnerSize/2;
 		margin-top: -2em;
 	}
-}
 
-.ladda-button.slide-down[data-loading] {
-	.ladda-label {
-		opacity: 0;
-		top: 1em;
-	}
-	.ladda-spinner {
-		opacity: 1;
-		margin-top: -$spinnerSize/2;
+	&[data-loading] {
+		.ladda-label {
+			opacity: 0;
+			top: 1em;
+		}
+		.ladda-spinner {
+			opacity: 1;
+			margin-top: -$spinnerSize/2;
+		}
 	}
 }
 
@@ -421,26 +422,26 @@ $spinnerSize: 32px;
  * ZOOM-OUT
  */
 
-.ladda-button.zoom-out {
+.ladda-button[data-style=zoom-out] {
 	overflow: hidden;
 }
-	.ladda-button.zoom-out .ladda-spinner {
+	.ladda-button[data-style=zoom-out] .ladda-spinner {
 		left: 50%;
-		margin-left: -16px;
+		margin-left: -$spinnerSize/2;
 
 		@include transform( scale( 2.5 ) );
 	}
-	.ladda-button.zoom-out .ladda-label {
+	.ladda-button[data-style=zoom-out] .ladda-label {
 		position: relative;
 		display: inline-block;
 	}
 
-.ladda-button.zoom-out[data-loading] .ladda-label {
+.ladda-button[data-style=zoom-out][data-loading] .ladda-label {
 	opacity: 0;
 
 	@include transform( scale( 0.5 ) );
 }
-.ladda-button.zoom-out[data-loading] .ladda-spinner {
+.ladda-button[data-style=zoom-out][data-loading] .ladda-spinner {
 	opacity: 1;
 
 	@include transform( none );
@@ -451,26 +452,26 @@ $spinnerSize: 32px;
  * ZOOM-IN
  */
 
-.ladda-button.zoom-in {
+.ladda-button[data-style=zoom-in] {
 	overflow: hidden;
 }
-	.ladda-button.zoom-in .ladda-spinner {
+	.ladda-button[data-style=zoom-in] .ladda-spinner {
 		left: 50%;
-		margin-left: -16px;
+		margin-left: -$spinnerSize/2;
 
 		@include transform( scale( 0.2 ) );
 	}
-	.ladda-button.zoom-in .ladda-label {
+	.ladda-button[data-style=zoom-in] .ladda-label {
 		position: relative;
 		display: inline-block;
 	}
 
-.ladda-button.zoom-in[data-loading] .ladda-label {
+.ladda-button[data-style=zoom-in][data-loading] .ladda-label {
 	opacity: 0;
 
 	@include transform( scale( 2.2 ) );
 }
-.ladda-button.zoom-in[data-loading] .ladda-spinner {
+.ladda-button[data-style=zoom-in][data-loading] .ladda-spinner {
 	opacity: 1;
 
 	@include transform( none );
@@ -478,26 +479,26 @@ $spinnerSize: 32px;
 
 
 /*************************************
- * CONTRACt
+ * CONTRACT
  */
 
-.ladda-button.contract {
+.ladda-button[data-style=contract] {
 	overflow: hidden;
 	width: 100px;
 }
-	.ladda-button.contract .ladda-spinner {
+	.ladda-button[data-style=contract] .ladda-spinner {
 		left: 50%;
 		margin-left: -16px;
 	}
 
-.ladda-button.contract[data-loading] {
+.ladda-button[data-style=contract][data-loading] {
 	border-radius: 50%;
 	width: 52px;
 }
-	.ladda-button.contract[data-loading] .ladda-label {
+	.ladda-button[data-style=contract][data-loading] .ladda-label {
 		opacity: 0;
 	}
-	.ladda-button.contract[data-loading] .ladda-spinner {
+	.ladda-button[data-style=contract][data-loading] .ladda-spinner {
 		opacity: 1;
 	}
 
@@ -507,28 +508,28 @@ $spinnerSize: 32px;
  * OVERLAY
  */
 
-.ladda-button.contract-overlay {
+.ladda-button[data-style=contract-overlay] {
 	overflow: hidden;
 	width: 100px;
 
 	box-shadow: 0px 0px 0px 3000px rgba(0,0,0,0);
 }
-	.ladda-button.contract-overlay .ladda-spinner {
+	.ladda-button[data-style=contract-overlay] .ladda-spinner {
 		left: 50%;
 		margin-left: -16px;
 	}
 
-.ladda-button.contract-overlay[data-loading] {
+.ladda-button[data-style=contract-overlay][data-loading] {
 	border-radius: 50%;
 	width: 52px;
 
 	/*outline: 10000px solid rgba( 0, 0, 0, 0.5 );*/
 	box-shadow: 0px 0px 0px 3000px rgba(0,0,0,0.8);
 }
-	.ladda-button.contract-overlay[data-loading] .ladda-label {
+	.ladda-button[data-style=contract-overlay][data-loading] .ladda-label {
 		opacity: 0;
 	}
-	.ladda-button.contract-overlay[data-loading] .ladda-spinner {
+	.ladda-button[data-style=contract-overlay][data-loading] .ladda-spinner {
 		opacity: 1;
 	}
 
