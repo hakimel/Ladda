@@ -41,17 +41,7 @@
 		}
 
 		// Create the spinner
-		var spinner = new Spinner( {
-			color: '#fff',
-			lines: 12,
-			radius: 8,
-			length: 5,
-			width: 3,
-			zIndex: 'initial',
-			top: 'auto',
-			left: 'auto',
-			className: ''
-		} );
+		var spinner = createSpinner( button.getAttribute( 'data-size' ) );
 
 		// Wrapper element for the spinner
 		var spinnerWrapper = document.createElement( 'span' );
@@ -218,6 +208,44 @@
 		for( var i = 0, len = ALL_INSTANCES.length; i < len; i++ ) {
 			ALL_INSTANCES[i].stop();
 		}
+
+	}
+
+	function createSpinner( size ) {
+
+		var lines = 12,
+			radius = 8,
+			length = 5,
+			width = 3;
+
+		switch( size ) {
+			case 'xs':
+				radius = 6;
+				length = 4;
+				width = 2;
+				break;
+			case 's':
+				radius = 6;
+				length = 4;
+				width = 2;
+				break;
+			case 'xl':
+				radius = 8;
+				length = 6;
+				break;
+		}
+
+		return new Spinner( {
+			color: '#fff',
+			lines: lines,
+			radius: radius,
+			length: length,
+			width: width,
+			zIndex: 'initial',
+			top: 'auto',
+			left: 'auto',
+			className: ''
+		} );
 
 	}
 
