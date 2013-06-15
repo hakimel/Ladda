@@ -70,7 +70,7 @@ The spinner and Ladda can be loaded as a module using either Common.js or AMD.
 // Using Require.js
 define(['ladda'], function(Ladda) {
 	// Make Buttons Here
-}
+});
 ```
 ## Browser support
 
