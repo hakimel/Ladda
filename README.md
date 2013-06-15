@@ -9,6 +9,8 @@ A set of buttons which merge loading indicators into themselves to bridge the ga
 
 Make sure the files in **/dist** (ladda.min.css, ladda.min.js and spin.min.js) are all included on your page.
 
+#### HTML
+
 Ladda buttons must be given the class ```ladda-button``` and the button label needs to have the ```ladda-label``` class. Below is an example of a button which will use the expand-right animation style.
 
 ```html
@@ -18,8 +20,9 @@ Ladda buttons must be given the class ```ladda-button``` and the button label ne
 Buttons accepts three attributes:
 - **data-style**: one of the button styles, full list in [demo](http://lab.hakim.se/ladda/) *[required]*
 - **data-color**: green/red/blue/purple/mint
-- **data-size**: xs/s/l/xl, not setting a size implicitly means medium
+- **data-size**: xs/s/l/xl, defaults to medium
 
+#### JavaScript
 
 If you will be using the loading animation for a form that is submitted to the server (always resulting in a page reload) you can use the ```bind()``` method:
 
@@ -67,7 +70,7 @@ The spinner and Ladda can be loaded as a module using either Common.js or AMD.
 // Using Require.js
 define(['ladda'], function(Ladda) {
 	// Make Buttons Here
-}
+});
 ```
 ## Browser support
 
