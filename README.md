@@ -7,7 +7,7 @@ A set of buttons which merge loading indicators into themselves to bridge the ga
 
 ## Instructions
 
-Make sure the files in **/dist** (ladda.min.css, ladda.min.js and spin.min.js) are all included on your page.
+The compiled files for the project that you should be using are available in the **/dist** directory. You will need to include both the **ladda.min.js** and **spin.min.js** files as well as ONE of the two style sheets. If you want the button styles used in the [Ladda example page](http://lab.hakim.se/ladda) use the **ladda.min.css** file, if you want to have the functional buttons without the visual style (colors, padding etc) use the **ladda-themeless.min.css** file.
 
 #### HTML
 
