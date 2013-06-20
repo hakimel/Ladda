@@ -40,7 +40,8 @@ module.exports = function(grunt) {
 					style: 'compressed'
 				},
 				files: {
-					'dist/ladda.min.css': 'css/ladda.scss'
+					'dist/ladda.min.css': [ 'css/ladda.scss', 'css/ladda-theme.scss' ],
+					'dist/ladda-themeless.min.css': [ 'css/ladda.scss' ]
 				}
 			}
 		},

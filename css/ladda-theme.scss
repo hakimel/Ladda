@@ -1,0 +1,80 @@
+/** Contains the default Ladda button theme styles */
+
+
+/*************************************
+ * CONFIG
+ */
+
+$green: #2aca76;
+$blue: #53b5e6;
+$red: #ea8557;
+$purple: #9973C2;
+$mint: #16a085;
+
+
+/*************************************
+ * BUTTON THEME
+ */
+
+.ladda-button {
+	background: #666;
+	border: 0;
+	padding: 14px 18px;
+	font-size: 18px;
+	cursor: pointer;
+
+	color: #fff;
+	border-radius: 2px;
+	border: 1px solid transparent;
+
+	-webkit-appearance: none;
+	-webkit-font-smoothing: antialiased;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+	&:hover {
+		border-color: rgba( 0, 0, 0, 0.07 );
+		background-color: #888;
+	}
+
+	@include buttonColor( 'green', $green );
+	@include buttonColor( 'blue', $blue );
+	@include buttonColor( 'red', $red );
+	@include buttonColor( 'purple', $purple );
+	@include buttonColor( 'mint', $mint );
+
+	&[disabled],
+	&[data-loading] {
+		border-color: rgba( 0, 0, 0, 0.07 );
+		cursor: default;
+		background-color: #999;
+
+		&:hover {
+			cursor: default;
+			background-color: #999;
+		}
+	}
+
+	&[data-size=xs] {
+		padding: 4px 8px;
+
+		.ladda-label {
+			font-size: 0.7em;
+		}
+	}
+
+	&[data-size=s] {
+		padding: 6px 10px;
+
+		.ladda-label {
+			font-size: 0.9em;
+		}
+	}
+
+	&[data-size=l] .ladda-label {
+		font-size: 1.2em;
+	}
+
+	&[data-size=xl] .ladda-label {
+		font-size: 1.5em;
+	}
+}

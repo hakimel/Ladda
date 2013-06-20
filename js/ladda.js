@@ -41,7 +41,7 @@
 		}
 
 		// Create the spinner
-		var spinner = createSpinner( button.getAttribute( 'data-size' ) );
+		var spinner = createSpinner( button, button.getAttribute( 'data-size' ) );
 
 		// Wrapper element for the spinner
 		var spinnerWrapper = document.createElement( 'span' );
@@ -211,29 +211,19 @@
 
 	}
 
-	function createSpinner( size ) {
+	function createSpinner( button, size ) {
+
+		var height = button.offsetHeight;
+
+		// If the button is tall we can afford some padding
+		if( height > 32 ) {
+			height *= 0.8;
+		}
 
 		var lines = 12,
-			radius = 8,
-			length = 5,
-			width = 3;
-
-		switch( size ) {
-			case 'xs':
-				radius = 6;
-				length = 4;
-				width = 2;
-				break;
-			case 's':
-				radius = 6;
-				length = 4;
-				width = 2;
-				break;
-			case 'xl':
-				radius = 8;
-				length = 6;
-				break;
-		}
+			radius = height * 0.2,
+			length = radius * 0.6,
+			width = radius < 7 ? 2 : 3;
 
 		return new Spinner( {
 			color: '#fff',
