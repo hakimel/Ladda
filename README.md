@@ -78,6 +78,9 @@ The project is tested in Chrome and Firefox. It Should Work™ in the current st
 
 ## History
 
+#### 0.5.1
+- Add Bootstrap example
+
 #### 0.5.0
 - Split button visual style and functional styles apart for framework compatibility
 - Spinner size now determined by measuring button using JavaScript

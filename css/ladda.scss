@@ -27,7 +27,11 @@ $spinnerSize: 32px;
 }
 
 @mixin transition( $value ) {
-	@include prefix( transition, $value );
+	-webkit-transition: $value !important; // important to override bootstrap
+	   -moz-transition: $value !important;
+	    -ms-transition: $value !important;
+	     -o-transition: $value !important;
+	        transition: $value !important;
 }
 
 @mixin transform( $value ) {
