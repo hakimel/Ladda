@@ -213,7 +213,7 @@
 
 	function createSpinner( button, size ) {
 
-		var height = button.offsetHeight;
+		var height = size || button.offsetHeight;
 
 		// If the button is tall we can afford some padding
 		if( height > 32 ) {
