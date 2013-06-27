@@ -13,7 +13,7 @@
 	}
 	// AMD module
 	else if( typeof define === 'function' && define.amd ) {
-		define( [ './spin' ], factory );
+		define( [ 'spin' ], factory );
 	}
 	// Browser global
 	else {
