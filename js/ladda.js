@@ -164,7 +164,7 @@
 			targets = [].slice.call( document.querySelectorAll( target ) );
 		}
 		else if( typeof target === 'object' && typeof target.nodeName === 'string' ) {
-			targets = [ targets ];
+			targets = [ target ];
 		}
 
 		for( var i = 0, len = targets.length; i < len; i++ ) {
