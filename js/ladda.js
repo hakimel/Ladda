@@ -41,7 +41,7 @@
 		}
 
 		// Create the spinner
-		var spinner = createSpinner( button, button.getAttribute( 'data-size' ) );
+		var spinner = createSpinner( button );
 
 		// Wrapper element for the spinner
 		var spinnerWrapper = document.createElement( 'span' );
@@ -211,7 +211,7 @@
 
 	}
 
-	function createSpinner( button, size ) {
+	function createSpinner( button ) {
 
 		var height = button.offsetHeight;
 
