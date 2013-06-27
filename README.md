@@ -78,6 +78,10 @@ The project is tested in Chrome and Firefox. It Should Work™ in the current st
 
 ## History
 
+#### 0.5.2
+- Fix error when passing in element to ```Ladda.create()```
+- bower.json
+
 #### 0.5.1
 - Add Bootstrap example
 
