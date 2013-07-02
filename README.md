@@ -1,11 +1,13 @@
 # Ladda
 
-A set of buttons which merge loading indicators into themselves to bridge the gap between action and feedback.
+Buttons with built-in loading indicators, effectively bridging the gap between action and feedback. 
 
 [Check out the demo page](http://lab.hakim.se/ladda/).
 
 
 ## Instructions
+
+Release downloads and change history is available here <https://github.com/hakimel/Ladda/releases>.
 
 The compiled files for the project that you should be using are available in the **/dist** directory. You will need to include both the **ladda.min.js** and **spin.min.js** files as well as ONE of the two style sheets. If you want the button styles used in the [Ladda example page](http://lab.hakim.se/ladda) use the **ladda.min.css** file, if you want to have the functional buttons without the visual style (colors, padding etc) use the **ladda-themeless.min.css** file.
 
@@ -76,42 +78,9 @@ define(['ladda'], function(Ladda) {
 
 The project is tested in Chrome and Firefox. It Should Work™ in the current stable releases of Chrome, Firefox, Safari as well as IE9 and up.
 
-## History
+## Changelog
 
-#### 0.5.2
-- Fix error when passing in element to ```Ladda.create()```
-- bower.json
-
-#### 0.5.1
-- Add Bootstrap example
-
-#### 0.5.0
-- Split button visual style and functional styles apart for framework compatibility
-- Spinner size now determined by measuring button using JavaScript
-
-#### 0.4.2
-- Add size options
-- Add mint color
-- All settings now applied via data-* attributes
-
-#### 0.4.1
-- Add disable/enable buttons
-
-#### 0.4.0
-- Common.js / AMD module
-- Grunt build file
-- Now using Sass
-
-#### 0.3.0
-- Replace spinner GIF with spin.js
-- ```spinner``` and ```label``` classes are now prefixed with ```ladda-```
-- Built-in progress bars
-
-#### 0.2.0
-- JS API
-
-#### 0.1.0
-- Initial release
+<https://github.com/hakimel/Ladda/releases>
 
 ## License
 
