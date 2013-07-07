@@ -40,6 +40,12 @@
 			throw "Button target must be defined.";
 		}
 
+		// The text contents must be wrapped in a ladda-label
+		// element, create one if it doesn't already exist
+		if( !button.querySelector( '.ladda-label' ) ) {
+			button.innerHTML = '<span class="ladda-label">'+ button.innerHTML +'</span>';
+		}
+
 		// Create the spinner
 		var spinner = createSpinner( button );
 
@@ -171,10 +177,6 @@
 
 			(function() {
 				var element = targets[i];
-
-				if( !element.querySelector( '.ladda-label' ) ) {
-					element.innerHTML = '<span class="ladda-label">'+ element.innerHTML +'</span>';
-				}
 
 				// Make sure we're working with a DOM element
 				if( typeof element.addEventListener === 'function' ) {
