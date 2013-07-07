@@ -226,6 +226,11 @@
 			height *= 0.8;
 		}
 
+		// Prefer an explicit height if one is defined
+		if( button.hasAttribute( 'data-spinner-size' ) ) {
+			height = parseInt( button.getAttribute( 'data-spinner-size' ), 10 );
+		}
+
 		var lines = 12,
 			radius = height * 0.2,
 			length = radius * 0.6,

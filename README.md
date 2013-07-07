@@ -13,7 +13,7 @@ The compiled files for the project that you should be using are available in the
 
 #### HTML
 
-Ladda buttons must be given the class ```ladda-button``` and the button label needs to have the ```ladda-label``` class. Below is an example of a button which will use the expand-right animation style.
+Ladda buttons must be given the class ```ladda-button``` and the button label needs to have the ```ladda-label``` class. The ```ladda-label``` will be automatically created if it does not exist in the DOM. Below is an example of a button which will use the expand-right animation style.
 
 ```html
 <button class="ladda-button" data-style="expand-right"><span class="ladda-label">Submit</span></button>
@@ -23,6 +23,7 @@ Buttons accepts three attributes:
 - **data-style**: one of the button styles, full list in [demo](http://lab.hakim.se/ladda/) *[required]*
 - **data-color**: green/red/blue/purple/mint
 - **data-size**: xs/s/l/xl, defaults to medium
+- **data-spinner-size**: 40, pixel dimensions of spinner, defaults to dynamic size based on the button height
 
 #### JavaScript
 
