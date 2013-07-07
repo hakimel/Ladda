@@ -172,6 +172,10 @@
 			(function() {
 				var element = targets[i];
 
+				if( !element.querySelector( '.ladda-label' ) ) {
+					element.innerHTML = '<span class="ladda-label">'+ element.innerHTML +'</span>';
+				}
+
 				// Make sure we're working with a DOM element
 				if( typeof element.addEventListener === 'function' ) {
 					var instance = create( element );
