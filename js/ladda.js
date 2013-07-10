@@ -38,6 +38,7 @@
 
 		if( typeof button === 'undefined' ) {
 			console.warn( "Ladda button target must be defined." );
+			return;
 		}
 
 		// The text contents must be wrapped in a ladda-label
