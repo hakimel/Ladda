@@ -65,6 +65,40 @@ All loading animations on the page can be stopped by using:
 Ladda.stopAll();
 ```
 
+#### JavaScript (jQuery version)
+
+Similar to above, except that Ladda jQuery is bound as such:
+
+```javascript
+// Automatically trigger the loading animation on click
+$( 'input[type=submit]' ).ladda();
+
+// Same as the above but automatically stops after two seconds
+$( 'input[type=submit]' ).ladda( { timeout: 2000 } );
+```
+
+If you want JavaScript control over your buttons you can use the following approach:
+
+```javascript
+// Initialize ladda for the specified button
+var $l = $( '.my-button' ).ladda();
+
+// Start loading
+$l.ladda( 'start' );
+
+// Will display a progress bar for 50% of the button width
+$l.ladda( 'setProgress', 0.5 );
+
+// Stop loading
+$l.ladda( 'stop' );
+
+// Toggle between loading/not loading states
+$l.ladda( 'toggle' );
+
+// Check the current state -- does not chain, instead returns a boolean
+$l.ladda( 'isLoading' );
+```
+
 ## Module
 
 The spinner and Ladda can be loaded as a module using either Common.js or AMD.

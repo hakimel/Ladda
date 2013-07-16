@@ -1,0 +1,8 @@
+/*!
+ * Ladda 0.6.0 (2013-07-16, 14:15)
+ * http://lab.hakim.se/ladda
+ * MIT licensed
+ *
+ * Copyright (C) 2013 Hakim El Hattab, http://hakim.se
+ */
+(function(t){var e=function(t){var e=t.height();e>32&&(e*=.8),t.attr("data-spinner-size")&&(e=parseInt(t.attr("data-spinner-size"),10));var a=12,n=.2*e,r=.6*n,i=7>n?2:3;return new Spinner({color:"#fff",lines:a,radius:n,length:r,width:i,className:""})};t.fn.ladda=function(a,n){return t(this).each(function(){var r,i=t(this);i.attr("data-ladda")===void 0?(1>i.find(".ladda-label").length&&i.wrapInner('<span class="ladda-label" />'),r=t('<span class="ladda-spinner" />'),i.append(r),i.attr("data-ladda","")):r=i.find(".ladda-spinner");var s=e(i);if("string"==typeof a)switch(a){case"start":return clearTimeout(i.data("spinnerTimeout")),s.spin(r.get(0)),i.prop("disabled",!0).attr("data-loading","").ladda("setProgress",0);case"stop":return clearTimeout(i.data("spinnerTimeout")),i.find(".ladda-spinner").empty(),i.prop("disabled",!1).removeAttr("data-loading");case"toggle":return i.ladda("isLoading")?i.ladda("stop"):i.ladda("start");case"setProgress":var d=i.find(".ladda-progress");return 0===n&&d.length>0?d.remove():(1>d.length&&(d=t('<div class="ladda-progress" />'),i.append(d)),d.width((n||0)*i.outerWidth())),i;case"enable":return i.ladda("stop");case"disable":return i.ladda("stop").prop("disabled",!0);case"isLoading":return void 0===typeof i.attr("data-loading");default:return i}else{var o=-1;i.click(function(){i.ladda("start"),"number"==typeof a.timeout&&(clearTimeout(o),o=setTimeout(function(){i.ladda("stop")},a.timeout),i.data("spinnerTimeout",o)),"function"==typeof a.callback&&a.callback.apply(null,[i])})}})}})(jQuery);
