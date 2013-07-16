@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Ladda jQuery</title>
+
+		<meta name="description" content="">
+		<meta name="author" content="Second Street Media, Inc.">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/demo.css">
+		<link rel="stylesheet" href="dist/ladda.min.css">
+		
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+
+	</head>
+
+	<body>
+
+		<article class="examples">
+
+			<div class="intro">
+				<h1>Ladda - jQuery Version</h1>
+				<p>
+					A UI concept which merges loading indicators into the action that invoked them. Primarily intended for use with forms where 
+					it gives users immediate feedback upon submit rather than leaving them wondering while the browser does its thing. The jQuery
+					version provides compatibility with older versions of Internet Explorer by using jQuery in place of things like
+					<code>document.querySelectorAll</code>, <code>element.addEventListener</code>, etc.
+				</p>
+			</div>
+
+			<section>
+				<h3>expand-left</h3>
+				<button class="ladda-button" data-color="green" data-style="expand-left">Submit</button>
+			</section>
+
+			<section>
+				<h3>expand-right</h3>
+				<button class="ladda-button" data-color="green" data-style="expand-right">Submit</button>
+			</section>
+
+			<section>
+				<h3>expand-up</h3>
+				<button class="ladda-button" data-color="green" data-style="expand-up">Submit</button>
+			</section>
+
+			<section>
+				<h3>expand-down</h3>
+				<button class="ladda-button" data-color="green" data-style="expand-down">Submit</button>
+			</section>
+
+
+			<section>
+				<h3>contract</h3>
+				<button class="ladda-button" data-color="red" data-style="contract">Submit</button>
+			</section>
+
+			<section>
+				<h3>contract-overlay</h3>
+				<button class="ladda-button" data-color="red" data-style="contract-overlay" style="z-index: 10;">Submit</button>
+			</section>
+
+			<section>
+				<h3>zoom-in</h3>
+				<button class="ladda-button" data-color="red" data-style="zoom-in">Submit</button>
+			</section>
+
+			<section>
+				<h3>zoom-out</h3>
+				<button class="ladda-button" data-color="red" data-style="zoom-out">Submit</button>
+			</section>
+
+
+			<section>
+				<h3>slide-left</h3>
+				<button class="ladda-button" data-color="blue" data-style="slide-left">Submit</button>
+			</section>
+
+			<section>
+				<h3>slide-right</h3>
+				<button class="ladda-button" data-color="blue" data-style="slide-right">Submit</button>
+			</section>
+
+			<section>
+				<h3>slide-up</h3>
+				<button class="ladda-button" data-color="blue" data-style="slide-up">Submit</button>
+			</section>
+
+			<section>
+				<h3>slide-down</h3>
+				<button class="ladda-button" data-color="blue" data-style="slide-down">Submit</button>
+			</section>
+
+			<h3 id="progress">Built-in progress bar</h3>
+
+			<section class="progress-demo">
+				<h3>expand-right</h3>
+				<button class="ladda-button" data-color="purple" data-style="expand-right">Submit</button>
+			</section>
+
+			<section class="progress-demo">
+				<h3>contract</h3>
+				<button class="ladda-button" data-color="purple" data-style="contract">Submit</button>
+			</section>
+
+			<h3 id="sizes">Sizes</h3>
+
+			<section class="progress-demo">
+				<h3>Extra Small</h3>
+				<button class="ladda-button" data-color="mint" data-style="expand-right" data-size="xs">Submit</button>
+			</section>
+
+			<section class="progress-demo">
+				<h3>Small</h3>
+				<button class="ladda-button" data-color="mint" data-style="expand-right" data-size="s">Submit</button>
+			</section>
+
+			<section class="progress-demo">
+				<h3>Large</h3>
+				<button class="ladda-button" data-color="mint" data-style="expand-right" data-size="l">Submit</button>
+			</section>
+
+			<section class="progress-demo">
+				<h3>Extra Large</h3>
+				<button class="ladda-button" data-color="mint" data-style="expand-right" data-size="xl">Submit</button>
+			</section>
+
+			<footer>
+				<small class="sharing">
+					<a href="http://twitter.com/share" class="twitter-share-button" data-text="Ladda - Buttons with built-in loading indicators by @hakimel" data-url="http://lab.hakim.se/ladda" data-count="small" data-related="hakimel"></a>
+				</small>
+				<small class="outro">Ladda jQuery by <a href="http://secondstreet.com/">Second Street Media, Inc.</a> / <a href="http://twitter.com/2ndStreetMedia">@2ndStreetMedia</a></small>
+				<small class="outro">Based on Ladda by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+			</footer>
+
+		</article>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="dist/spin.min.js"></script>
+		<script src="dist/ladda.jquery.min.js"></script>
+
+		<script>
+			$(function() {
+				// Bind normal buttons
+				$( 'section:not(.progress-demo) button' ).ladda( { timeout: 2000 } );
+	
+				// Bind progress buttons and simulate loading progress
+				$( 'section.progress-demo button' ).ladda( {
+					callback: function( $el ) {
+						var progress = 0;
+						var interval = setInterval( function() {
+							progress = Math.min( progress + Math.random() * 0.1, 1 );
+							$el.ladda( 'setProgress', progress );
+	
+							if( progress === 1 ) {
+								$el.ladda( 'stop' );
+								clearInterval( interval );
+							}
+						}, 200 );
+					}
+				} );
+	
+				// You can control loading explicitly using the JavaScript API
+				// as outlined below:
+	
+				// var $l = $( '<button>Submit</button>' ).ladda();
+				// $l.ladda( 'start' );
+				// $l.ladda( 'stop' );
+				// $l.ladda( 'toggle' );
+				// $l.ladda( 'setProgress', 0-1 );
+				// $l.ladda( 'isLoading' ); // WARNING: Returns a boolean, will not chain.
+			});
+		</script>
+
+	</body>
+</html>

@@ -21,7 +21,8 @@ module.exports = function(grunt) {
 					banner: '<%= meta.banner %>\n'
 				},
 				files: {
-					'dist/ladda.min.js': 'js/ladda.js'
+					'dist/ladda.min.js': 'js/ladda.js',
+					'dist/ladda.jquery.min.js': 'js/ladda.jquery.js'
 				}
 			},
 			lib: {
@@ -64,10 +65,12 @@ module.exports = function(grunt) {
 					head: false,
 					module: false,
 					console: false,
-					define: false
+					define: false,
+					Spinner: false,
+					jQuery: false
 				}
 			},
-			files: [ 'Gruntfile.js', 'js/ladda.js' ]
+			files: [ 'Gruntfile.js', 'js/ladda.js', 'js/ladda.jquery.js' ]
 		},
 
 		connect: {
@@ -81,7 +84,7 @@ module.exports = function(grunt) {
 
 		watch: {
 			main: {
-				files: [ 'Gruntfile.js', 'js/ladda.js' ],
+				files: [ 'Gruntfile.js', 'js/ladda.js', 'js/ladda.jquery.js' ],
 				tasks: 'js'
 			},
 			theme: {
