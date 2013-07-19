@@ -186,18 +186,25 @@
 
 					element.addEventListener( 'click', function() {
 
-						instance.start();
+						// Make this asynchronous to avoid an issue where setting
+						// the disabled attribute on the button prevents forms
+						// from submitting
+						setTimeout( function() {
 
-						// Set a loading timeout if one is specified
-						if( typeof options.timeout === 'number' ) {
-							clearTimeout( timeout );
-							timeout = setTimeout( instance.stop, options.timeout );
-						}
+							instance.start();
 
-						// Invoke callbacks
-						if( typeof options.callback === 'function' ) {
-							options.callback.apply( null, [ instance ] );
-						}
+							// Set a loading timeout if one is specified
+							if( typeof options.timeout === 'number' ) {
+								clearTimeout( timeout );
+								timeout = setTimeout( instance.stop, options.timeout );
+							}
+
+							// Invoke callbacks
+							if( typeof options.callback === 'function' ) {
+								options.callback.apply( null, [ instance ] );
+							}
+
+						}, 1 );
 
 					}, false );
 				}
