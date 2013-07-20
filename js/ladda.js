@@ -55,17 +55,20 @@
 		spinnerWrapper.className = 'ladda-spinner';
 		button.appendChild( spinnerWrapper );
 
-		// Timeout used to delay stopping of the spin animation
-		var spinnerTimeout;
+		// Timer used to delay starting/stopping
+		var timer;
 
 		var instance = {
 
+			/**
+			 * Enter the loading state.
+			 */
 			start: function() {
 
 				button.setAttribute( 'disabled', '' );
 				button.setAttribute( 'data-loading', '' );
 
-				clearTimeout( spinnerTimeout );
+				clearTimeout( timer );
 				spinner.spin( spinnerWrapper );
 
 				this.setProgress( 0 );
@@ -74,15 +77,21 @@
 
 			},
 
+			/**
+			 * Enter the loading state, after a delay.
+			 */
 			startAfter: function( delay ) {
 
-				clearTimeout( spinnerTimeout );
-				spinnerTimeout = setTimeout( function() { instance.start(); }, delay );
+				clearTimeout( timer );
+				timer = setTimeout( function() { instance.start(); }, delay );
 
 				return this; // chain
 
 			},
 
+			/**
+			 * Exit the loading state.
+			 */
 			stop: function() {
 
 				button.removeAttribute( 'disabled' );
@@ -90,13 +99,16 @@
 
 				// Kill the animation after a delay to make sure it
 				// runs for the duration of the button transition
-				clearTimeout( spinnerTimeout );
-				spinnerTimeout = setTimeout( function() { spinner.stop(); }, 1000 );
+				clearTimeout( timer );
+				timer = setTimeout( function() { spinner.stop(); }, 1000 );
 
 				return this; // chain
 
 			},
 
+			/**
+			 * Toggle the loading state on/off.
+			 */
 			toggle: function() {
 
 				if( this.isLoading() ) {
@@ -110,6 +122,12 @@
 
 			},
 
+			/**
+			 * Sets the width of the visual progress bar inside of
+			 * this Ladda button
+			 *
+			 * @param {Number} progress in the range of 0-1
+			 */
 			setProgress: function( progress ) {
 
 				var progressElement = button.querySelector( '.ladda-progress' );
