@@ -130,6 +130,9 @@
 			 */
 			setProgress: function( progress ) {
 
+				// Cap it
+				progress = Math.max( Math.min( progress, 1 ), 0 );
+
 				var progressElement = button.querySelector( '.ladda-progress' );
 
 				// Remove the progress bar if we're at 0 progress
