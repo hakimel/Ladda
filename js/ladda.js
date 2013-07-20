@@ -1,5 +1,5 @@
 /*!
- * Ladda 0.6.0
+ * Ladda 0.7.0
  * http://lab.hakim.se/ladda
  * MIT licensed
  *
