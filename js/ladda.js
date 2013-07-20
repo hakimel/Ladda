@@ -74,6 +74,15 @@
 
 			},
 
+			startAfter: function( delay ) {
+
+				clearTimeout( spinnerTimeout );
+				spinnerTimeout = setTimeout( function() { instance.start(); }, delay );
+
+				return this; // chain
+
+			},
+
 			stop: function() {
 
 				button.removeAttribute( 'disabled' );
@@ -186,25 +195,21 @@
 
 					element.addEventListener( 'click', function() {
 
-						// Make this asynchronous to avoid an issue where setting
+						// This is asynchronous to avoid an issue where setting
 						// the disabled attribute on the button prevents forms
 						// from submitting
-						setTimeout( function() {
+						instance.startAfter( 1 );
 
-							instance.start();
+						// Set a loading timeout if one is specified
+						if( typeof options.timeout === 'number' ) {
+							clearTimeout( timeout );
+							timeout = setTimeout( instance.stop, options.timeout );
+						}
 
-							// Set a loading timeout if one is specified
-							if( typeof options.timeout === 'number' ) {
-								clearTimeout( timeout );
-								timeout = setTimeout( instance.stop, options.timeout );
-							}
-
-							// Invoke callbacks
-							if( typeof options.callback === 'function' ) {
-								options.callback.apply( null, [ instance ] );
-							}
-
-						}, 1 );
+						// Invoke callbacks
+						if( typeof options.callback === 'function' ) {
+							options.callback.apply( null, [ instance ] );
+						}
 
 					}, false );
 				}
