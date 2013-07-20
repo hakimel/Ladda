@@ -198,7 +198,7 @@
 		var targets = [];
 
 		if( typeof target === 'string' ) {
-			targets = [].slice.call( document.querySelectorAll( target ) );
+			targets = toArray( document.querySelectorAll( target ) );
 		}
 		else if( typeof target === 'object' && typeof target.nodeName === 'string' ) {
 			targets = [ target ];
@@ -281,6 +281,18 @@
 			left: 'auto',
 			className: ''
 		} );
+
+	}
+
+	function toArray( nodes ) {
+
+		var a = [];
+
+		for ( var i = 1; i < nodes.length; i++ ) {
+			a.push( nodes[ i ] );
+		}
+
+		return a;
 
 	}
 

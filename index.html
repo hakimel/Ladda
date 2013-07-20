@@ -17,6 +17,10 @@
 		<link rel="stylesheet" href="css/demo.css">
 		<link rel="stylesheet" href="dist/ladda.min.css">
 
+		<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
 	</head>
 
 	<body>
@@ -32,64 +36,64 @@
 				</p>
 			</div>
 
-			<section>
+			<section class="button-demo">
 				<h3>expand-left</h3>
 				<button class="ladda-button" data-color="green" data-style="expand-left">Submit</button>
 			</section>
 
-			<section>
+			<section class="button-demo">
 				<h3>expand-right</h3>
 				<button class="ladda-button" data-color="green" data-style="expand-right">Submit</button>
 			</section>
 
-			<section>
+			<section class="button-demo">
 				<h3>expand-up</h3>
 				<button class="ladda-button" data-color="green" data-style="expand-up">Submit</button>
 			</section>
 
-			<section>
+			<section class="button-demo">
 				<h3>expand-down</h3>
 				<button class="ladda-button" data-color="green" data-style="expand-down">Submit</button>
 			</section>
 
 
-			<section>
+			<section class="button-demo">
 				<h3>contract</h3>
 				<button class="ladda-button" data-color="red" data-style="contract">Submit</button>
 			</section>
 
-			<section>
+			<section class="button-demo">
 				<h3>contract-overlay</h3>
 				<button class="ladda-button" data-color="red" data-style="contract-overlay" style="z-index: 10;">Submit</button>
 			</section>
 
-			<section>
+			<section class="button-demo">
 				<h3>zoom-in</h3>
 				<button class="ladda-button" data-color="red" data-style="zoom-in">Submit</button>
 			</section>
 
-			<section>
+			<section class="button-demo">
 				<h3>zoom-out</h3>
 				<button class="ladda-button" data-color="red" data-style="zoom-out">Submit</button>
 			</section>
 
 
-			<section>
+			<section class="button-demo">
 				<h3>slide-left</h3>
 				<button class="ladda-button" data-color="blue" data-style="slide-left">Submit</button>
 			</section>
 
-			<section>
+			<section class="button-demo">
 				<h3>slide-right</h3>
 				<button class="ladda-button" data-color="blue" data-style="slide-right">Submit</button>
 			</section>
 
-			<section>
+			<section class="button-demo">
 				<h3>slide-up</h3>
 				<button class="ladda-button" data-color="blue" data-style="slide-up">Submit</button>
 			</section>
 
-			<section>
+			<section class="button-demo">
 				<h3>slide-down</h3>
 				<button class="ladda-button" data-color="blue" data-style="slide-down">Submit</button>
 			</section>
@@ -142,10 +146,10 @@
 		<script>
 
 			// Bind normal buttons
-			Ladda.bind( 'section:not(.progress-demo) button', { timeout: 2000 } );
+			Ladda.bind( '.button-demo button', { timeout: 2000 } );
 
 			// Bind progress buttons and simulate loading progress
-			Ladda.bind( 'section.progress-demo button', {
+			Ladda.bind( '.progress-demo button', {
 				callback: function( instance ) {
 					var progress = 0;
 					var interval = setInterval( function() {
@@ -171,6 +175,10 @@
 			// l.setProgress( 0-1 );
 
 		</script>
+
+		<a class="fork" href="https://github.com/hakimel/Ladda"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/camo.github.com/e6bef7a091f5f3138b8cd40bc3e114258dd68ddf/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub"></a>
+
+		<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 
 	</body>
 </html>
