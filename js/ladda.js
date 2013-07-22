@@ -288,7 +288,7 @@
 
 		var a = [];
 
-		for ( var i = 1; i < nodes.length; i++ ) {
+		for ( var i = 0; i < nodes.length; i++ ) {
 			a.push( nodes[ i ] );
 		}
 
