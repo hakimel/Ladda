@@ -72,6 +72,7 @@ $spinnerSize: 32px;
 	top: 50%;
 	margin-top: -$spinnerSize/2;
 	opacity: 0;
+	pointer-events: none;
 }
 
 /* Button label */
