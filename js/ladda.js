@@ -253,7 +253,8 @@
 
 	function createSpinner( button ) {
 
-		var height = button.offsetHeight;
+		var height = button.offsetHeight,
+				spinnerColor;
 
 		// If the button is tall we can afford some padding
 		if( height > 32 ) {
@@ -265,13 +266,18 @@
 			height = parseInt( button.getAttribute( 'data-spinner-size' ), 10 );
 		}
 
+		// Allow buttons to specify the color of the spinner element
+		if (button.hasAttribute('data-spinner-color' ) ) {
+			spinnerColor = button.getAttribute( 'data-spinner-color' );
+		}
+
 		var lines = 12,
 			radius = height * 0.2,
 			length = radius * 0.6,
 			width = radius < 7 ? 2 : 3;
 
 		return new Spinner( {
-			color: '#fff',
+			color: spinnerColor || '#fff',
 			lines: lines,
 			radius: radius,
 			length: length,
