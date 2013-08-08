@@ -282,7 +282,7 @@
 			radius: radius,
 			length: length,
 			width: width,
-			zIndex: 'initial',
+			zIndex: 'auto',
 			top: 'auto',
 			left: 'auto',
 			className: ''
