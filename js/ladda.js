@@ -1,5 +1,5 @@
 /*!
- * Ladda 0.7.0
+ * Ladda 0.7.1
  * http://lab.hakim.se/ladda
  * MIT licensed
  *
@@ -65,7 +65,7 @@
 			 */
 			start: function() {
 
-				button.setAttribute( 'disabled', '' );
+				setTimeout( function() { button.setAttribute( 'disabled', '' ); }, 1 );
 				button.setAttribute( 'data-loading', '' );
 
 				clearTimeout( timer );
