@@ -215,22 +215,32 @@
 					var timeout = -1;
 
 					element.addEventListener( 'click', function() {
-
-						// This is asynchronous to avoid an issue where setting
-						// the disabled attribute on the button prevents forms
-						// from submitting
-						instance.startAfter( 1 );
-
-						// Set a loading timeout if one is specified
-						if( typeof options.timeout === 'number' ) {
-							clearTimeout( timeout );
-							timeout = setTimeout( instance.stop, options.timeout );
-						}
-
-						// Invoke callbacks
-						if( typeof options.callback === 'function' ) {
-							options.callback.apply( null, [ instance ] );
-						}
+						
+						// if button belongs to a form, not animation until form is valid
+                        			var validable = true;
+                        			var requireds =  $('[required]', $(element).parents('form:first'));
+                        			requireds.each(function(){
+                        				if($.trim($(this).val()) == '') {
+                        	        			validable = false;
+                            				}
+                        			});
+                        			if(validable){
+							// This is asynchronous to avoid an issue where setting
+							// the disabled attribute on the button prevents forms
+							// from submitting
+							instance.startAfter( 1 );
+	
+							// Set a loading timeout if one is specified
+							if( typeof options.timeout === 'number' ) {
+								clearTimeout( timeout );
+								timeout = setTimeout( instance.stop, options.timeout );
+							}
+	
+							// Invoke callbacks
+							if( typeof options.callback === 'function' ) {
+								options.callback.apply( null, [ instance ] );
+							}
+                        			}
 
 					}, false );
 				}
