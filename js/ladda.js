@@ -183,7 +183,8 @@
     }
 
 	/**
-	 * Get the first ancestor node from an element, having a certain type
+	 * Get the first ancestor node from an element, having a
+	 * certain type.
 	 *
 	 * @param elem An HTML element
 	 * @param type an HTML tag type (uppercased)
@@ -206,16 +207,16 @@
 	 *
 	 * @return A list of elements
 	 */
-    function getRequirableFields( elem ) {
+    function getRequiredFields( elem ) {
 
         var requirables = ['input', 'textarea'];
         var inputs = [];
 
-        for(var i = 0; i < requirables.length; i++) {
-            var name_els = elem.getElementsByTagName(requirables[i]);
-            for(var j = 0; j < name_els.length; j++) {
+        for( var i = 0; i < requirables.length; i++ ) {
+            var name_els = elem.getElementsByTagName( requirables[i] );
+            for( var j = 0; j < name_els.length; j++ ) {
                 if ( name_els[j].hasAttribute( 'required' ) ) {
-                    inputs.push(name_els[j]);
+                    inputs.push( name_els[j] );
                 }
             }
         }
@@ -256,20 +257,23 @@
 					var instance = create( element );
 					var timeout = -1;
 
-					element.addEventListener( 'click', function(event) {
+					element.addEventListener( 'click', function( event ) {
 
-						// if button belongs to a form, not animation until form is valid
-						var validable = true;
-						var form = getAncestorOfTagType(element, 'FORM');
-						var requireds = getRequirableFields(form);
-                        for(var i = 0; i < requireds.length; i++) {
+						// If the button belongs to a form, make sure all the
+						// fields in that form are filled out
+						var valid = true;
+						var form = getAncestorOfTagType( element, 'FORM' );
+						var requireds = getRequiredFields( form );
+
+                        for( var i = 0; i < requireds.length; i++ ) {
                             // Alternatively to this trim() check,
                             // we could have use .checkValidity() or .validity.valid
-                            if( '' === requireds[i].value.replace( /^\s+|\s+$/g, '' ) ) {
-                                validable = false;
+                            if( requireds[i].value.replace( /^\s+|\s+$/g, '' ) === '' ) {
+                                valid = false;
                             }
                         }
-						if(validable){
+
+						if( valid ) {
 							// This is asynchronous to avoid an issue where setting
 							// the disabled attribute on the button prevents forms
 							// from submitting
