@@ -1,6 +1,6 @@
 {
   "name": "Ladda",
-  "version": "0.8.0",
+  "version": "0.9.0",
   "main": ["./dist/ladda.min.js"],
   "dependencies": {
     "spin.js": "1.3.x"
