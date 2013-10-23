@@ -180,7 +180,49 @@
 
 		return instance;
 
+    }
+
+	/**
+	 * Get the first ancestor node from an element, having a certain type
+	 *
+	 * @param elem An HTML element
+	 * @param type an HTML tag type (uppercased)
+	 *
+	 * @return An HTML element
+	 */
+	function getAncestorOfTagType( elem, type ) {
+
+		while ( elem.parentNode && elem.tagName !== type ) {
+			elem = elem.parentNode;
+		}
+
+		return elem;
 	}
+
+	/**
+	 * Get the list of all elements having a `required` attribute
+	 *
+	 * @param elem An HTML element to start from
+	 *
+	 * @return A list of elements
+	 */
+    function getRequirableFields( elem ) {
+
+        var requirables = ['input', 'textarea'];
+        var inputs = [];
+
+        for(var i = 0; i < requirables.length; i++) {
+            var name_els = elem.getElementsByTagName(requirables[i]);
+            for(var j = 0; j < name_els.length; j++) {
+                if ( name_els[j].hasAttribute( 'required' ) ) {
+                    inputs.push(name_els[j]);
+                }
+            }
+        }
+
+        return inputs;
+    }
+
 
 	/**
 	 * Binds the target buttons to automatically enter the
@@ -214,23 +256,36 @@
 					var instance = create( element );
 					var timeout = -1;
 
-					element.addEventListener( 'click', function() {
+					element.addEventListener( 'click', function(event) {
 
-						// This is asynchronous to avoid an issue where setting
-						// the disabled attribute on the button prevents forms
-						// from submitting
-						instance.startAfter( 1 );
+						// if button belongs to a form, not animation until form is valid
+						var validable = true;
+						var form = getAncestorOfTagType(element, 'FORM');
+						var requireds = getRequirableFields(form);
+                        for(var i = 0; i < requireds.length; i++) {
+                            // Alternatively to this trim() check,
+                            // we could have use .checkValidity() or .validity.valid
+                            if( '' === requireds[i].value.replace( /^\s+|\s+$/g, '' ) ) {
+                                validable = false;
+                            }
+                        }
+						if(validable){
+							// This is asynchronous to avoid an issue where setting
+							// the disabled attribute on the button prevents forms
+							// from submitting
+							instance.startAfter( 1 );
 
-						// Set a loading timeout if one is specified
-						if( typeof options.timeout === 'number' ) {
-							clearTimeout( timeout );
-							timeout = setTimeout( instance.stop, options.timeout );
-						}
+							// Set a loading timeout if one is specified
+							if( typeof options.timeout === 'number' ) {
+								clearTimeout( timeout );
+								timeout = setTimeout( instance.stop, options.timeout );
+							}
 
-						// Invoke callbacks
-						if( typeof options.callback === 'function' ) {
-							options.callback.apply( null, [ instance ] );
-						}
+							// Invoke callbacks
+							if( typeof options.callback === 'function' ) {
+								options.callback.apply( null, [ instance ] );
+							}
+                        }
 
 					}, false );
 				}
