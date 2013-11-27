@@ -197,31 +197,34 @@
             elem = elem.parentNode;
         }
 
-        return (type === elem.tagName) ? elem : undefined;
+        return ( type === elem.tagName ) ? elem : undefined;
+
     }
 
 	/**
-	 * Get the list of all elements having a `required` attribute
+	 * Returns a list of all inputs in the given form that
+	 * have their `required` attribute set.
 	 *
-	 * @param elem An HTML element to start from
+	 * @param form The from HTML element to look in
 	 *
 	 * @return A list of elements
 	 */
-    function getRequiredFields( elem ) {
+    function getRequiredFields( form ) {
 
-        var requirables = ['input', 'textarea'];
+        var requirables = [ 'input', 'textarea' ];
         var inputs = [];
 
         for( var i = 0; i < requirables.length; i++ ) {
-            var name_els = elem.getElementsByTagName( requirables[i] );
-            for( var j = 0; j < name_els.length; j++ ) {
-                if ( name_els[j].hasAttribute( 'required' ) ) {
-                    inputs.push( name_els[j] );
+            var candidates = form.getElementsByTagName( requirables[i] );
+            for( var j = 0; j < candidates.length; j++ ) {
+                if ( candidates[j].hasAttribute( 'required' ) ) {
+                    inputs.push( candidates[j] );
                 }
             }
         }
 
         return inputs;
+
     }
 
 
