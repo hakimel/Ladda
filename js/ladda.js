@@ -180,26 +180,26 @@
 
 		return instance;
 
-    }
+	}
 
-    /**
-    * Get the first ancestor node from an element, having a
-    * certain type.
-    *
-    * @param elem An HTML element
-    * @param type an HTML tag type (uppercased)
-    *
-    * @return An HTML element
-    */
-    function getAncestorOfTagType( elem, type ) {
+	/**
+	* Get the first ancestor node from an element, having a
+	* certain type.
+	*
+	* @param elem An HTML element
+	* @param type an HTML tag type (uppercased)
+	*
+	* @return An HTML element
+	*/
+	function getAncestorOfTagType( elem, type ) {
 
-        while ( elem.parentNode && elem.tagName !== type ) {
-            elem = elem.parentNode;
-        }
+		while ( elem.parentNode && elem.tagName !== type ) {
+			elem = elem.parentNode;
+		}
 
-        return ( type === elem.tagName ) ? elem : undefined;
+		return ( type === elem.tagName ) ? elem : undefined;
 
-    }
+	}
 
 	/**
 	 * Returns a list of all inputs in the given form that
@@ -209,23 +209,23 @@
 	 *
 	 * @return A list of elements
 	 */
-    function getRequiredFields( form ) {
+	function getRequiredFields( form ) {
 
-        var requirables = [ 'input', 'textarea' ];
-        var inputs = [];
+		var requirables = [ 'input', 'textarea' ];
+		var inputs = [];
 
-        for( var i = 0; i < requirables.length; i++ ) {
-            var candidates = form.getElementsByTagName( requirables[i] );
-            for( var j = 0; j < candidates.length; j++ ) {
-                if ( candidates[j].hasAttribute( 'required' ) ) {
-                    inputs.push( candidates[j] );
-                }
-            }
-        }
+		for( var i = 0; i < requirables.length; i++ ) {
+			var candidates = form.getElementsByTagName( requirables[i] );
+			for( var j = 0; j < candidates.length; j++ ) {
+				if ( candidates[j].hasAttribute( 'required' ) ) {
+					inputs.push( candidates[j] );
+				}
+			}
+		}
 
-        return inputs;
+		return inputs;
 
-    }
+	}
 
 
 	/**
@@ -267,16 +267,16 @@
 						var valid = true;
 						var form = getAncestorOfTagType( element, 'FORM' );
 
-                        if( typeof form !== 'undefined' ) {
-                            var requireds = getRequiredFields( form );
-                            for( var i = 0; i < requireds.length; i++ ) {
-                                // Alternatively to this trim() check,
-                                // we could have use .checkValidity() or .validity.valid
-                                if( requireds[i].value.replace( /^\s+|\s+$/g, '' ) === '' ) {
-                                    valid = false;
-                                }
-                            }
-                        }
+						if( typeof form !== 'undefined' ) {
+							var requireds = getRequiredFields( form );
+							for( var i = 0; i < requireds.length; i++ ) {
+								// Alternatively to this trim() check,
+								// we could have use .checkValidity() or .validity.valid
+								if( requireds[i].value.replace( /^\s+|\s+$/g, '' ) === '' ) {
+									valid = false;
+								}
+							}
+						}
 
 						if( valid ) {
 							// This is asynchronous to avoid an issue where setting
@@ -294,7 +294,7 @@
 							if( typeof options.callback === 'function' ) {
 								options.callback.apply( null, [ instance ] );
 							}
-                        }
+						}
 
 					}, false );
 				}
@@ -318,7 +318,7 @@
 	function createSpinner( button ) {
 
 		var height = button.offsetHeight,
-				spinnerColor;
+			spinnerColor;
 
 		// If the button is tall we can afford some padding
 		if( height > 32 ) {
