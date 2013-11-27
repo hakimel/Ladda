@@ -197,7 +197,7 @@
             elem = elem.parentNode;
         }
 
-        return (type == elem.tagName) ? elem : undefined;
+        return (type === elem.tagName) ? elem : undefined;
     }
 
 	/**
