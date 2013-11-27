@@ -182,23 +182,23 @@
 
     }
 
-	/**
-	 * Get the first ancestor node from an element, having a
-	 * certain type.
-	 *
-	 * @param elem An HTML element
-	 * @param type an HTML tag type (uppercased)
-	 *
-	 * @return An HTML element
-	 */
-	function getAncestorOfTagType( elem, type ) {
+    /**
+    * Get the first ancestor node from an element, having a
+    * certain type.
+    *
+    * @param elem An HTML element
+    * @param type an HTML tag type (uppercased)
+    *
+    * @return An HTML element
+    */
+    function getAncestorOfTagType( elem, type ) {
 
-		while ( elem.parentNode && elem.tagName !== type ) {
-			elem = elem.parentNode;
-		}
+        while ( elem.parentNode && elem.tagName !== type ) {
+            elem = elem.parentNode;
+        }
 
-		return elem;
-	}
+        return (type === elem.tagName) ? elem : undefined;
+    }
 
 	/**
 	 * Get the list of all elements having a `required` attribute
@@ -263,13 +263,15 @@
 						// fields in that form are filled out
 						var valid = true;
 						var form = getAncestorOfTagType( element, 'FORM' );
-						var requireds = getRequiredFields( form );
 
-                        for( var i = 0; i < requireds.length; i++ ) {
-                            // Alternatively to this trim() check,
-                            // we could have use .checkValidity() or .validity.valid
-                            if( requireds[i].value.replace( /^\s+|\s+$/g, '' ) === '' ) {
-                                valid = false;
+                        if( typeof form !== 'undefined' ) {
+                            var requireds = getRequiredFields( form );
+                            for( var i = 0; i < requireds.length; i++ ) {
+                                // Alternatively to this trim() check,
+                                // we could have use .checkValidity() or .validity.valid
+                                if( requireds[i].value.replace( /^\s+|\s+$/g, '' ) === '' ) {
+                                    valid = false;
+                                }
                             }
                         }
 
