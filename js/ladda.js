@@ -47,8 +47,8 @@
 			button.innerHTML = '<span class="ladda-label">'+ button.innerHTML +'</span>';
 		}
 
-		// Create the spinner
-		var spinner = createSpinner( button );
+		// The spinner component
+		var spinner;
 
 		// Wrapper element for the spinner
 		var spinnerWrapper = document.createElement( 'span' );
@@ -64,6 +64,9 @@
 			 * Enter the loading state.
 			 */
 			start: function() {
+
+				// Create the spinner if it doesn't already exist
+				if( !spinner ) spinner = createSpinner( button );
 
 				button.setAttribute( 'disabled', '' );
 				button.setAttribute( 'data-loading', '' );
@@ -100,7 +103,10 @@
 				// Kill the animation after a delay to make sure it
 				// runs for the duration of the button transition
 				clearTimeout( timer );
-				timer = setTimeout( function() { spinner.stop(); }, 1000 );
+
+				if( spinner ) {
+					timer = setTimeout( function() { spinner.stop(); }, 1000 );
+				}
 
 				return this; // chain
 
