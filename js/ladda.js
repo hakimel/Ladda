@@ -320,10 +320,10 @@
 		var height = button.offsetHeight,
 			spinnerColor;
 
-		if ( height === 0 ) {
+		if( height === 0 ) {
 			// We may have an element that is not visible so
 			// we attempt to get the height in a different way
-			height = parseFloat(window.getComputedStyle(button).height);
+			height = parseFloat( window.getComputedStyle( button ).height );
 		}
 
 		// If the button is tall we can afford some padding
@@ -337,7 +337,7 @@
 		}
 
 		// Allow buttons to specify the color of the spinner element
-		if (button.hasAttribute('data-spinner-color' ) ) {
+		if( button.hasAttribute( 'data-spinner-color' ) ) {
 			spinnerColor = button.getAttribute( 'data-spinner-color' );
 		}
 
