@@ -450,7 +450,7 @@ $spinnerSize: 32px;
 	overflow: hidden;
 	width: 100px;
 
-	box-shadow: 0px 0px 0px 3000px rgba(0,0,0,0);
+	box-shadow: 0px 0px 0px 2000px rgba(0,0,0,0);
 }
 	.ladda-button[data-style=contract-overlay] .ladda-spinner {
 		left: 50%;
@@ -462,7 +462,7 @@ $spinnerSize: 32px;
 	width: 52px;
 
 	/*outline: 10000px solid rgba( 0, 0, 0, 0.5 );*/
-	box-shadow: 0px 0px 0px 3000px rgba(0,0,0,0.8);
+	box-shadow: 0px 0px 0px 2000px rgba(0,0,0,0.8);
 }
 	.ladda-button[data-style=contract-overlay][data-loading] .ladda-label {
 		opacity: 0;
