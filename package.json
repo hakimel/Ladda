@@ -29,5 +29,8 @@
       "type": "MIT",
       "url": "https://github.com/hakimel/Ladda/blob/master/LICENSE"
     }
-  ]
+  ],
+  "dependencies": {
+    "spin.js": "^2.0.0"
+  }
 }
