@@ -29,7 +29,8 @@ module.exports = function(grunt) {
 					preserveComments: 'some'
 				},
 				files: {
-					'dist/spin.min.js': 'js/spin.js'
+					'dist/spin.min.js': 'js/spin.js',
+					'dist/ladda.jquery.min.js': 'js/ladda.jquery.js'
 				}
 			}
 		},
@@ -67,7 +68,7 @@ module.exports = function(grunt) {
 					define: false
 				}
 			},
-			files: [ 'Gruntfile.js', 'js/ladda.js' ]
+			files: [ 'Gruntfile.js', 'js/ladda.js', 'js/ladda.jquery.js' ]
 		},
 
 		connect: {
