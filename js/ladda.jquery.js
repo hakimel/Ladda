@@ -3,7 +3,7 @@
  * http://lab.hakim.se/ladda
  * MIT licensed
  *
- * Copyright (C) 2013 Hakim El Hattab, http://hakim.se
+ * Copyright (C) 2014 Hakim El Hattab, http://hakim.se
  */
 
 (function( Ladda, $ ) {
@@ -11,14 +11,14 @@
 		return console.error( 'jQuery required for Ladda.jQuery' );
 
 	var arr = [];
-	
+
 	$ = $.extend( $, {
 		ladda: function( arg ) {
 			if( arg === 'stopAll' )
 				Ladda.stopAll();
 		}
 	});
-	
+
 	$.fn = $.extend( $.fn, {
 		ladda: function( arg ) {
 			var args = arr.slice.call( arguments, 1 );
