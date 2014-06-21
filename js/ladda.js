@@ -183,9 +183,19 @@
 
 			remove: function() {
 
+				clearTimeout( timer );
+
+				button.removeAttribute( 'disabled', '' );
+				button.removeAttribute( 'data-loading', '' );
+
+				if( spinner ) {
+					spinner.stop();
+					spinner = null;
+				}
+
 				for( var i = 0, len = ALL_INSTANCES.length; i < len; i++ ) {
-					if ( instance === ALL_INSTANCES[i] ) {
-						ALL_INSTANCES.splice(i, 1);
+					if( instance === ALL_INSTANCES[i] ) {
+						ALL_INSTANCES.splice( i, 1 );
 						break;
 					}
 				}
