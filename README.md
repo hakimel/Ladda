@@ -58,6 +58,9 @@ l.toggle();
 
 // Check the current state
 l.isLoading();
+
+// Delete the button's ladda instance
+l.remove();
 ```
 
 All loading animations on the page can be stopped by using:
