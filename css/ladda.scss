@@ -12,7 +12,6 @@
  */
 
 $spinnerSize: 32px;
-//$spinnerSize: 6px;
 
 
 /*************************************
@@ -128,7 +127,6 @@ $spinnerSize: 32px;
 
 .ladda-button[data-style=expand-right] {
 	.ladda-spinner {
-		//right: 14px;
 		right: $spinnerSize/-2 + 10;
 	}
 
@@ -270,7 +268,6 @@ $spinnerSize: 32px;
 		.ladda-spinner {
 			opacity: 1;
 			left: 50%;
-			//margin-left: 0
 		}
 	}
 }
