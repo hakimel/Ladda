@@ -3,13 +3,14 @@
  * http://lab.hakim.se/ladda
  * MIT licensed
  *
- * Copyright (C) 2013 Hakim El Hattab, http://hakim.se
+ * Copyright (C) 2014 Hakim El Hattab, http://hakim.se
  */
+/* jshint node:true, browser:true */
 (function( root, factory ) {
 
 	// CommonJS
 	if( typeof exports === 'object' )  {
-		module.exports = factory();
+		module.exports = factory(require('spin.js'));
 	}
 	// AMD module
 	else if( typeof define === 'function' && define.amd ) {
@@ -177,6 +178,27 @@
 			isLoading: function() {
 
 				return button.hasAttribute( 'data-loading' );
+
+			},
+
+			remove: function() {
+
+				clearTimeout( timer );
+
+				button.removeAttribute( 'disabled', '' );
+				button.removeAttribute( 'data-loading', '' );
+
+				if( spinner ) {
+					spinner.stop();
+					spinner = null;
+				}
+
+				for( var i = 0, len = ALL_INSTANCES.length; i < len; i++ ) {
+					if( instance === ALL_INSTANCES[i] ) {
+						ALL_INSTANCES.splice( i, 1 );
+						break;
+					}
+				}
 
 			}
 

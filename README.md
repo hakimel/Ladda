@@ -58,12 +58,55 @@ l.toggle();
 
 // Check the current state
 l.isLoading();
+
+// Delete the button's ladda instance
+l.remove();
 ```
 
 All loading animations on the page can be stopped by using:
 
 ```javascript
 Ladda.stopAll();
+```
+
+#### With jQuery
+
+If you will be using the loading animation for a form that is submitted to the server (always resulting in a page reload) you can use the ```ladda('bind')``` method:
+
+```javascript
+// Automatically trigger the loading animation on click
+$( 'input[type=submit]' ).ladda( 'bind' );
+
+// Same as the above but automatically stops after two seconds
+$( 'input[type=submit]' ).ladda( 'bind', { timeout: 2000 } );
+```
+
+If you want JavaScript control over your buttons you can use the following approach:
+
+```javascript
+// Create a new instance of ladda for the specified button
+var l = $( '.my-button' ).ladda();
+
+// Start loading
+l.ladda( 'start' );
+
+// Will display a progress bar for 50% of the button width
+l.ladda( 'setProgress', 0.5 );
+
+// Stop loading
+l.ladda( 'stop' );
+
+// Toggle between loading/not loading states
+l.ladda( 'toggle' );
+
+// Check the current state
+l.ladda( 'isLoading' );
+```
+
+All loading animations on the page can be stopped by using:
+
+```javascript
+$.ladda( 'stopAll' );
 ```
 
 ## Module
@@ -88,4 +131,4 @@ The project is tested in Chrome and Firefox. It Should Work™ in the current st
 
 MIT licensed
 
-Copyright (C) 2013 Hakim El Hattab, http://hakim.se
+Copyright (C) 2014 Hakim El Hattab, http://hakim.se

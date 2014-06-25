@@ -1,7 +1,5 @@
-//fgnass.github.com/spin.js#v1.3
-
-/*!
- * Copyright (c) 2011-2013 Felix Gnass
+/**
+ * Copyright (c) 2011-2014 Felix Gnass
  * Licensed under the MIT license
  */
 (function(root, factory) {
@@ -89,12 +87,12 @@
       , pp
       , i
 
-    if(s[prop] !== undefined) return prop
     prop = prop.charAt(0).toUpperCase() + prop.slice(1)
     for(i=0; i<prefixes.length; i++) {
       pp = prefixes[i]+prop
       if(s[pp] !== undefined) return pp
     }
+    if(s[prop] !== undefined) return prop
   }
 
   /**
@@ -130,6 +128,13 @@
     return o
   }
 
+  /**
+   * Returns the line color from the given string or array.
+   */
+  function getColor(color, idx) {
+    return typeof color == 'string' ? color : color[idx % color.length]
+  }
+
   // Built-in defaults
 
   var defaults = {
@@ -147,14 +152,13 @@
     fps: 20,              // Frames per second when using setTimeout()
     zIndex: 2e9,          // Use a high z-index by default
     className: 'spinner', // CSS class to assign to the element
-    top: 'auto',          // center vertically
-    left: 'auto',         // center horizontally
-    position: 'relative'  // element position
+    top: '50%',           // center vertically
+    left: '50%',          // center horizontally
+    position: 'absolute'  // element position
   }
 
   /** The constructor */
   function Spinner(o) {
-    if (typeof this == 'undefined') return new Spinner(o)
     this.opts = merge(o || {}, Spinner.defaults, defaults)
   }
 
@@ -175,17 +179,14 @@
         , o = self.opts
         , el = self.el = css(createEl(0, {className: o.className}), {position: o.position, width: 0, zIndex: o.zIndex})
         , mid = o.radius+o.length+o.width
-        , ep // element position
-        , tp // target position
 
+      css(el, {
+        left: o.left,
+        top: o.top
+      })
+        
       if (target) {
         target.insertBefore(el, target.firstChild||null)
-        tp = pos(target)
-        ep = pos(el)
-        css(el, {
-          left: (o.left == 'auto' ? tp.x-ep.x + (target.offsetWidth >> 1) : parseInt(o.left, 10) + mid) + 'px',
-          top: (o.top == 'auto' ? tp.y-ep.y + (target.offsetHeight >> 1) : parseInt(o.top, 10) + mid)  + 'px'
-        })
       }
 
       el.setAttribute('role', 'progressbar')
@@ -259,8 +260,7 @@
         })
 
         if (o.shadow) ins(seg, css(fill('#000', '0 0 4px ' + '#000'), {top: 2+'px'}))
-
-        ins(el, ins(seg, fill(o.color, '0 0 1px rgba(0,0,0,.1)')))
+        ins(el, ins(seg, fill(getColor(o.color, i), '0 0 1px rgba(0,0,0,.1)')))
       }
       return el
     },
@@ -314,7 +314,7 @@
                 top: -o.width>>1,
                 filter: filter
               }),
-              vml('fill', {color: o.color, opacity: o.opacity}),
+              vml('fill', {color: getColor(o.color, i), opacity: o.opacity}),
               vml('stroke', {opacity: 0}) // transparent stroke to fix color bleeding upon opacity change
             )
           )

@@ -1,6 +1,6 @@
 {
   "name": "Ladda",
-  "version": "0.9.2",
+  "version": "0.9.4",
   "description": "Buttons with built-in loading indicators",
   "homepage": "http://lab.hakim.se/ladda",
   "scripts": {
@@ -29,5 +29,8 @@
       "type": "MIT",
       "url": "https://github.com/hakimel/Ladda/blob/master/LICENSE"
     }
-  ]
+  ],
+  "dependencies": {
+    "spin.js": "^2.0.0"
+  }
 }
