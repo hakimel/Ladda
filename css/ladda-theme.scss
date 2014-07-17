@@ -45,10 +45,8 @@ $mint: #16a085;
 	&[disabled],
 	&[data-loading] {
 		border-color: rgba( 0, 0, 0, 0.07 );
-		cursor: default;
-		background-color: #999;
 
-		&:hover {
+		&, &:hover {
 			cursor: default;
 			background-color: #999;
 		}
