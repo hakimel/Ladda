@@ -239,7 +239,7 @@
 	 */
 	function getRequiredFields( form ) {
 
-		var requirables = [ 'input', 'textarea' ];
+		var requirables = [ 'input', 'textarea', 'select' ];
 		var inputs = [];
 
 		for( var i = 0; i < requirables.length; i++ ) {
