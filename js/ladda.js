@@ -49,11 +49,14 @@
 		}
 
 		// The spinner component
-		var spinner;
+		var spinner, spinnerWrapper = button.querySelector( '.ladda-spinner' );
 
 		// Wrapper element for the spinner
-		var spinnerWrapper = document.createElement( 'span' );
-		spinnerWrapper.className = 'ladda-spinner';
+                if( !spinnerWrapper ) {
+			spinnerWrapper = document.createElement( 'span' );
+			spinnerWrapper.className = 'ladda-spinner';
+		}
+
 		button.appendChild( spinnerWrapper );
 
 		// Timer used to delay starting/stopping
