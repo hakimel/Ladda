@@ -303,6 +303,10 @@
 								if( requireds[i].value.replace( /^\s+|\s+$/g, '' ) === '' ) {
 									valid = false;
 								}
+                                //Radiobuttons and Checkboxes need to be checked for the "checked" attribute
+                                if ((requireds[i].type=='checkbox' || requireds[i].type=='radio') && !requireds[i].checked) {
+                                    valid = false;
+                                }
 							}
 						}
 
