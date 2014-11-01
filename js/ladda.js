@@ -27,6 +27,7 @@
 
 	// All currently instantiated instances of Ladda
 	var ALL_INSTANCES = [];
+	
 
 	/**
 	 * Creates a new instance of Ladda which wraps the
@@ -38,7 +39,6 @@
 	function create( button ) {
 
 		if( typeof button === 'undefined' ) {
-			console.warn( "Ladda button target must be defined." );
 			return;
 		}
 
