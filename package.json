@@ -3,6 +3,7 @@
   "version": "0.9.4",
   "description": "Buttons with built-in loading indicators",
   "homepage": "http://lab.hakim.se/ladda",
+  "main": "./dist/ladda.min",
   "scripts": {
     "test": "grunt jshint",
     "start": ""
