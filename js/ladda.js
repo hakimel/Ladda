@@ -49,10 +49,11 @@
 		}
 
 		// The spinner component
-		var spinner, spinnerWrapper = button.querySelector( '.ladda-spinner' );
+		var spinner,
+			spinnerWrapper = button.querySelector( '.ladda-spinner' );
 
 		// Wrapper element for the spinner
-                if( !spinnerWrapper ) {
+		if( !spinnerWrapper ) {
 			spinnerWrapper = document.createElement( 'span' );
 			spinnerWrapper.className = 'ladda-spinner';
 		}
