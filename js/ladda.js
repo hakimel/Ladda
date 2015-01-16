@@ -302,15 +302,18 @@
 						if( typeof form !== 'undefined' ) {
 							var requireds = getRequiredFields( form );
 							for( var i = 0; i < requireds.length; i++ ) {
+
 								// Alternatively to this trim() check,
 								// we could have use .checkValidity() or .validity.valid
 								if( requireds[i].value.replace( /^\s+|\s+$/g, '' ) === '' ) {
 									valid = false;
 								}
-                                				//Radiobuttons and Checkboxes need to be checked for the "checked" attribute
-                                				if ((requireds[i].type=='checkbox' || requireds[i].type=='radio') && !requireds[i].checked) {
-                                    					valid = false;
-                                				}
+
+								// Radiobuttons and Checkboxes need to be checked for the "checked" attribute
+								if( (requireds[i].type === 'checkbox' || requireds[i].type === 'radio' ) && !requireds[i].checked ) {
+									valid = false;
+								}
+
 							}
 						}
 
