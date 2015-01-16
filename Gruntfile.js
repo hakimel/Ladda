@@ -38,7 +38,8 @@ module.exports = function(grunt) {
 		sass: {
 			main: {
 				options: {
-					style: 'compressed'
+					style: 'compressed',
+					sourcemap: 'none'
 				},
 				files: {
 					'dist/ladda.min.css': [ 'css/ladda.scss', 'css/ladda-theme.scss' ],
