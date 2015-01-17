@@ -42,7 +42,7 @@ module.exports = function(grunt) {
 					sourcemap: 'none'
 				},
 				files: {
-					'dist/ladda.min.css': [ 'css/ladda.scss', 'css/ladda-theme.scss' ],
+					'dist/ladda.min.css': [ 'css/ladda-themed.scss' ],
 					'dist/ladda-themeless.min.css': [ 'css/ladda.scss' ]
 				}
 			}

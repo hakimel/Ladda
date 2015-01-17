@@ -6,11 +6,7 @@
     "./dist/ladda.min.css"
   ],
   "ignore": [
-    "Gruntfile.js",
-    "package.json",
-    "js/spin.js",
-    "css",
-    "test"
+    "package.json"
   ],
   "dependencies": {
     "spin.js": "~2.0.1"
