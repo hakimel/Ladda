@@ -1,6 +1,6 @@
 {
   "name": "ladda",
-  "version": "0.9.6",
+  "version": "0.9.7",
   "description": "Buttons with built-in loading indicators",
   "homepage": "http://lab.hakim.se/ladda",
   "scripts": {
