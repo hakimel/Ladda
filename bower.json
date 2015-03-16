@@ -9,6 +9,6 @@
     "package.json"
   ],
   "dependencies": {
-    "spin.js": "~2.0.1"
+    "spin.js": "~2.0.2"
   }
 }
