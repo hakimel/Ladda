@@ -314,6 +314,11 @@
 									valid = false;
 								}
 
+                                				// Email field validation, otherwise button starts spinning although field is not complete
+                                				if (requireds[i].type === 'email') {
+                                				    	valid = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test(requireds[i].value);
+                                				}
+
 							}
 						}
 
