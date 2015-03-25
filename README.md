@@ -1,6 +1,6 @@
 # Ladda
 
-Buttons with built-in loading indicators, effectively bridging the gap between action and feedback. 
+Buttons with built-in loading indicators, effectively bridging the gap between action and feedback.
 
 [Check out the demo page](http://lab.hakim.se/ladda/).
 
@@ -24,7 +24,7 @@ Buttons accepts three attributes:
 - **data-color**: green/red/blue/purple/mint
 - **data-size**: xs/s/l/xl, defaults to medium
 - **data-spinner-size**: 40, pixel dimensions of spinner, defaults to dynamic size based on the button height
-- **data-spinner-color**: A hex code or any [named CSS color](http://css-tricks.com/snippets/css/named-colors-and-hex-equivalents/). 
+- **data-spinner-color**: A hex code or any [named CSS color](http://css-tricks.com/snippets/css/named-colors-and-hex-equivalents/).
 
 #### JavaScript
 
@@ -123,7 +123,7 @@ define(['ladda'], function(Ladda) {
 Or in Common.js, you will:
 
 ```javascript
-var ladda = require('Ladda/dist/ladda.min');
+var ladda = require('ladda');
 ```
 
 ## Browser support
