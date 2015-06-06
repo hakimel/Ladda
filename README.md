@@ -19,7 +19,7 @@ Ladda buttons must be given the class ```ladda-button``` and the button label ne
 <button class="ladda-button" data-style="expand-right"><span class="ladda-label">Submit</span></button>
 ```
 
-Buttons accepts three attributes:
+Buttons accept five attributes:
 - **data-style**: one of the button styles, full list in [demo](http://lab.hakim.se/ladda/) *[required]*
 - **data-color**: green/red/blue/purple/mint
 - **data-size**: xs/s/l/xl, defaults to medium
