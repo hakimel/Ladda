@@ -668,10 +668,6 @@
 			  clear: both;
 			}
 
-			p {
-			  margin: 0 0 10px;
-			}
-
 			.lead {
 			  margin-bottom: 20px;
 			  font-size: 21px;
@@ -681,6 +677,10 @@
 
 			small {
 			  font-size: 85%;
+			}
+
+			p {
+				margin: 0 0 10px;
 			}
 
 			strong {
@@ -722,13 +722,13 @@
 			  color: #953b39;
 			}
 
-			.text-info {
-			  color: #3a87ad;
-			}
-
 			a.text-info:hover,
 			a.text-info:focus {
 			  color: #2d6987;
+			}
+
+			.text-info {
+				color: #3a87ad;
 			}
 
 			.text-success {
@@ -6235,6 +6235,23 @@
 			<section class="progress-demo">
 				<h3>Large</h3>
 				<button class="btn btn-danger btn-large ladda-button" data-color="mint" data-style="expand-right" data-size="l"><span class="ladda-label">Submit</span></button>
+			</section>
+
+			<h3 id="lines">Number of lines</h3>
+
+			<section>
+				<h3>8 lines</h3>
+				<button class="btn btn-primary ladda-button" data-style="zoom-out" data-color="mint" data-spinner-lines="8"><span class="ladda-label">Submit</span></button>
+			</section>
+
+			<section>
+				<h3>Default (12 lines)</h3>
+				<button class="btn btn-primary ladda-button" data-style="zoom-out" data-color="mint"><span class="ladda-label">Submit</span></button>
+			</section>
+
+			<section>
+				<h3>16 lines</h3>
+				<button class="btn btn-primary ladda-button" data-style="zoom-out" data-color="mint" data-spinner-lines="16"><span class="ladda-label">Submit</span></button>
 			</section>
 
 			<h3>Buttons in forms containing required inputs</h3>

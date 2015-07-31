@@ -362,7 +362,8 @@
 	function createSpinner( button ) {
 
 		var height = button.offsetHeight,
-			spinnerColor;
+			spinnerColor,
+			lines;
 
 		if( height === 0 ) {
 			// We may have an element that is not visible so
@@ -385,14 +386,17 @@
 			spinnerColor = button.getAttribute( 'data-spinner-color' );
 		}
 
-		var lines = 12,
-			radius = height * 0.2,
+		if( button.hasAttribute( 'data-spinner-lines' ) ) {
+			lines = button.getAttribute( 'data-spinner-lines' );
+		}
+
+		var radius = height * 0.2,
 			length = radius * 0.6,
 			width = radius < 7 ? 2 : 3;
 
 		return new Spinner( {
 			color: spinnerColor || '#fff',
-			lines: lines,
+			lines: lines || 12,
 			radius: radius,
 			length: length,
 			width: width,
