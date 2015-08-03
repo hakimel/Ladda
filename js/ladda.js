@@ -42,6 +42,16 @@
 			return;
 		}
 
+		// The button must contains the class: ladda-button
+		if(!button.classList.contains("ladda-button")){
+			button.classList.add("ladda-button");
+		}
+
+		// Add default value for style if not exist
+		if(!button.hasAttribute("data-style")){ /*I.E 9+*/
+			button.setAttribute("data-style", "expand-right");
+		}
+
 		// The text contents must be wrapped in a ladda-label
 		// element, create one if it doesn't already exist
 		if( !button.querySelector( '.ladda-label' ) ) {
