@@ -42,14 +42,14 @@
 			return;
 		}
 
-		// The button must contains the class: ladda-button
-		if(!button.classList.contains("ladda-button")){
-			button.classList.add("ladda-button");
+		// The button must have the class "ladda-button"
+		if( !/ladda-button/i.test( button.className ) ) {
+			button.className += ' ladda-button';
 		}
 
-		// Add default value for style if not exist
-		if(!button.hasAttribute("data-style")){ /*I.E 9+*/
-			button.setAttribute("data-style", "expand-right");
+		// Style is required, default to "expand-right"
+		if( !button.hasAttribute( 'data-style' ) ) {
+			button.setAttribute( 'data-style', 'expand-right' );
 		}
 
 		// The text contents must be wrapped in a ladda-label
