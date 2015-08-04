@@ -57,7 +57,7 @@
 		if( !button.querySelector( '.ladda-label' ) ) {
 			var laddaLabel = document.createElement( 'span' );
 			laddaLabel.className = 'ladda-label';
-			wrapContent(button, laddaLabel);
+			wrapContent( button, laddaLabel );
 		}
 
 		// The spinner component
@@ -432,12 +432,14 @@
 		return a;
 
 	}
-	
-	function wrapContent(node, wrapper) {
+
+	function wrapContent( node, wrapper ) {
+
 		var r = document.createRange();
-		r.selectNodeContents(node);
-		r.surroundContents(wrapper);
-		node.appendChild(wrapper);
+		r.selectNodeContents( node );
+		r.surroundContents( wrapper );
+		node.appendChild( wrapper );
+
 	}
 
 	// Public API
