@@ -55,7 +55,9 @@
 		// The text contents must be wrapped in a ladda-label
 		// element, create one if it doesn't already exist
 		if( !button.querySelector( '.ladda-label' ) ) {
-			button.innerHTML = '<span class="ladda-label">'+ button.innerHTML +'</span>';
+			var laddaLabel = document.createElement( 'span' );
+			laddaLabel.className = 'ladda-label';
+			wrapContent(button, laddaLabel);
 		}
 
 		// The spinner component
@@ -429,6 +431,13 @@
 
 		return a;
 
+	}
+	
+	function wrapContent(node, wrapper) {
+		var r = document.createRange();
+		r.selectNodeContents(node);
+		r.surroundContents(wrapper);
+		node.appendChild(wrapper);
 	}
 
 	// Public API
