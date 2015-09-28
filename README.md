@@ -33,10 +33,10 @@ If you will be using the loading animation for a form that is submitted to the s
 
 ```javascript
 // Automatically trigger the loading animation on click
-Ladda.bind( 'input[type=submit]' );
+Ladda.bind( 'button[type=submit]' );
 
 // Same as the above but automatically stops after two seconds
-Ladda.bind( 'input[type=submit]', { timeout: 2000 } );
+Ladda.bind( 'button[type=submit]', { timeout: 2000 } );
 ```
 
 If you want JavaScript control over your buttons you can use the following approach:
@@ -76,10 +76,10 @@ If you will be using the loading animation for a form that is submitted to the s
 
 ```javascript
 // Automatically trigger the loading animation on click
-$( 'input[type=submit]' ).ladda( 'bind' );
+$( 'button[type=submit]' ).ladda( 'bind' );
 
 // Same as the above but automatically stops after two seconds
-$( 'input[type=submit]' ).ladda( 'bind', { timeout: 2000 } );
+$( 'button[type=submit]' ).ladda( 'bind', { timeout: 2000 } );
 ```
 
 If you want JavaScript control over your buttons you can use the following approach:
