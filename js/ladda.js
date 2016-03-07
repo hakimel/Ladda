@@ -312,25 +312,27 @@
 						var form = getAncestorOfTagType( element, 'FORM' );
 
 						if( typeof form !== 'undefined' ) {
-							var requireds = getRequiredFields( form );
-							for( var i = 0; i < requireds.length; i++ ) {
+							if( typeof form.checkValidity === 'function' ) {
+								valid = form.checkValidity();
+							} else {
+								var requireds = getRequiredFields( form );
+								for( var i = 0; i < requireds.length; i++ ) {
 
-								// Alternatively to this trim() check,
-								// we could have use .checkValidity() or .validity.valid
-								if( requireds[i].value.replace( /^\s+|\s+$/g, '' ) === '' ) {
-									valid = false;
-								}
+									if( requireds[i].value.replace( /^\s+|\s+$/g, '' ) === '' ) {
+										valid = false;
+									}
 
-								// Radiobuttons and Checkboxes need to be checked for the "checked" attribute
-								if( (requireds[i].type === 'checkbox' || requireds[i].type === 'radio' ) && !requireds[i].checked ) {
-									valid = false;
-								}
+									// Radiobuttons and Checkboxes need to be checked for the "checked" attribute
+									if( (requireds[i].type === 'checkbox' || requireds[i].type === 'radio' ) && !requireds[i].checked ) {
+										valid = false;
+									}
 
-								// Email field validation, otherwise button starts spinning although field is not complete
-								if( requireds[i].type === 'email' ) {
-									valid = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test( requireds[i].value );
-								}
+									// Email field validation, otherwise button starts spinning although field is not complete
+									if( requireds[i].type === 'email' ) {
+										valid = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test( requireds[i].value );
+									}
 
+                                }
 							}
 						}
 
