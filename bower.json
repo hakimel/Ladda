@@ -1,6 +1,6 @@
 {
   "name": "ladda",
-  "version": "0.9.8",
+  "version": "1.0.0",
   "main": [
     "./dist/ladda.min.js",
     "./dist/ladda.min.css"
