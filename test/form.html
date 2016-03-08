@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+
+		<title>Ladda: Form test</title>
+
+		<link rel="stylesheet" href="../css/demo.css">
+		<link rel="stylesheet" href="../dist/ladda.min.css">
+
+	</head>
+	<body>
+
+		<article class="examples">
+
+			<div class="intro">
+				<h1>Ladda From Validation</h1>
+				<p>
+					This page can be used to test that Ladda does NOT start spinning when submitting an invalid form.
+				</p>
+				<form action="">
+					<input type="email" required placeholder="Email address..." style="font-size: 1em; padding: 14px;">
+					<button type="submit" class="btn btn-primary ladda-button" data-color="green" data-style="expand-left"><span class="ladda-label">Submit</span></button>
+				</form>
+			</div>
+
+		</article>
+		<script src="../dist/spin.min.js"></script>
+		<script src="../dist/ladda.min.js"></script>
+
+		<script>
+			Ladda.bind( 'button[type=submit]' );
+		</script>
+
+		<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+
+	</body>
+</html>

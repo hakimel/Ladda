@@ -3,7 +3,7 @@
  * http://lab.hakim.se/ladda
  * MIT licensed
  *
- * Copyright (C) 2015 Hakim El Hattab, http://hakim.se
+ * Copyright (C) 2016 Hakim El Hattab, http://hakim.se
  */
 /* jshint node:true, browser:true */
 (function( root, factory ) {
@@ -312,9 +312,12 @@
 						var form = getAncestorOfTagType( element, 'FORM' );
 
 						if( typeof form !== 'undefined' ) {
+							// Modern form validation
 							if( typeof form.checkValidity === 'function' ) {
 								valid = form.checkValidity();
-							} else {
+							}
+							// Fallback to manual validation for old browsers
+							else {
 								var requireds = getRequiredFields( form );
 								for( var i = 0; i < requireds.length; i++ ) {
 
@@ -327,7 +330,7 @@
 										valid = false;
 									}
 
-									// Email field validation, otherwise button starts spinning although field is not complete
+									// Email field validation
 									if( requireds[i].type === 'email' ) {
 										valid = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test( requireds[i].value );
 									}
