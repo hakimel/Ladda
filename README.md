@@ -114,6 +114,8 @@ $.ladda( 'stopAll' );
 
 You can `bower install ladda` or `npm install ladda`. The spinner and Ladda can be loaded as a module using AMD.
 
+You can also load the module from BowerCDN http://bowercdn.net/package/ladda
+
 ```javascript
 // Using Require.js
 define(['ladda'], function(Ladda) {
