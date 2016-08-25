@@ -335,6 +335,10 @@
 										valid = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test( requireds[i].value );
 									}
 
+									// URL field validation, requires http:// or https:// and 1 character
+									if( requireds[i].type === 'url' ) {
+										valid = /https?:\/\/.+/.test( requireds[i].value );
+									}
 								}
 							}
 						}
