@@ -1,0 +1,14 @@
+{
+    "name": "ladda",
+    
+    "main": "js/ladda.js",
+    
+    "scripts": [
+        "js/ladda.js",
+        "js/spin.js"
+    ],
+    
+    "styles": [
+        "css/ladda.scss"
+    ]
+}

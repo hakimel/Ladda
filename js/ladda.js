@@ -10,7 +10,7 @@
 
 	// CommonJS
 	if( typeof exports === 'object' )  {
-		module.exports = factory(require('spin.js'));
+		module.exports = factory(require('./spin.js'));
 	}
 	// AMD module
 	else if( typeof define === 'function' && define.amd ) {
