@@ -11,7 +11,7 @@ module.exports = function(grunt) {
 				' * http://lab.hakim.se/ladda\n' +
 				' * MIT licensed\n' +
 				' *\n' +
-				' * Copyright (C) 2016 Hakim El Hattab, http://hakim.se\n' +
+				' * Copyright (C) 2017 Hakim El Hattab, http://hakim.se\n' +
 				' */'
 		},
 
@@ -26,7 +26,9 @@ module.exports = function(grunt) {
 			},
 			lib: {
 				options: {
-					preserveComments: 'some'
+					output: {
+						comments: /^!/
+					}
 				},
 				files: {
 					'dist/spin.min.js': 'js/spin.js',
@@ -53,7 +55,7 @@ module.exports = function(grunt) {
 				curly: false,
 				eqeqeq: true,
 				immed: true,
-				latedef: true,
+				latedef: "nofunc",
 				newcap: true,
 				noarg: true,
 				sub: true,
