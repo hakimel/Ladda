@@ -7,6 +7,10 @@ body {
 	color: #333333;
 }
 
+button {
+	outline: 0;
+}
+
 .examples {
 	max-width: 670px;
 	margin: 2em auto;
