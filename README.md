@@ -13,7 +13,7 @@ The compiled files for the project that you should be using are available in the
 
 #### HTML
 
-Ladda buttons must be given the class ```ladda-button``` and the button label needs to have the ```ladda-label``` class. The ```ladda-label``` will be automatically created if it does not exist in the DOM. Below is an example of a button which will use the expand-right animation style.
+Ladda buttons must be given the class `ladda-button` and the button label needs to have the `ladda-label` class. The `ladda-label` will be automatically created if it does not exist in the DOM. Below is an example of a button which will use the expand-right animation style.
 
 ```html
 <button class="ladda-button" data-style="expand-right"><span class="ladda-label">Submit</span></button>
@@ -29,7 +29,7 @@ Buttons accept the following attributes:
 
 #### JavaScript
 
-If you will be using the loading animation for a form that is submitted to the server (always resulting in a page reload) you can use the ```bind()``` method:
+If you will be using the loading animation for a form that is submitted to the server (always resulting in a page reload) you can use the `bind()` method:
 
 ```javascript
 // Automatically trigger the loading animation on click
@@ -72,7 +72,7 @@ Ladda.stopAll();
 
 #### With jQuery
 
-If you will be using the loading animation for a form that is submitted to the server (always resulting in a page reload) you can use the ```ladda('bind')``` method:
+If you will be using the loading animation for a form that is submitted to the server (always resulting in a page reload) you can use the `ladda('bind')` method:
 
 ```javascript
 // Automatically trigger the loading animation on click
@@ -139,4 +139,4 @@ The project is tested in Chrome and Firefox. It Should Work™ in the current st
 
 MIT licensed
 
-Copyright (C) 2016 Hakim El Hattab, http://hakim.se
+Copyright (C) 2017 Hakim El Hattab, http://hakim.se
