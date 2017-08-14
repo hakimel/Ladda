@@ -78,7 +78,7 @@ module.exports = function(grunt) {
 			server: {
 				options: {
 					port: 8000,
-					base: '.'
+					base: '.',
 				}
 			}
 		},
@@ -86,11 +86,17 @@ module.exports = function(grunt) {
 		watch: {
 			main: {
 				files: [ 'Gruntfile.js', 'js/ladda.js' ],
-				tasks: 'js'
+				tasks: 'js',
+				options: {
+			      livereload: true,
+			    },
 			},
 			theme: {
 				files: [ 'css/ladda.scss' ],
-				tasks: 'css'
+				tasks: 'css',
+				options: {
+			      livereload: true,
+			    },
 			}
 		}
 
