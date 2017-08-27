@@ -72,6 +72,8 @@ Ladda.stopAll();
 
 #### With jQuery
 
+**Warning**: The jQuery API is deprecated and will be removed in the next major release.
+
 If you will be using the loading animation for a form that is submitted to the server (always resulting in a page reload) you can use the `ladda('bind')` method:
 
 ```javascript
