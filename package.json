@@ -3,10 +3,10 @@
   "version": "1.0.6",
   "description": "Buttons with built-in loading indicators",
   "homepage": "http://lab.hakim.se/ladda",
-  "main": "./dist/ladda.min",
+  "main": "./js/ladda.js",
   "scripts": {
     "test": "grunt jshint",
-    "prepublish": "grunt",
+    "prepare": "grunt && rollup -c",
     "start": "grunt serve"
   },
   "author": {
@@ -23,11 +23,12 @@
     "grunt-contrib-connect": "^1.0.2",
     "grunt-contrib-jshint": "^1.1.0",
     "grunt-contrib-sass": "^1.0.0",
-    "grunt-contrib-uglify": "^3.0.1",
-    "grunt-contrib-watch": "^1.0.0"
+    "grunt-contrib-watch": "^1.0.0",
+    "rollup": "^0.53.3",
+    "rollup-plugin-node-resolve": "^3.0.0"
   },
   "license": "MIT",
   "dependencies": {
-    "spin.js": "^2.0.0"
+    "spin.js": "^3.1.0"
   }
 }

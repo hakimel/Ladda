@@ -4,13 +4,19 @@ Buttons with built-in loading indicators, effectively bridging the gap between a
 
 [Check out the demo page](http://lab.hakim.se/ladda/).
 
-## Instructions
+## Installation
 
-Release downloads and change history is available here <https://github.com/hakimel/Ladda/releases>.
+`npm install ladda`
 
-The compiled files for the project that you should be using are available in the **/dist** directory. You will need to include both the **spin.min.js** and **ladda.min.js** files (in this order) as well as ONE of the two style sheets. If you want the button styles used in the [Ladda example page](http://lab.hakim.se/ladda) use the **ladda.min.css** file, if you want to have the functional buttons without the visual style (colors, padding etc) use the **ladda-themeless.min.css** file.
+## Usage
 
-#### HTML
+### CSS
+
+You will need to include ONE of the two style sheets in the **/dist** directory.
+If you want the button styles used in the [Ladda example page](http://lab.hakim.se/ladda), use the **ladda.min.css** file.
+If you want to have the functional buttons without the visual style (colors, padding, etc.), use the **ladda-themeless.min.css** file.
+
+### HTML
 
 Ladda buttons must be given the class `ladda-button` and the button label needs to have the `ladda-label` class. The `ladda-label` will be automatically created if it does not exist in the DOM. Below is an example of a button which will use the expand-right animation style.
 
@@ -26,19 +32,13 @@ Buttons accept the following attributes:
 - **data-spinner-color**: A hex code or any [named CSS color](http://css-tricks.com/snippets/css/named-colors-and-hex-equivalents/).
 - **data-spinner-lines**: 12, the number of lines the for the spinner, defaults to 12
 
-#### JavaScript
+### JavaScript
 
-If you will be using the loading animation for a form that is submitted to the server (always resulting in a page reload) you can use the `bind()` method:
+Start by importing the Ladda module:
 
 ```javascript
-// Automatically trigger the loading animation on click
-Ladda.bind( 'button[type=submit]' );
-
-// Same as the above but automatically stops after two seconds
-Ladda.bind( 'button[type=submit]', { timeout: 2000 } );
+import * as Ladda from 'ladda';
 ```
-
-Note: when using the `bind()` method on buttons that are inside a form, loading indicators will not be shown until the form is valid.
 
 If you want JavaScript control over your buttons you can use the following approach:
 
@@ -65,27 +65,22 @@ l.isLoading();
 l.remove();
 ```
 
+If you will be using the loading animation for a form that is submitted to the server (always resulting in a page reload) you can use the `bind()` method:
+
+```javascript
+// Automatically trigger the loading animation on click
+Ladda.bind( 'button[type=submit]' );
+
+// Same as the above but automatically stops after two seconds
+Ladda.bind( 'button[type=submit]', { timeout: 2000 } );
+```
+
+Note: when using the `bind()` method on buttons that are inside a form, loading indicators will not be shown until the form is valid.
+
 All loading animations on the page can be stopped by using:
 
 ```javascript
 Ladda.stopAll();
-```
-
-## Module
-
-You can `npm install ladda`. The spinner and Ladda can be loaded as a module using AMD or CommonJS.
-
-```javascript
-// Using RequireJS
-define(['ladda'], function(Ladda) {
-	// Make Buttons Here
-});
-```
-
-Or in CommonJS, you will:
-
-```javascript
-var ladda = require('ladda');
 ```
 
 ## Browser support

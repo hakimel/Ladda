@@ -238,41 +238,7 @@
 
 		</article>
 
-		<script src="dist/spin.min.js"></script>
-		<script src="dist/ladda.min.js"></script>
-
-		<script>
-
-			// Bind normal buttons
-			Ladda.bind( '.button-demo button', { timeout: 2000 } );
-
-			// Bind progress buttons and simulate loading progress
-			Ladda.bind( '.progress-demo button', {
-				callback: function( instance ) {
-					var progress = 0;
-					var interval = setInterval( function() {
-						progress = Math.min( progress + Math.random() * 0.1, 1 );
-						instance.setProgress( progress );
-
-						if( progress === 1 ) {
-							instance.stop();
-							clearInterval( interval );
-						}
-					}, 200 );
-				}
-			} );
-
-			// You can control loading explicitly using the JavaScript API
-			// as outlined below:
-
-			// var l = Ladda.create( document.querySelector( 'button' ) );
-			// l.start();
-			// l.stop();
-			// l.toggle();
-			// l.isLoading();
-			// l.setProgress( 0-1 );
-
-		</script>
+		<script src="test/index-bundle.js"></script>
 
 		<a class="fork" href="https://github.com/hakimel/Ladda"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://github-camo.global.ssl.fastly.net/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub"></a>
 
