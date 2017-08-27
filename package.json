@@ -26,9 +26,6 @@
     "grunt-contrib-uglify": "^3.0.1",
     "grunt-contrib-watch": "^1.0.0"
   },
-  "browser": {
-    "spin.js": "./js/spin.js"
-  },
   "license": "MIT",
   "dependencies": {
     "spin.js": "^2.0.0"
