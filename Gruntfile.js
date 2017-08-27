@@ -88,15 +88,15 @@ module.exports = function(grunt) {
 				files: [ 'Gruntfile.js', 'js/ladda.js' ],
 				tasks: 'js',
 				options: {
-			      livereload: true,
-			    },
+					livereload: true,
+				},
 			},
 			theme: {
 				files: [ 'css/ladda.scss' ],
 				tasks: 'css',
 				options: {
-			      livereload: true,
-			    },
+					livereload: true,
+				},
 			}
 		}
 
