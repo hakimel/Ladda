@@ -4,7 +4,6 @@ Buttons with built-in loading indicators, effectively bridging the gap between a
 
 [Check out the demo page](http://lab.hakim.se/ladda/).
 
-
 ## Instructions
 
 Release downloads and change history is available here <https://github.com/hakimel/Ladda/releases>.
@@ -74,16 +73,16 @@ Ladda.stopAll();
 
 ## Module
 
-You can `bower install ladda` or `npm install ladda`. The spinner and Ladda can be loaded as a module using AMD.
+You can `npm install ladda`. The spinner and Ladda can be loaded as a module using AMD or CommonJS.
 
 ```javascript
-// Using Require.js
+// Using RequireJS
 define(['ladda'], function(Ladda) {
 	// Make Buttons Here
 });
 ```
 
-Or in Common.js, you will:
+Or in CommonJS, you will:
 
 ```javascript
 var ladda = require('ladda');
@@ -91,7 +90,7 @@ var ladda = require('ladda');
 
 ## Browser support
 
-The project is tested in Chrome and Firefox. It Should Work™ in the current stable releases of Chrome, Firefox, Safari as well as IE9 and up.
+The project is tested in Chrome, Firefox, and Edge. It Should Work™ in the current stable releases of Chrome, Firefox, Edge, and Safari, as well as IE9 and up.
 
 ## Changelog
 
