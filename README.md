@@ -139,6 +139,4 @@ The project is tested in Chrome and Firefox. It Should Work™ in the current st
 
 ## License
 
-MIT licensed
-
-Copyright (C) 2017 Hakim El Hattab, http://hakim.se
+MIT
