@@ -32,7 +32,6 @@ module.exports = function(grunt) {
 				},
 				files: {
 					'dist/spin.min.js': 'js/spin.js',
-					'dist/ladda.jquery.min.js': 'js/ladda.jquery.js'
 				}
 			}
 		},
@@ -75,7 +74,7 @@ module.exports = function(grunt) {
 				browser: true,
 				node: true,
 			},
-			files: [ 'Gruntfile.js', 'js/ladda.js', 'js/ladda.jquery.js' ]
+			files: [ 'Gruntfile.js', 'js/ladda.js' ]
 		},
 
 		connect: {
