@@ -121,7 +121,7 @@ $spinnerSize: 32px;
 
 
 /*************************************
- * EXPAND LEFT
+ * EXPAND RIGHT
  */
 
 .ladda-button[data-style=expand-right] {
@@ -150,7 +150,7 @@ $spinnerSize: 32px;
 
 
 /*************************************
- * EXPAND RIGHT
+ * EXPAND LEFT
  */
 
 .ladda-button[data-style=expand-left] {
@@ -284,7 +284,11 @@ $spinnerSize: 32px;
 	.ladda-spinner {
 		right: 100%;
 		margin-left: 0;
-		left: $spinnerSize/2
+		left: $spinnerSize/2;
+
+		[dir="rtl"] & {
+			right: auto;
+		}
 	}
 
 	&[data-loading] {
@@ -474,12 +478,6 @@ $spinnerSize: 32px;
 	}
 
 
-
-
-
-
-
-
-
-
-
+[dir="rtl"] .ladda-spinner > div {
+	left: 25% !important;
+}
