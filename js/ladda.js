@@ -133,16 +133,7 @@
 			 * Toggle the loading state on/off.
 			 */
 			toggle: function() {
-
-				if( this.isLoading() ) {
-					this.stop();
-				}
-				else {
-					this.start();
-				}
-
-				return this; // chain
-
+				return this.isLoading() ? this.stop() : this.start();
 			},
 
 			/**
@@ -174,14 +165,18 @@
 
 			},
 
+			/**
+			 * @deprecated
+			 */
 			enable: function() {
 
-				this.stop();
-
-				return this; // chain
+				return this.stop();
 
 			},
 
+			/**
+			 * @deprecated
+			 */
 			disable: function () {
 
 				this.stop();
