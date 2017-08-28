@@ -31,6 +31,10 @@
 				args.unshift( $( this ).selector );
 				Ladda.bind.apply( Ladda, args );
 			}
+			else if ( arg === 'isLoading' ) {
+				var ladda = $(this).data( 'ladda' );
+				return ladda.isLoading();
+			}
 			else {
 				$( this ).each( function() {
 					var $this = $( this ), ladda;
