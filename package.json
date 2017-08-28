@@ -1,6 +1,6 @@
 {
   "name": "ladda",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Buttons with built-in loading indicators",
   "homepage": "http://lab.hakim.se/ladda",
   "main": "./dist/ladda.min",
