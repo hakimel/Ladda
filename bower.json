@@ -2,7 +2,9 @@
   "name": "ladda",
   "main": [
     "./dist/ladda.min.js",
-    "./dist/ladda.min.css"
+    "./dist/ladda.min.css",
+    "./dist/ladda-themeless.min.css",
+    "./dist/spin.min.css"
   ],
   "ignore": [
     "package.json"
