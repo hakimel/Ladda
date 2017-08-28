@@ -5,8 +5,8 @@
  *
  * Copyright (C) 2016 Hakim El Hattab, http://hakim.se
  */
-/* jshint node:true, browser:true */
 (function( root, factory ) {
+	'use strict';
 
 	// CommonJS
 	if( typeof exports === 'object' )  {
@@ -83,7 +83,9 @@
 			start: function() {
 
 				// Create the spinner if it doesn't already exist
-				if( !spinner ) spinner = createSpinner( button );
+				if( !spinner ) {
+					spinner = createSpinner( button );
+				}
 
 				button.disabled = true;
 				button.setAttribute( 'data-loading', '' );
@@ -273,84 +275,21 @@
 	 */
 	function bind( target, options ) {
 
-		options = options || {};
-
-		var targets = [];
+		var targets;
 
 		if( typeof target === 'string' ) {
 			targets = document.querySelectorAll( target );
 		}
-		else if( typeof target === 'object' && typeof target.nodeName === 'string' ) {
+		else if( typeof target === 'object' ) {
 			targets = [ target ];
+		} else {
+			throw new Error('target must be string or object');
 		}
 
+		options = options || {};
+
 		for( var i = 0; i < targets.length; i++ ) {
-
-			(function() {
-				var element = targets[i];
-
-				// Make sure we're working with a DOM element
-				if( typeof element.addEventListener === 'function' ) {
-					var instance = create( element );
-					var timeout = -1;
-
-					element.addEventListener( 'click', function( event ) {
-
-						// If the button belongs to a form, make sure all the
-						// fields in that form are filled out
-						var valid = true;
-						var form = getAncestorOfTagType( element, 'FORM' );
-
-						if( typeof form !== 'undefined' ) {
-							// Modern form validation
-							if( typeof form.checkValidity === 'function' ) {
-								valid = form.checkValidity();
-							}
-							// Fallback to manual validation for old browsers
-							else {
-								var requireds = getRequiredFields( form );
-								for( var i = 0; i < requireds.length; i++ ) {
-
-									if( requireds[i].value.replace( /^\s+|\s+$/g, '' ) === '' ) {
-										valid = false;
-									}
-
-									// Radiobuttons and Checkboxes need to be checked for the "checked" attribute
-									if( (requireds[i].type === 'checkbox' || requireds[i].type === 'radio' ) && !requireds[i].checked ) {
-										valid = false;
-									}
-
-									// Email field validation
-									if( requireds[i].type === 'email' ) {
-										valid = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test( requireds[i].value );
-									}
-
-								}
-							}
-						}
-
-						if( valid ) {
-							// This is asynchronous to avoid an issue where setting
-							// the disabled attribute on the button prevents forms
-							// from submitting
-							instance.startAfter( 1 );
-
-							// Set a loading timeout if one is specified
-							if( typeof options.timeout === 'number' ) {
-								clearTimeout( timeout );
-								timeout = setTimeout( instance.stop, options.timeout );
-							}
-
-							// Invoke callbacks
-							if( typeof options.callback === 'function' ) {
-								options.callback.apply( null, [ instance ] );
-							}
-						}
-
-					}, false );
-				}
-			})();
-
+			bindElement(targets[i], options);
 		}
 
 	}
@@ -422,6 +361,71 @@
 		r.selectNodeContents( node );
 		r.surroundContents( wrapper );
 		node.appendChild( wrapper );
+
+	}
+
+	function bindElement( element, options ) {
+		if( typeof element.addEventListener !== 'function' ) {
+			return;
+		}
+
+		var instance = create( element );
+		var timeout = -1;
+
+		element.addEventListener( 'click', function() {
+
+			// If the button belongs to a form, make sure all the
+			// fields in that form are filled out
+			var valid = true;
+			var form = getAncestorOfTagType( element, 'FORM' );
+
+			if( typeof form !== 'undefined' ) {
+				// Modern form validation
+				if( typeof form.checkValidity === 'function' ) {
+					valid = form.checkValidity();
+				}
+				// Fallback to manual validation for old browsers
+				else {
+					var requireds = getRequiredFields( form );
+					for( var i = 0; i < requireds.length; i++ ) {
+
+						if( requireds[i].value.replace( /^\s+|\s+$/g, '' ) === '' ) {
+							valid = false;
+						}
+
+						// Radiobuttons and Checkboxes need to be checked for the "checked" attribute
+						if( (requireds[i].type === 'checkbox' || requireds[i].type === 'radio' ) && !requireds[i].checked ) {
+							valid = false;
+						}
+
+						// Email field validation
+						if( requireds[i].type === 'email' ) {
+							valid = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test( requireds[i].value );
+						}
+
+					}
+				}
+			}
+
+			if( valid ) {
+				// This is asynchronous to avoid an issue where setting
+				// the disabled attribute on the button prevents forms
+				// from submitting
+				instance.startAfter( 1 );
+
+				// Set a loading timeout if one is specified
+				if( typeof options.timeout === 'number' ) {
+					clearTimeout( timeout );
+					timeout = setTimeout( instance.stop, options.timeout );
+				}
+
+				// Invoke callbacks
+				if( typeof options.callback === 'function' ) {
+					options.callback.apply( null, [ instance ] );
+				}
+			}
+
+		}, false );
 
 	}
 

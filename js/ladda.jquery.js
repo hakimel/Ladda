@@ -7,15 +7,19 @@
  */
 
 (function( Ladda, $ ) {
-	if ($ === undefined)
+	'use strict';
+
+	if ($ === undefined) {
 		return console.error( 'jQuery required for Ladda.jQuery' );
+	}
 
 	var arr = [];
 
 	$ = $.extend( $, {
 		ladda: function( arg ) {
-			if( arg === 'stopAll' )
+			if( arg === 'stopAll' ) {
 				Ladda.stopAll();
+			}
 		}
 	});
 
@@ -31,8 +35,9 @@
 				$( this ).each( function() {
 					var $this = $( this ), ladda;
 
-					if( arg === undefined )
+					if( arg === undefined ) {
 						$this.data( 'ladda', Ladda.create( this ) );
+					}
 					else {
 						ladda = $this.data( 'ladda' );
 						ladda[arg].apply( ladda, args );

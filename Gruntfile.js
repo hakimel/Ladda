@@ -1,5 +1,5 @@
-/* global module:false */
 module.exports = function(grunt) {
+	'use strict';
 
 	// Project configuration
 	grunt.initConfig({
@@ -52,24 +52,28 @@ module.exports = function(grunt) {
 
 		jshint: {
 			options: {
-				curly: false,
+				// enforcing
+				curly: true,
 				eqeqeq: true,
-				immed: true,
-				latedef: "nofunc",
-				newcap: true,
-				noarg: true,
-				sub: true,
-				undef: true,
-				eqnull: true,
-				browser: true,
-				expr: true,
-				loopfunc: true,
+				freeze: true,
+				futurehostile: true,
 				globals: {
-					head: false,
 					module: false,
 					console: false,
 					define: false
-				}
+				},
+				latedef: "nofunc",
+				maxparams: 3,
+				noarg: true,
+				nocomma: true,
+				nonbsp: true,
+				nonew: true,
+				strict: true,
+				undef: true,
+				unused: true,
+				// environments
+				browser: true,
+				node: true,
 			},
 			files: [ 'Gruntfile.js', 'js/ladda.js', 'js/ladda.jquery.js' ]
 		},
