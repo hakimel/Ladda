@@ -250,14 +250,16 @@
 		var requirables = [ 'input', 'textarea', 'select' ];
 		var inputs = [];
 
-		for( var i = 0; i < requirables.length; i++ ) {
-			var candidates = form.getElementsByTagName( requirables[i] );
+		requirables.forEach(function (r) {
+			var candidates = form.getElementsByTagName( r );
+
 			for( var j = 0; j < candidates.length; j++ ) {
-				if ( candidates[j].required ) {
+				// legacy browsers don't support required property
+				if ( candidates[j].hasAttribute('required') ) {
 					inputs.push( candidates[j] );
 				}
 			}
-		}
+		});
 
 		return inputs;
 
@@ -388,21 +390,37 @@
 				else {
 					var requireds = getRequiredFields( form );
 					for( var i = 0; i < requireds.length; i++ ) {
+						var field = requireds[i];
 
-						if( requireds[i].value.replace( /^\s+|\s+$/g, '' ) === '' ) {
+						// The input type property will always return "text" for email and url fields in IE 9.
+						// Note that emulating IE 9 in IE 11 will also return "text" for the type attribute,
+						// but the actual IE 9 browser will return the correct attribute.
+						var fieldType = field.getAttribute('type');
+
+						if( field.value.replace( /^\s+|\s+$/g, '' ) === '' ) {
 							valid = false;
 						}
 
 						// Radiobuttons and Checkboxes need to be checked for the "checked" attribute
-						if( (requireds[i].type === 'checkbox' || requireds[i].type === 'radio' ) && !requireds[i].checked ) {
+						if( (fieldType === 'checkbox' || fieldType === 'radio' ) && !field.checked ) {
 							valid = false;
 						}
 
 						// Email field validation
-						if( requireds[i].type === 'email' ) {
-							valid = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/.test( requireds[i].value );
+						if( fieldType === 'email' ) {
+							// regex from https://stackoverflow.com/a/7786283/1170489
+							valid = /^[a-z0-9!#$%&'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*$/i.test( field.value );
 						}
 
+						// URL field validation
+						if (fieldType === 'url') {
+							// regex from https://stackoverflow.com/a/10637803/1170489
+							valid = /^([a-z]([a-z]|\d|\+|-|\.)*):(\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?((\[(|(v[\da-f]{1,}\.(([a-z]|\d|-|\.|_|~)|[!\$&'\(\)\*\+,;=]|:)+))\])|((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=])*)(:\d*)?)(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*|(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)|((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)|((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)){0})(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test( field.value );
+						}
+
+						if (!valid) {
+							break;
+						}
 					}
 				}
 			}
