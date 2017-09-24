@@ -116,8 +116,10 @@
 			 */
 			stop: function() {
 
-				button.disabled = false;
-				button.removeAttribute( 'data-loading' );
+				if (instance.isLoading()) {
+					button.disabled = false;
+					button.removeAttribute( 'data-loading' );	
+				}
 
 				// Kill the animation after a delay to make sure it
 				// runs for the duration of the button transition
@@ -199,7 +201,7 @@
 				clearTimeout( timer );
 
 				button.disabled = false;
-				button.removeAttribute( 'data-loading', '' );
+				button.removeAttribute( 'data-loading' );
 
 				if( spinner ) {
 					spinner.stop();
@@ -426,9 +428,8 @@
 			}
 
 			if( valid ) {
-				// This is asynchronous to avoid an issue where setting
-				// the disabled attribute on the button prevents forms
-				// from submitting
+				// This is asynchronous to avoid an issue where disabling
+				// the button prevents forms from submitting
 				instance.startAfter( 1 );
 
 				// Set a loading timeout if one is specified
