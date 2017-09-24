@@ -169,27 +169,6 @@
 
 			},
 
-			/**
-			 * @deprecated
-			 */
-			enable: function() {
-
-				return this.stop();
-
-			},
-
-			/**
-			 * @deprecated
-			 */
-			disable: function () {
-
-				this.stop();
-				button.disabled = true;
-
-				return this; // chain
-
-			},
-
 			isLoading: function() {
 
 				return button.hasAttribute( 'data-loading' );
