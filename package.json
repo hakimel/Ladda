@@ -4,6 +4,7 @@
   "description": "Buttons with built-in loading indicators",
   "homepage": "http://lab.hakim.se/ladda",
   "main": "./js/ladda.js",
+  "types": "./js/ladda.d.ts",
   "scripts": {
     "test": "grunt jshint",
     "prepare": "grunt && rollup -c",
