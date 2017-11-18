@@ -9,7 +9,7 @@ Buttons with built-in loading indicators, effectively bridging the gap between a
 
 Release downloads and change history is available here <https://github.com/hakimel/Ladda/releases>.
 
-The compiled files for the project that you should be using are available in the **/dist** directory. You will need to include both the **ladda.min.js** and **spin.min.js** files as well as ONE of the two style sheets. If you want the button styles used in the [Ladda example page](http://lab.hakim.se/ladda) use the **ladda.min.css** file, if you want to have the functional buttons without the visual style (colors, padding etc) use the **ladda-themeless.min.css** file.
+The compiled files for the project that you should be using are available in the **/dist** directory. You will need to include both the **spin.min.js** and **ladda.min.js** files (in this order) as well as ONE of the two style sheets. If you want the button styles used in the [Ladda example page](http://lab.hakim.se/ladda) use the **ladda.min.css** file, if you want to have the functional buttons without the visual style (colors, padding etc) use the **ladda-themeless.min.css** file.
 
 #### HTML
 
