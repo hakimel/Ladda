@@ -39,6 +39,8 @@ Ladda.bind( 'button[type=submit]' );
 Ladda.bind( 'button[type=submit]', { timeout: 2000 } );
 ```
 
+Note: when using the `bind()` method on buttons that are inside a form, loading indicators will not be shown until the form is valid.
+
 If you want JavaScript control over your buttons you can use the following approach:
 
 ```javascript
