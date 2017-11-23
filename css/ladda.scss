@@ -88,15 +88,12 @@ $spinnerSize: 32px;
 	left: 0;
 	top: 0;
 	background: rgba( 0, 0, 0, 0.2 );
-
-	visibility: hidden;
-	opacity: 0;
+	display: none;
 
 	@include transition( 0.1s linear all );
 }
 	.ladda-button[data-loading] .ladda-progress {
-		opacity: 1;
-		visibility: visible;
+		display: block;
 	}
 
 
