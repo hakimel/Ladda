@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Ladda: Bootstrap compatibility test</title>
+
+		<meta name="description" content="">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+		<link rel="stylesheet" href="../css/demo.css">
+		<link rel="stylesheet" href="../dist/ladda-themeless.min.css">
+
+	</head>
+
+	<body>
+
+		<article class="examples">
+
+			<div class="intro">
+				<h1>Ladda</h1>
+				<p>
+					A UI concept which merges loading indicators into the action that invoked them. Primarily intended for use with forms where
+					it gives users immediate feedback upon submit rather than leaving them wondering while the browser does its thing. For a
+					real-world example, check out any of the forms on <a href="http://slid.es">slid.es</a>.
+				</p>
+			</div>
+
+            <section>
+				<h3>expand-left</h3>
+				<button class="btn btn-primary ladda-button" data-color="green" data-style="expand-left"><span class="ladda-label">Submit</span></button>
+			</section>
+
+			<section>
+				<h3>expand-right</h3>
+				<button class="btn btn-primary ladda-button" data-color="green" data-style="expand-right"><span class="ladda-label">Submit</span></button>
+			</section>
+
+			<section>
+				<h3>expand-up</h3>
+				<button class="btn btn-primary ladda-button" data-color="green" data-style="expand-up"><span class="ladda-label">Submit</span></button>
+			</section>
+
+			<section>
+				<h3>expand-down</h3>
+				<button class="btn btn-primary ladda-button" data-color="green" data-style="expand-down"><span class="ladda-label">Submit</span></button>
+			</section>
+
+
+			<section>
+				<h3>zoom-in</h3>
+				<button class="btn btn-info ladda-button" data-color="red" data-style="zoom-in"><span class="ladda-label">Submit</span></button>
+			</section>
+
+			<section>
+				<h3>zoom-out</h3>
+				<button class="btn btn-info ladda-button" data-color="red" data-style="zoom-out"><span class="ladda-label">Submit</span></button>
+			</section>
+
+
+			<section>
+				<h3>slide-left</h3>
+				<button class="btn btn-warning ladda-button" data-color="blue" data-style="slide-left"><span class="ladda-label">Submit</span></button>
+			</section>
+
+			<section>
+				<h3>slide-right</h3>
+				<button class="btn btn-warning ladda-button" data-color="blue" data-style="slide-right"><span class="ladda-label">Submit</span></button>
+			</section>
+
+			<section>
+				<h3>slide-up</h3>
+				<button class="btn btn-warning ladda-button" data-color="blue" data-style="slide-up"><span class="ladda-label">Submit</span></button>
+			</section>
+
+			<section>
+				<h3>slide-down</h3>
+				<button class="btn btn-warning ladda-button" data-color="blue" data-style="slide-down"><span class="ladda-label">Submit</span></button>
+			</section>
+
+			<h3 id="progress">Built-in progress bar</h3>
+
+			<section class="progress-demo">
+				<h3>expand-right</h3>
+				<button class="btn btn-danger ladda-button" data-color="purple" data-style="expand-right"><span class="ladda-label">Submit</span></button>
+			</section>
+
+			<section class="progress-demo">
+				<h3>contract</h3>
+				<button class="btn btn-danger ladda-button" data-color="purple" data-style="contract"><span class="ladda-label">Submit</span></button>
+			</section>
+
+			<h3 id="sizes">Sizes</h3>
+
+			<section class="progress-demo">
+				<h3>Extra Small</h3>
+				<button class="btn btn-danger btn-mini ladda-button" data-color="mint" data-style="expand-right" data-size="xs"><span class="ladda-label">Submit</span></button>
+			</section>
+
+			<section class="progress-demo">
+				<h3>Small</h3>
+				<button class="btn btn-danger btn-small ladda-button" data-color="mint" data-style="expand-right" data-size="s"><span class="ladda-label">Submit</span></button>
+			</section>
+
+			<section class="progress-demo">
+				<h3>Large</h3>
+				<button class="btn btn-danger btn-large ladda-button" data-color="mint" data-style="expand-right" data-size="l"><span class="ladda-label">Submit</span></button>
+			</section>
+
+			<h3>Buttons in forms containing required inputs</h3>
+
+			<section>
+				<form>
+					<div class="form-group">
+						<input type="text" required name="aText" placeholder="Please fill me" />
+					</div>
+					<div class="form-group">
+						<button id="aFormSubmitButton" type="submit" class="btn btn-primary ladda-button" data-color="green" data-style="expand-left"><span class="ladda-label">Submit</span></button>
+					</div>
+				</form>
+			</section>
+
+			<footer>
+				<small class="sharing">
+					<a href="http://twitter.com/share" class="twitter-share-button" data-text="Ladda - Buttons with built-in loading indicators by @hakimel" data-url="http://lab.hakim.se/ladda" data-count="small" data-related="hakimel"></a>
+				</small>
+				<small class="outro">by <a href="http://hakim.se">Hakim El Hattab</a> / <a href="http://twitter.com/hakimel">@hakimel</a></small>
+			</footer>
+
+		</article>
+		<script src="../dist/spin.min.js"></script>
+		<script src="../dist/ladda.min.js"></script>
+
+		<script>
+
+// Bind normal buttons
+Ladda.bind( 'section:not(.progress-demo) button', { timeout: 2000 } );
+
+// Bind progress buttons and simulate loading progress
+Ladda.bind( 'section.progress-demo button', {
+	callback: function( instance ) {
+		var progress = 0;
+		var interval = setInterval( function() {
+			progress = Math.min( progress + Math.random() * 0.1, 1 );
+			instance.setProgress( progress );
+
+			if( progress === 1 ) {
+				instance.stop();
+				clearInterval( interval );
+			}
+		}, 200 );
+	}
+} );
+
+			// You can control loading explicitly using the JavaScript API
+			// as outlined below:
+
+			// var l = Ladda.create( document.querySelector( 'button' ) );
+			// l.start();
+			// l.stop();
+			// l.toggle();
+			// l.isLoading();
+			// l.setProgress( 0-1 );
+
+		</script>
+
+		<a class="fork" href="https://github.com/hakimel/Ladda"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/camo.github.com/e6bef7a091f5f3138b8cd40bc3e114258dd68ddf/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub"></a>
+
+		<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+
+	</body>
+</html>
