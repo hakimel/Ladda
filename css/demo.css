@@ -27,7 +27,12 @@ button {
 		.examples .intro h1 {
 			margin-top: 0;
 			font-size: 18px;
+			font-weight: bold;
 		}
+
+	.examples h3 {
+		font-size: 17px;
+	}
 
 	.examples .outro {
 		display: block;
