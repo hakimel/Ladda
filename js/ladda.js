@@ -383,7 +383,7 @@
 			var valid = true;
 			var form = getAncestorOfTagType( element, 'FORM' );
 
-			if( typeof form !== 'undefined' ) {
+			if( typeof form !== 'undefined' && !form.hasAttribute('novalidate') ) {
 				// Modern form validation
 				if( typeof form.checkValidity === 'function' ) {
 					valid = form.checkValidity();
