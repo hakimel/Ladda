@@ -28,9 +28,9 @@ Buttons accept the following attributes:
 - **data-style**: one of the button styles, full list in [demo](http://lab.hakim.se/ladda/) *[required]*
 - **data-color**: green/red/blue/purple/mint
 - **data-size**: xs/s/l/xl, defaults to medium
-- **data-spinner-size**: 40, pixel dimensions of spinner, defaults to dynamic size based on the button height
-- **data-spinner-color**: A hex code or any [named CSS color](http://css-tricks.com/snippets/css/named-colors-and-hex-equivalents/).
-- **data-spinner-lines**: 12, the number of lines the for the spinner, defaults to 12
+- **data-spinner-size**: pixel dimensions of spinner, defaults to dynamic size based on the button height
+- **data-spinner-color**: a hex code or any [named CSS color](https://css-tricks.com/snippets/css/named-colors-and-hex-equivalents/)
+- **data-spinner-lines**: the number of lines the for the spinner, defaults to 12
 
 ### JavaScript
 
@@ -40,7 +40,7 @@ Start by importing the Ladda module:
 import * as Ladda from 'ladda';
 ```
 
-If you want JavaScript control over your buttons you can use the following approach:
+The following approach is recommended for JavaScript control over your buttons:
 
 ```javascript
 // Create a new instance of ladda for the specified button
@@ -65,7 +65,7 @@ l.isLoading();
 l.remove();
 ```
 
-If you will be using the loading animation for a form that is submitted to the server (always resulting in a page reload) you can use the `bind()` method:
+To show the loading animation for a form that is submitted to the server (always resulting in a page reload) the `bind()` method can be used:
 
 ```javascript
 // Automatically trigger the loading animation on click
@@ -85,7 +85,12 @@ Ladda.stopAll();
 
 ## Browser support
 
-The project is tested in Chrome, Firefox, and Edge. It Should Work™ in the current stable releases of Chrome, Firefox, Edge, and Safari, as well as IE9 and up.
+Ladda has been tested in Chrome, Firefox, Edge, and Internet Explorer 11.
+It also Should Work™ in Safari and Internet Explorer 10.
+
+Note: Ladda 2.x is distributed as an ES6 module, but not all browsers support importing native ES6 modules.
+For full browser compatibility, use a module bundler such as <a href="https://webpack.js.org/">Webpack</a>
+or <a href="https://rollupjs.org/">Rollup</a> to create a production-ready code bundle.
 
 ## Changelog
 

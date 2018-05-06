@@ -3,7 +3,7 @@
  * http://lab.hakim.se/ladda
  * MIT licensed
  *
- * Copyright (C) 2016 Hakim El Hattab, http://hakim.se
+ * Copyright (C) 2018 Hakim El Hattab, http://hakim.se
  */
 
 
@@ -18,28 +18,12 @@ $spinnerSize: 32px;
  * MIXINS
  */
 
-@mixin prefix ( $property, $value ) {
-	-webkit-#{$property}: $value;
-	   -moz-#{$property}: $value;
-	    -ms-#{$property}: $value;
-	     -o-#{$property}: $value;
-	        #{$property}: $value;
-}
-
 @mixin transition( $value ) {
-	-webkit-transition: $value !important; // important to override bootstrap
-	   -moz-transition: $value !important;
-	    -ms-transition: $value !important;
-	     -o-transition: $value !important;
-	        transition: $value !important;
+	transition: $value !important;
 }
 
 @mixin transform( $value ) {
-	@include prefix( transform, $value );
-}
-
-@mixin transform-origin( $value ) {
-	@include prefix( transform-origin, $value );
+	transform: $value;
 }
 
 @mixin buttonColor( $name, $color ) {
@@ -50,6 +34,20 @@ $spinnerSize: 32px;
 			background-color: lighten( $color, 5% );
 		}
 	}
+}
+
+
+/*************************************
+ * Opacity animation for spin.js
+ */
+
+@keyframes ladda-spinner-line-fade {
+  0%, 100% {
+    opacity: 0.22; /* minimum opacity */
+  }
+  1% {
+    opacity: 1;
+  }
 }
 
 

@@ -8,8 +8,7 @@ module.exports = function(grunt) {
 		sass: {
 			main: {
 				options: {
-					style: 'compressed',
-					sourcemap: 'none'
+					outputStyle: 'compressed',
 				},
 				files: {
 					'dist/ladda.min.css': [ 'css/ladda-themed.scss' ],
@@ -77,7 +76,7 @@ module.exports = function(grunt) {
 	// Dependencies
 	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
-	grunt.loadNpmTasks( 'grunt-contrib-sass' );
+	grunt.loadNpmTasks( 'grunt-sass' );
 	grunt.loadNpmTasks( 'grunt-contrib-connect' );
 
 	// Default task

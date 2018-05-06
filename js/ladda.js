@@ -3,7 +3,7 @@
  * http://lab.hakim.se/ladda
  * MIT licensed
  *
- * Copyright (C) 2016 Hakim El Hattab, http://hakim.se
+ * Copyright (C) 2018 Hakim El Hattab, http://hakim.se
  */
 
  import {Spinner} from 'spin.js';
@@ -26,8 +26,8 @@ export function create( button ) {
 	}
 
 	// The button must have the class "ladda-button"
-	if( !/ladda-button/i.test( button.className ) ) {
-		button.className += ' ladda-button';
+	if ( !button.classList.contains('ladda-button') ) {
+		button.classList.add( 'ladda-button' );
 	}
 
 	// Style is required, default to "expand-right"
@@ -244,34 +244,6 @@ function getAncestorOfTagType( elem, type ) {
 
 }
 
-/**
- * Returns a list of all inputs in the given form that
- * have their `required` attribute set.
- *
- * @param form The from HTML element to look in
- *
- * @return A list of elements
- */
-function getRequiredFields( form ) {
-
-	var requirables = [ 'input', 'textarea', 'select' ];
-	var inputs = [];
-
-	requirables.forEach(function (r) {
-		var candidates = form.getElementsByTagName( r );
-
-		for( var j = 0; j < candidates.length; j++ ) {
-			// legacy browsers don't support required property
-			if ( candidates[j].hasAttribute('required') ) {
-				inputs.push( candidates[j] );
-			}
-		}
-	});
-
-	return inputs;
-
-}
-
 function createSpinner( button ) {
 
 	var height = button.offsetHeight,
@@ -314,6 +286,7 @@ function createSpinner( button ) {
 		radius: radius,
 		length: length,
 		width: width,
+		animation: 'ladda-spinner-line-fade',
 		zIndex: 'auto',
 		top: 'auto',
 		left: 'auto',
@@ -350,43 +323,6 @@ function bindElement( element, options ) {
 			// Modern form validation
 			if( typeof form.checkValidity === 'function' ) {
 				valid = form.checkValidity();
-			}
-			// Fallback to manual validation for old browsers
-			else {
-				var requireds = getRequiredFields( form );
-				for( var i = 0; i < requireds.length; i++ ) {
-					var field = requireds[i];
-
-					// The input type property will always return "text" for email and url fields in IE 9.
-					// Note that emulating IE 9 in IE 11 will also return "text" for the type attribute,
-					// but the actual IE 9 browser will return the correct attribute.
-					var fieldType = field.getAttribute('type');
-
-					if( field.value.replace( /^\s+|\s+$/g, '' ) === '' ) {
-						valid = false;
-					}
-
-					// Radiobuttons and Checkboxes need to be checked for the "checked" attribute
-					if( (fieldType === 'checkbox' || fieldType === 'radio' ) && !field.checked ) {
-						valid = false;
-					}
-
-					// Email field validation
-					if( fieldType === 'email' ) {
-						// regex from https://stackoverflow.com/a/7786283/1170489
-						valid = /^[a-z0-9!#$%&'*+/=?^_`{|}~.-]+@[a-z0-9-]+(\.[a-z0-9-]+)*$/i.test( field.value );
-					}
-
-					// URL field validation
-					if (fieldType === 'url') {
-						// regex from https://stackoverflow.com/a/10637803/1170489
-						valid = /^([a-z]([a-z]|\d|\+|-|\.)*):(\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?((\[(|(v[\da-f]{1,}\.(([a-z]|\d|-|\.|_|~)|[!\$&'\(\)\*\+,;=]|:)+))\])|((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=])*)(:\d*)?)(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*|(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)|((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)|((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)){0})(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test( field.value );
-					}
-
-					if (!valid) {
-						break;
-					}
-				}
 			}
 		}
 
