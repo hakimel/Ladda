@@ -63,7 +63,7 @@ module.exports = function(grunt) {
 				},
 			},
 			theme: {
-				files: [ 'css/ladda.scss' ],
+				files: [ 'css/*.scss' ],
 				tasks: 'css',
 				options: {
 					livereload: true,
