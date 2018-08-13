@@ -6,7 +6,7 @@
  * Copyright (C) 2018 Hakim El Hattab, http://hakim.se
  */
 
- import {Spinner} from 'spin.js';
+import {Spinner} from 'spin.js';
 
 // All currently instantiated instances of Ladda
 var ALL_INSTANCES = [];
