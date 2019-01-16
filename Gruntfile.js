@@ -1,3 +1,5 @@
+const sass = require('node-sass');
+
 module.exports = function(grunt) {
 	'use strict';
 
@@ -6,13 +8,14 @@ module.exports = function(grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 
 		sass: {
-			main: {
-				options: {
-					outputStyle: 'compressed',
-				},
+			options: {
+				implementation: sass,
+				outputStyle: 'compressed',
+			},
+			dist: {
 				files: {
-					'dist/ladda.min.css': [ 'css/ladda-themed.scss' ],
-					'dist/ladda-themeless.min.css': [ 'css/ladda.scss' ]
+					'dist/ladda.min.css': 'css/ladda-themed.scss',
+					'dist/ladda-themeless.min.css': 'css/ladda.scss'
 				}
 			}
 		},

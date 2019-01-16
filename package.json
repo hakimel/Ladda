@@ -2,7 +2,7 @@
   "name": "ladda",
   "version": "2.0.1",
   "description": "Buttons with built-in loading indicators",
-  "homepage": "http://lab.hakim.se/ladda",
+  "homepage": "https://lab.hakim.se/ladda/",
   "files": [
     "css/*.scss",
     "dist/*.css",
@@ -16,23 +16,23 @@
     "prepare": "grunt && rollup -c",
     "start": "grunt serve"
   },
-  "author": {
-    "name": "Hakim El Hattab",
-    "email": "hakim.elhattab@gmail.com",
-    "web": "http://hakim.se"
-  },
+  "author": "Hakim El Hattab <hakim.elhattab@gmail.com> https://hakim.se",
+  "contributors": [
+    "Theodore Brown <theodorejb@outlook.com> https://theodorejb.me"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/hakimel/Ladda.git"
   },
   "devDependencies": {
-    "grunt": "^1.0.2",
-    "grunt-contrib-connect": "^1.0.2",
-    "grunt-contrib-jshint": "^1.1.0",
+    "grunt": "^1.0.3",
+    "grunt-contrib-connect": "^2.0.0",
+    "grunt-contrib-jshint": "^2.0.0",
     "grunt-contrib-watch": "^1.1.0",
-    "grunt-sass": "^2.1.0",
-    "rollup": "^0.58.2",
-    "rollup-plugin-node-resolve": "^3.3.0"
+    "grunt-sass": "^3.0.2",
+    "node-sass": "^4.11.0",
+    "rollup": "^1.1.0",
+    "rollup-plugin-node-resolve": "^4.0.0"
   },
   "license": "MIT",
   "dependencies": {
