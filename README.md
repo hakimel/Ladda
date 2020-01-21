@@ -94,7 +94,7 @@ or <a href="https://rollupjs.org/">Rollup</a> to create a production-ready code 
 
 ## Changelog
 
-<https://github.com/hakimel/Ladda/releases>
+<https://github.com/hakimel/Ladda/blob/master/CHANGELOG.md>
 
 ## License
 
