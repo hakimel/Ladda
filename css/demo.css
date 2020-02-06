@@ -1,65 +1,65 @@
 /* Styles used specifically for the demo page */
 
 body {
-	background: #f5f5f5;
-	font-family: monospace;
-	font-size: 14px;
-	color: #333333;
+    background: #f5f5f5;
+    font-family: monospace;
+    font-size: 14px;
+    color: #333333;
 }
 
 button {
-	outline: 0;
+    outline: 0;
 }
 
 .examples {
-	max-width: 670px;
-	margin: 2em auto;
-	padding: 4em;
-	background: #fff;
-	text-align: center
+    max-width: 670px;
+    margin: 2em auto;
+    padding: 4em;
+    background: #fff;
+    text-align: center;
 }
-	.examples .intro {
-		margin-bottom: 3em;
-		line-height: 1.4em;
-		font-size: 16px;
-		text-align: left;
-	}
-		.examples .intro h1 {
-			margin-top: 0;
-			font-size: 18px;
-			font-weight: bold;
-		}
+    .examples .intro {
+        margin-bottom: 3em;
+        line-height: 1.4em;
+        font-size: 16px;
+        text-align: left;
+    }
+        .examples .intro h1 {
+            margin-top: 0;
+            font-size: 18px;
+            font-weight: bold;
+        }
 
-	.examples h3 {
-		font-size: 17px;
-	}
+    .examples h3 {
+        font-size: 17px;
+    }
 
-	.examples .outro {
-		display: block;
-		text-align: right;
-		margin-top: 3em;
-	}
-	.examples section {
-		display: inline-block;
-		width: 24%;
-		min-width: 160px;
-		margin-bottom: 2em;
-		text-align: center;
-		vertical-align: top;
-	}
-	.examples section h3 {
-		color: #bbb;
-		font-weight: normal;
-	}
+    .examples .outro {
+        display: block;
+        text-align: right;
+        margin-top: 3em;
+    }
+    .examples section {
+        display: inline-block;
+        width: 24%;
+        min-width: 160px;
+        margin-bottom: 2em;
+        text-align: center;
+        vertical-align: top;
+    }
+    .examples section h3 {
+        color: #bbb;
+        font-weight: normal;
+    }
 
 
 .sharing {
-	float: left;
+    float: left;
 }
 
 .fork {
-	position: absolute;
-	top: 0;
-	right: 0;
-	border: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: none;
 }
