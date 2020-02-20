@@ -1,6 +1,6 @@
 const sass = require('node-sass');
 
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 	'use strict';
 
 	// Project configuration
@@ -52,8 +52,16 @@ module.exports = function(grunt) {
 			server: {
 				options: {
 					port: 8000,
-					base: '.',
+					base: 'site',
 				}
+			}
+		},
+
+		copy: {
+			css: {
+			    files: [
+				    { src: ['dist/ladda*.min.css'], dest: 'site/' }
+			    ]
 			}
 		},
 
@@ -77,18 +85,19 @@ module.exports = function(grunt) {
 	});
 
 	// Dependencies
-	grunt.loadNpmTasks( 'grunt-contrib-jshint' );
-	grunt.loadNpmTasks( 'grunt-contrib-watch' );
-	grunt.loadNpmTasks( 'grunt-sass' );
-	grunt.loadNpmTasks( 'grunt-contrib-connect' );
+	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-sass');
+	grunt.loadNpmTasks('grunt-contrib-connect');
+	grunt.loadNpmTasks('grunt-contrib-copy');
 
 	// Default task
-	grunt.registerTask( 'default', [ 'js', 'css' ] );
+	grunt.registerTask('default', ['js', 'css']);
 
 	// Theme task
-	grunt.registerTask( 'js', [ 'jshint' ] );
-	grunt.registerTask( 'css', [ 'sass' ] );
+	grunt.registerTask('js', ['jshint']);
+	grunt.registerTask('css', ['sass', 'copy']);
 
 	// Serve presentation locally
-	grunt.registerTask( 'serve', [ 'connect', 'watch' ] );
+	grunt.registerTask('serve', ['connect', 'watch']);
 };

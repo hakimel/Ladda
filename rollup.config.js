@@ -2,25 +2,25 @@ import resolve from 'rollup-plugin-node-resolve';
 
 export default [
     {
-        input: 'test/index.js',
+        input: 'site/index.js',
         output: {
-            file: 'test/index-bundle.js',
+            file: 'site/dist/index-bundle.js',
             format: 'iife'
         },
         plugins: [resolve()]
     },
     {
-        input: 'test/form.js',
+        input: 'site/form.js',
         output: {
-            file: 'test/form-bundle.js',
+            file: 'site/dist/form-bundle.js',
             format: 'iife'
         },
         plugins: [resolve()]
     },
     {
-        input: 'test/bootstrap.js',
+        input: 'site/bootstrap.js',
         output: {
-            file: 'test/bootstrap-bundle.js',
+            file: 'site/dist/bootstrap-bundle.js',
             format: 'iife'
         },
         plugins: [resolve()]
