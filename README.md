@@ -8,17 +8,34 @@ Buttons with built-in loading indicators, effectively bridging the gap between a
 
 `npm install ladda`
 
+### Module bundling
+
+Ladda 2.x is distributed as a standard ES6 module. Since not all browsers/environments support native
+ES6 modules, it is recommended to use a bundler such as <a href="https://rollupjs.org/">Rollup</a>,
+<a href="https://parceljs.org/">Parcel</a>, or <a href="https://webpack.js.org/">Webpack</a> to create
+a production-ready code bundle.
+
 ## Usage
 
 ### CSS
 
 You will need to include ONE of the two style sheets in the **/dist** directory.
 If you want the button styles used on the demo page, use the **ladda.min.css** file.
-If you want to have the functional buttons without the visual style (colors, padding, etc.), use the **ladda-themeless.min.css** file.
+If you want to have the functional buttons without the visual style (colors, padding, etc.),
+use the **ladda-themeless.min.css** file.
 
 ### HTML
 
-Ladda buttons must be given the class `ladda-button` and the button label needs to have the `ladda-label` class. The `ladda-label` will be automatically created if it does not exist in the DOM. Below is an example of a button using the `expand-right` animation style.
+Below is an example of a button using the `expand-right` animation style.
+
+```html
+<button class="ladda-button" data-style="expand-right">Submit</button>
+```
+
+When the JS code runs to bind Ladda to the button, the `ladda-button` class
+will be automatically added if it doesn't already exist. Additionally, a span
+with class `ladda-label` will automatically wrap the button text, resulting
+in the following DOM structure:
 
 ```html
 <button class="ladda-button" data-style="expand-right">
@@ -35,8 +52,8 @@ Buttons accept the following attributes:
 - **data-color**: green/red/blue/purple/mint
 - **data-size**: xs/s/l/xl, defaults to medium
 - **data-spinner-size**: pixel dimensions of spinner, defaults to dynamic size based on the button height
-- **data-spinner-color**: a hex code or any [named CSS color](https://css-tricks.com/snippets/css/named-colors-and-hex-equivalents/)
-- **data-spinner-lines**: the number of lines for the spinner, defaults to 12
+- **data-spinner-color**: a hex code or any named CSS color, defaults to `#fff`
+- **data-spinner-lines**: the number of lines for the spinner, defaults to `12`
 
 ### JavaScript
 
@@ -71,7 +88,8 @@ l.isLoading();
 l.remove();
 ```
 
-To show the loading animation for a form that is submitted to the server (always resulting in a page reload) the `bind()` method can be used:
+To show the loading animation for a form that is submitted to the server
+(always resulting in a page reload) the `bind()` method can be used:
 
 ```javascript
 // Automatically trigger the loading animation on click
@@ -81,7 +99,8 @@ Ladda.bind('button[type=submit]');
 Ladda.bind('button[type=submit]', {timeout: 2000});
 ```
 
-Note: when using the `bind()` method on buttons that are inside a form, loading indicators will not be shown until the form is valid.
+Note: when using the `bind()` method on buttons that are inside a form,
+loading indicators will not be shown until the form is valid.
 
 All loading animations on the page can be stopped by using:
 
@@ -93,10 +112,6 @@ Ladda.stopAll();
 
 Ladda has been tested in Firefox, Microsoft Edge, Chrome, and Internet Explorer 11.
 It also Should Work™ in Safari and Internet Explorer 10.
-
-Note: Ladda 2.x is distributed as an ES6 module, but not all browsers support importing native ES6 modules.
-For full browser compatibility, use a module bundler such as <a href="https://webpack.js.org/">Webpack</a>
-or <a href="https://rollupjs.org/">Rollup</a> to create a production-ready code bundle.
 
 ## Changelog
 
