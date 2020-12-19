@@ -36,8 +36,9 @@ export function create(button) {
 
     // The text contents must be wrapped in a ladda-label
     // element, create one if it doesn't already exist
-    if (!button.querySelector('.ladda-label')) {
-        var laddaLabel = document.createElement('span');
+    var laddaLabel = button.querySelector('.ladda-label');
+    if (!laddaLabel) {
+        laddaLabel = document.createElement('span');
         laddaLabel.className = 'ladda-label';
         wrapContent(button, laddaLabel);
     }
@@ -156,6 +157,87 @@ export function create(button) {
             }
 
             ALL_INSTANCES.splice(ALL_INSTANCES.indexOf(instance), 1);
+        },
+
+        /**
+         * This method will stop the progress and then change the color of the button to green and show the check mark.
+         * @param {boolean} permanentResult 
+         * Default value is TRUE.
+         * If set to true the button will stay disabled and the color stays green after the progress stops
+         * also you can detemine a time in milliseconds to turn the button to the default state.
+         * @param {number} timeout 
+         * Default value is 1000 milliseconds = 1 second.
+         * The time in milliseconds that will return the button to its default state.
+         */
+        loadSuccessful: function(permanentResult = true, timeout = 1000){
+            instance.stop();
+            button.disabled = true;
+
+            var resElement = button.querySelector('.ladda-successful');
+            if(!resElement){
+                resElement = document.createElement('div');
+                resElement.className = 'ladda-successful';
+                button.appendChild(resElement);
+            }
+
+            var labelEle = document.createElement('span');
+            labelEle.className = 'ladda-label';
+            labelEle.textContent = '✔';
+            button.appendChild(labelEle);
+
+            laddaLabel.style.display = 'none';
+            button.setAttribute('data-success', '');
+
+            if(!permanentResult){
+                setTimeout(() => {
+                    button.removeAttribute('data-success');
+                    button.disabled = false;
+                    laddaLabel.style.display = 'block';
+                    button.removeChild(labelEle);
+                }, timeout);
+            }
+
+            return this;    //chain
+        },
+        
+        /**
+         * @param {boolean} permanentResult
+         * Default value is TRUE.
+         * If set to true the button will stay disabled and the color stays green after the progress stops
+         * also you can detemine a time in milliseconds to turn the button to the default state.
+         * @param {number} timeout
+         * Default value is 1000 milliseconds = 1 second.
+         * The time in milliseconds that will return the button to its default state.
+         */
+        loadFailed: function(permanentResult = true, timeout = 1000){
+            instance.stop();
+            button.disabled = true;
+            
+            var resElement = button.querySelector('.ladda-failed');
+            if(!resElement){
+                resElement = document.createElement('div');
+                resElement.className = 'ladda-failed';
+                button.appendChild(resElement);
+            }
+            
+            button.setAttribute('data-failed', '');
+            
+            var labelEle = document.createElement('span');
+            labelEle.className = 'ladda-label';
+            button.appendChild(labelEle);
+            labelEle.innerHTML = '✘';
+
+            laddaLabel.style.display = 'none';
+
+            if(!permanentResult){
+                setTimeout(() => {
+                    button.removeAttribute('data-failed');
+                    button.disabled = false;
+                    laddaLabel.style.display = 'block';
+                    button.removeChild(labelEle);
+                }, timeout);
+            }
+            return this;    //chain
         }
     };
 

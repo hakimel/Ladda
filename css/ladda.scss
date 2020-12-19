@@ -86,6 +86,35 @@ $spinnerSize: 32px !default;
     display: block;
 }
 
+/* Showing Result */
+.ladda-button .ladda-successful{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background:#008000;
+    display: none;
+}
+
+.ladda-button[data-success] .ladda-successful {
+    display: block;
+}
+
+.ladda-button .ladda-failed {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: #e63946;
+    display: none;
+}
+
+.ladda-button[data-failed] .ladda-failed {
+    display: block;
+}
+
 
 /*************************************
  * EASING
@@ -445,6 +474,11 @@ $spinnerSize: 32px !default;
         .ladda-spinner {
             opacity: 1;
         }
+    }
+
+    &[data-success], &[data-failed] {
+        border-radius: 50%;
+        width: 52px;
     }
 }
 
