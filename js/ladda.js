@@ -169,7 +169,7 @@ export function create(button) {
          * Default value is 1000 milliseconds = 1 second.
          * The time in milliseconds that will return the button to its default state.
          */
-        loadSuccessful: function(permanentResult = true, timeout = 1000){
+        loadingSuccessful: function(permanentResult = true, timeout = 1000){
             instance.stop();
             button.disabled = true;
 
@@ -209,7 +209,7 @@ export function create(button) {
          * Default value is 1000 milliseconds = 1 second.
          * The time in milliseconds that will return the button to its default state.
          */
-        loadFailed: function(permanentResult = true, timeout = 1000){
+        loadingFailed: function(permanentResult = true, timeout = 1000){
             instance.stop();
             button.disabled = true;
             
