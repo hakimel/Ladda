@@ -19,11 +19,11 @@ $spinnerSize: 32px !default;
  */
 
 @mixin buttonColor( $name, $color ) {
-    &[data-color=#{$name}] {
+    &[data-color=#{$name}]:not([data-failed]):not([data-success]) {
         background: $color;
 
-        &:hover {
-            background-color: lighten( $color, 5% );
+        &:hover:not([data-loading]):not([data-failed]):not([data-success]) {
+            background: lighten( $color, 5% );
         }
     }
 }
@@ -86,35 +86,13 @@ $spinnerSize: 32px !default;
     display: block;
 }
 
-/* Showing Result */
-.ladda-button .ladda-successful{
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    background:#008000;
-    display: none;
-}
-
-.ladda-button[data-success] .ladda-successful {
-    display: block;
-}
-
-.ladda-button .ladda-failed {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
+.ladda-button[data-failed] {
     background: #e63946;
-    display: none;
 }
 
-.ladda-button[data-failed] .ladda-failed {
-    display: block;
+.ladda-button[data-success] {
+    background:#008000;
 }
-
 
 /*************************************
  * EASING

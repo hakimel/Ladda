@@ -6,8 +6,8 @@ export interface LaddaButton {
     setProgress(progress: number): void,
     isLoading(): boolean,
     remove(): void,
-    loadingSuccessful(permanentResult: boolean, timeout: number): LaddaButton,
-    loadingFailed(permanentResult: boolean, timeout: number): LaddaButton,
+    succeed(timeout: number = 1250): LaddaButton,
+    fail(timeout: number = 1250): LaddaButton,
 }
 
 export interface BindOptions {

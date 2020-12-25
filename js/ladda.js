@@ -12,11 +12,9 @@ import {Spinner} from 'spin.js';
 var ALL_INSTANCES = [];
 
 /**
- * Creates a new instance of Ladda which wraps the
- * target button element.
- *
- * @return An API object that can be used to control
- * the loading animation state.
+ * Creates a new instance of Ladda which wraps the target button element.
+ * @param {HTMLElement} button
+ * @return An API object that can be used to control the loading animation state.
  */
 export function create(button) {
     if (typeof button === 'undefined') {
@@ -34,221 +32,14 @@ export function create(button) {
         button.setAttribute('data-style', 'expand-right');
     }
 
-    // The text contents must be wrapped in a ladda-label
-    // element, create one if it doesn't already exist
-    var laddaLabel = button.querySelector('.ladda-label');
-    if (!laddaLabel) {
-        laddaLabel = document.createElement('span');
-        laddaLabel.className = 'ladda-label';
-        wrapContent(button, laddaLabel);
-    }
-
-    // The spinner component
-    var spinnerWrapper = button.querySelector('.ladda-spinner');
-
-    // Wrapper element for the spinner
-    if (!spinnerWrapper) {
-        spinnerWrapper = document.createElement('span');
-        spinnerWrapper.className = 'ladda-spinner';
-    }
-
-    button.appendChild(spinnerWrapper);
-
-    // Timer used to delay starting/stopping
-    var timer;
-    var spinner;
-
-    var instance = {
-        /**
-         * Enter the loading state.
-         */
-        start: function() {
-            // Create the spinner if it doesn't already exist
-            if (!spinner) {
-                spinner = createSpinner(button);
-            }
-
-            button.disabled = true;
-            button.setAttribute('data-loading', '');
-
-            clearTimeout(timer);
-            spinner.spin(spinnerWrapper);
-
-            this.setProgress(0);
-
-            return this; // chain
-        },
-
-        /**
-         * Enter the loading state, after a delay.
-         */
-        startAfter: function(delay) {
-            clearTimeout(timer);
-            timer = setTimeout(function() { instance.start(); }, delay);
-
-            return this; // chain
-        },
-
-        /**
-         * Exit the loading state.
-         */
-        stop: function() {
-            if (instance.isLoading()) {
-                button.disabled = false;
-                button.removeAttribute('data-loading');   
-            }
-
-            // Kill the animation after a delay to make sure it
-            // runs for the duration of the button transition
-            clearTimeout(timer);
-
-            if (spinner) {
-                timer = setTimeout(function() { spinner.stop(); }, 1000);
-            }
-
-            return this; // chain
-        },
-
-        /**
-         * Toggle the loading state on/off.
-         */
-        toggle: function() {
-            return this.isLoading() ? this.stop() : this.start();
-        },
-
-        /**
-         * Sets the width of the visual progress bar inside of
-         * this Ladda button
-         *
-         * @param {number} progress in the range of 0-1
-         */
-        setProgress: function(progress) {
-            // Cap it
-            progress = Math.max(Math.min(progress, 1), 0);
-
-            var progressElement = button.querySelector('.ladda-progress');
-
-            // Remove the progress bar if we're at 0 progress
-            if (progress === 0 && progressElement && progressElement.parentNode) {
-                progressElement.parentNode.removeChild(progressElement);
-            } else {
-                if (!progressElement) {
-                    progressElement = document.createElement('div');
-                    progressElement.className = 'ladda-progress';
-                    button.appendChild(progressElement);
-                }
-
-                progressElement.style.width = ((progress || 0) * button.offsetWidth) + 'px';
-            }
-        },
-
-        isLoading: function() {
-            return button.hasAttribute('data-loading');
-        },
-
-        remove: function() {
-            clearTimeout(timer);
-            button.disabled = false;
-            button.removeAttribute('data-loading');
-
-            if (spinner) {
-                spinner.stop();
-                spinner = null;
-            }
-
-            ALL_INSTANCES.splice(ALL_INSTANCES.indexOf(instance), 1);
-        },
-
-        /**
-         * This method will stop the progress and then change the color of the button to green and show the check mark.
-         * @param {boolean} permanentResult 
-         * Default value is TRUE.
-         * If set to true the button will stay disabled and the color stays green after the progress stops
-         * also you can detemine a time in milliseconds to turn the button to the default state.
-         * @param {number} timeout 
-         * Default value is 1000 milliseconds = 1 second.
-         * The time in milliseconds that will return the button to its default state.
-         */
-        loadingSuccessful: function(permanentResult = true, timeout = 1000){
-            instance.stop();
-            button.disabled = true;
-
-            var resElement = button.querySelector('.ladda-successful');
-            if(!resElement){
-                resElement = document.createElement('div');
-                resElement.className = 'ladda-successful';
-                button.appendChild(resElement);
-            }
-
-            var labelEle = document.createElement('span');
-            labelEle.className = 'ladda-label';
-            labelEle.textContent = '✔';
-            button.appendChild(labelEle);
-
-            laddaLabel.style.display = 'none';
-            button.setAttribute('data-success', '');
-
-            if(!permanentResult){
-                setTimeout(() => {
-                    button.removeAttribute('data-success');
-                    button.disabled = false;
-                    laddaLabel.style.display = 'block';
-                    button.removeChild(labelEle);
-                }, timeout);
-            }
-
-            return this;    //chain
-        },
-        
-        /**
-         * @param {boolean} permanentResult
-         * Default value is TRUE.
-         * If set to true the button will stay disabled and the color stays green after the progress stops
-         * also you can detemine a time in milliseconds to turn the button to the default state.
-         * @param {number} timeout
-         * Default value is 1000 milliseconds = 1 second.
-         * The time in milliseconds that will return the button to its default state.
-         */
-        loadingFailed: function(permanentResult = true, timeout = 1000){
-            instance.stop();
-            button.disabled = true;
-            
-            var resElement = button.querySelector('.ladda-failed');
-            if(!resElement){
-                resElement = document.createElement('div');
-                resElement.className = 'ladda-failed';
-                button.appendChild(resElement);
-            }
-            
-            button.setAttribute('data-failed', '');
-            
-            var labelEle = document.createElement('span');
-            labelEle.className = 'ladda-label';
-            button.appendChild(labelEle);
-            labelEle.innerHTML = '✘';
-
-            laddaLabel.style.display = 'none';
-
-            if(!permanentResult){
-                setTimeout(() => {
-                    button.removeAttribute('data-failed');
-                    button.disabled = false;
-                    laddaLabel.style.display = 'block';
-                    button.removeChild(labelEle);
-                }, timeout);
-            }
-            return this;    //chain
-        }
-    };
-
+    var instance = new LaddaButton(button);
     ALL_INSTANCES.push(instance);
 
     return instance;
 }
 
 /**
- * Binds the target buttons to automatically enter the
- * loading state when clicked.
+ * Binds the target buttons to automatically enter the loading state when clicked.
  *
  * @param target Either an HTML element or a CSS selector.
  * @param options
@@ -289,7 +80,7 @@ export function stopAll() {
 * certain type.
 *
 * @param elem An HTML element
-* @param type an HTML tag type (uppercased)
+* @param type an HTML tag type (uppercase)
 *
 * @return An HTML element
 */
@@ -386,7 +177,7 @@ function bindElement(element, options) {
             // Set a loading timeout if one is specified
             if (typeof options.timeout === 'number') {
                 clearTimeout(timeout);
-                timeout = setTimeout(instance.stop, options.timeout);
+                timeout = setTimeout(function () { instance.stop(); }, options.timeout);
             }
 
             // Invoke callbacks
@@ -397,3 +188,202 @@ function bindElement(element, options) {
 
     }, false);
 }
+
+/**
+ * LaddaButton class constructor
+ * @param {HTMLElement} button
+ */
+function LaddaButton(button) {
+    this._button = button;
+    // The text contents must be wrapped in a ladda-label
+    // element, create one if it doesn't already exist
+    this._laddaLabel = this._button.querySelector('.ladda-label');
+
+    if (!this._laddaLabel) {
+        this._laddaLabel = document.createElement('span');
+        this._laddaLabel.className = 'ladda-label';
+        wrapContent(this._button, this._laddaLabel);
+    }
+
+    this._statusEl = document.createElement('span');
+    this._statusEl.className = 'ladda-label';
+    this._spinnerWrapper = this._button.querySelector('.ladda-spinner');
+
+    // Wrapper element for the spinner
+    if (!this._spinnerWrapper) {
+        this._spinnerWrapper = document.createElement('span');
+        this._spinnerWrapper.className = 'ladda-spinner';
+    }
+
+    this._button.appendChild(this._spinnerWrapper);
+
+    this._timer = null; // Timer used to delay starting/stopping the spinner
+    this._statusTimer = null; // Timer used to delay removing a success/failure status
+    this._spinner = null;
+    this._removing = false;
+}
+
+/**
+ * Enter the loading state.
+ */
+LaddaButton.prototype.start = function () {
+    // Create the spinner if it doesn't already exist
+    if (!this._spinner) {
+        this._spinner = createSpinner(this._button);
+    }
+
+    this._clearStatus();
+    clearTimeout(this._timer);
+    clearTimeout(this._statusTimer);
+
+    this._button.disabled = true;
+    this._button.setAttribute('data-loading', '');
+    this._spinner.spin(this._spinnerWrapper);
+
+    this.setProgress(0);
+
+    return this; // chain
+};
+
+/**
+ * Enter the loading state after a delay.
+ * @param {number} delay
+ */
+LaddaButton.prototype.startAfter = function (delay) {
+    clearTimeout(this._timer);
+    this._timer = setTimeout(function () { this.start(); }.bind(this), delay);
+
+    return this; // chain
+};
+
+LaddaButton.prototype._clearStatus = function () {
+    if (this._button.hasAttribute('data-success') || this._button.hasAttribute('data-failed')) {
+        this._button.disabled = false;
+        this._button.removeAttribute('data-success');
+        this._button.removeAttribute('data-failed');
+        this._button.removeChild(this._statusEl);
+        this._laddaLabel.style.display = 'block';
+    }
+};
+
+/**
+ * Exit the loading, success, or failure state.
+ */
+LaddaButton.prototype.stop = function () {
+    if (this.isLoading()) {
+        this._button.disabled = false;
+        this._button.removeAttribute('data-loading');
+    } else {
+        this._clearStatus();
+    }
+
+    clearTimeout(this._timer);
+    clearTimeout(this._statusTimer);
+
+    if (this._spinner) {
+        if (this._removing) {
+            this._spinner.stop();
+            this._spinner = null;
+        } else {
+            // Kill the animation after a delay to make sure it
+            // runs for the duration of the button transition
+            this._timer = setTimeout(function () { this._spinner.stop(); }.bind(this), 375);
+        }
+    }
+
+    return this; // chain
+};
+
+/**
+ * Toggle the loading state on/off.
+ */
+LaddaButton.prototype.toggle = function () {
+    return this.isLoading() ? this.stop() : this.start();
+};
+
+/**
+ * Sets the width of the visual progress bar inside of this Ladda button
+ *
+ * @param {number} progress in the range of 0-1
+ */
+LaddaButton.prototype.setProgress = function (progress) {
+    // Cap it
+    progress = Math.max(Math.min(progress, 1), 0);
+
+    var progressElement = this._button.querySelector('.ladda-progress');
+
+    // Remove the progress bar if we're at 0 progress
+    if (progress === 0 && progressElement && progressElement.parentNode) {
+        progressElement.parentNode.removeChild(progressElement);
+    } else {
+        if (!progressElement) {
+            progressElement = document.createElement('div');
+            progressElement.className = 'ladda-progress';
+            this._button.appendChild(progressElement);
+        }
+
+        progressElement.style.width = ((progress || 0) * this._button.offsetWidth) + 'px';
+    }
+};
+
+LaddaButton.prototype.isLoading = function () {
+    return this._button.hasAttribute('data-loading');
+};
+
+LaddaButton.prototype.remove = function () {
+    this._removing = true;
+    this.stop();
+    ALL_INSTANCES.splice(ALL_INSTANCES.indexOf(this), 1);
+};
+
+/**
+ * Stops any progress and changes the button color to green with a check mark.
+ *
+ * @param {number} timeout The time in milliseconds before the button returns to its default state.
+ * If timeout is 0 the button will remain in a success state until the stop() method is called.
+ */
+LaddaButton.prototype.succeed = function (timeout) {
+    if (timeout === undefined) {
+        timeout = 1250;
+    }
+
+    this.stop();
+    this._button.disabled = true;
+    this._button.setAttribute('data-success', '');
+
+    this._statusEl.textContent = '✔';
+    this._button.appendChild(this._statusEl);
+    this._laddaLabel.style.display = 'none';
+
+    if (timeout !== 0) {
+        this._statusTimer = setTimeout(function () { this.stop(); }.bind(this), timeout);
+    }
+
+    return this; // chain
+};
+
+/**
+ * Stops any progress and changes the button color to red with a failure icon.
+ *
+ * @param {number} timeout The time in milliseconds before the button returns to its default state.
+ * If timeout is 0 the button will remain in a failure state until the stop() method is called.
+ */
+LaddaButton.prototype.fail = function (timeout) {
+    if (timeout === undefined) {
+        timeout = 1250;
+    }
+
+    this.stop();
+    this._button.disabled = true;
+    this._button.setAttribute('data-failed', '');
+
+    this._statusEl.textContent = '✘';
+    this._button.appendChild(this._statusEl);
+    this._laddaLabel.style.display = 'none';
+
+    if (timeout !== 0) {
+        this._statusTimer = setTimeout(function () { this.stop(); }.bind(this), timeout);
+    }
+
+    return this; // chain
+};

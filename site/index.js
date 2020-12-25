@@ -14,8 +14,8 @@ Ladda.bind('.progress-demo button', {
             if (progress === 1) {
                 // instance.stop();
 
-                Math.random() > 0.5 ? instance.loadingSuccessful(false, 2000) : instance.loadingFailed(false);
-                
+                (Math.random() > 0.5) ? instance.succeed() : instance.fail();
+
                 clearInterval(interval);
             }
         }, 200);
@@ -28,8 +28,8 @@ Ladda.bind('.progress-demo button', {
 // var l = Ladda.create( document.querySelector( 'button' ) );
 // l.start();
 // l.stop();
-// l.loadingSuccessful( boolean, number);
-// l.loadingFailed( boolean, number);
+// l.succeed(number);
+// l.fail(number);
 // l.toggle();
 // l.isLoading();
 // l.setProgress( 0-1 );
