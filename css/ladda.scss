@@ -441,10 +441,12 @@ $spinnerSize: 32px !default;
         margin-left: 0;
     }
 
-    &[data-loading] {
+    &[data-loading], &[data-success], &[data-failed] {
         border-radius: 50%;
         width: 52px;
+    }
 
+    &[data-loading] {
         .ladda-label {
             opacity: 0;
         }
@@ -452,11 +454,6 @@ $spinnerSize: 32px !default;
         .ladda-spinner {
             opacity: 1;
         }
-    }
-
-    &[data-success], &[data-failed] {
-        border-radius: 50%;
-        width: 52px;
     }
 }
 

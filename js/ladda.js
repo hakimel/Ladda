@@ -76,8 +76,7 @@ export function stopAll() {
 }
 
 /**
-* Get the first ancestor node from an element, having a
-* certain type.
+* Get the first ancestor node with a given tag name from an element.
 *
 * @param elem An HTML element
 * @param type an HTML tag type (uppercase)
