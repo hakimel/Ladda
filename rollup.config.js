@@ -17,12 +17,4 @@ export default [
         },
         plugins: [resolve()]
     },
-    {
-        input: 'site/bootstrap.js',
-        output: {
-            file: 'site/dist/bootstrap-bundle.js',
-            format: 'iife'
-        },
-        plugins: [resolve()]
-    },
 ];
