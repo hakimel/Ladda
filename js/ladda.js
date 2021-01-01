@@ -12,11 +12,9 @@ import {Spinner} from 'spin.js';
 var ALL_INSTANCES = [];
 
 /**
- * Creates a new instance of Ladda which wraps the
- * target button element.
- *
- * @return An API object that can be used to control
- * the loading animation state.
+ * Creates a new instance of Ladda which wraps the target button element.
+ * @param {HTMLElement} button
+ * @return An API object that can be used to control the loading animation state.
  */
 export function create(button) {
     if (typeof button === 'undefined') {
@@ -92,7 +90,7 @@ export function create(button) {
          * Exit the loading state.
          */
         stop: function() {
-            if (instance.isLoading()) {
+            if (this.isLoading()) {
                 button.disabled = false;
                 button.removeAttribute('data-loading');   
             }
@@ -165,8 +163,7 @@ export function create(button) {
 }
 
 /**
- * Binds the target buttons to automatically enter the
- * loading state when clicked.
+ * Binds the target buttons to automatically enter the loading state when clicked.
  *
  * @param target Either an HTML element or a CSS selector.
  * @param options
@@ -203,11 +200,10 @@ export function stopAll() {
 }
 
 /**
-* Get the first ancestor node from an element, having a
-* certain type.
+* Get the first ancestor node with a given tag name from an element.
 *
 * @param elem An HTML element
-* @param type an HTML tag type (uppercased)
+* @param type an HTML tag type (uppercase)
 *
 * @return An HTML element
 */
@@ -304,7 +300,7 @@ function bindElement(element, options) {
             // Set a loading timeout if one is specified
             if (typeof options.timeout === 'number') {
                 clearTimeout(timeout);
-                timeout = setTimeout(instance.stop, options.timeout);
+                timeout = setTimeout(function () { instance.stop(); }, options.timeout);
             }
 
             // Invoke callbacks
