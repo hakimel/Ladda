@@ -87,11 +87,13 @@ $spinnerSize: 32px !default;
 }
 
 .ladda-button[data-failed] {
-    background: #e63946;
+    background: #dc3545;
+    border-color: #dc3545; /* necessary when using Bootstrap */
 }
 
 .ladda-button[data-success] {
-    background:#008000;
+    background:#198754;
+    border-color: #198754; /* necessary when using Bootstrap */
 }
 
 /*************************************
