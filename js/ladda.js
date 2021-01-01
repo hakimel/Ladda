@@ -11,12 +11,38 @@ import {Spinner} from 'spin.js';
 // All currently instantiated instances of Ladda
 var ALL_INSTANCES = [];
 
+
+function SVGEl(el) {
+    this.el = el;
+    // the path elements
+    this.paths = [].slice.call(this.el.querySelectorAll('path'));
+    // we will save both paths and its lengths in arrays
+    this.pathsArr = [];
+    this.lengthsArr = [];
+
+    var self = this;
+    this.paths.forEach(function (path, i) {
+        self.pathsArr[i] = path;
+        path.style.strokeDasharray = self.lengthsArr[i] = path.getTotalLength();
+    });
+    // undraw stroke
+    this.draw(0);
+}
+
+// val in [0,1] : 0 - no stroke is visible, 1 - stroke is visible
+SVGEl.prototype.draw = function (val) {
+    for (var i = 0, len = this.pathsArr.length; i < len; ++i) {
+        this.pathsArr[i].style.strokeDashoffset = this.lengthsArr[i] * (1 - val);
+    }
+};
+
+
 /**
  * Creates a new instance of Ladda which wraps the target button element.
  * @param {HTMLElement} button
  * @return An API object that can be used to control the loading animation state.
  */
-export function create(button) {
+export function create(button, options) {
     if (typeof button === 'undefined') {
         console.warn("Ladda button target must be defined.");
         return;
@@ -32,7 +58,7 @@ export function create(button) {
         button.setAttribute('data-style', 'expand-right');
     }
 
-    var instance = new LaddaButton(button);
+    var instance = new LaddaButton(button, options);
     ALL_INSTANCES.push(instance);
 
     return instance;
@@ -192,8 +218,10 @@ function bindElement(element, options) {
  * LaddaButton class constructor
  * @param {HTMLElement} button
  */
-function LaddaButton(button) {
+function LaddaButton(button, options) {
     this._button = button;
+    this._options = options;
+
     // The text contents must be wrapped in a ladda-label
     // element, create one if it doesn't already exist
     this._laddaLabel = this._button.querySelector('.ladda-label');
@@ -215,6 +243,48 @@ function LaddaButton(button) {
     }
 
     this._button.appendChild(this._spinnerWrapper);
+
+
+    // The text contents must be wrapped in a ladda-label
+    // element, create one if it doesn't already exist
+    if (!button.querySelector('.ladda-checkmark')) {
+        var laddaSuccessSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        laddaSuccessSVG.setAttribute('class', 'ladda-checkmark');
+        laddaSuccessSVG.setAttribute('width', '70');
+        laddaSuccessSVG.setAttribute('height', '70');
+        var path1 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path1.setAttribute('d', 'm31.5,46.5l15.3,-23.2');
+        laddaSuccessSVG.appendChild(path1);
+        var path2 = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path2.setAttribute('d', 'm31.5,46.5l-8.5,-7.1');
+        laddaSuccessSVG.appendChild(path2);
+
+        button.appendChild(laddaSuccessSVG);
+    }
+
+    // The text contents must be wrapped in a ladda-label
+    // element, create one if it doesn't already exist
+    if (!button.querySelector('.ladda-cross')) {
+        var laddaErrorSVG = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        laddaErrorSVG.setAttribute('class', 'ladda-cross');
+        laddaErrorSVG.setAttribute('width', "70");
+        laddaErrorSVG.setAttribute('height', '70');
+        for (var i = 0; i < 4; i++) {
+            var a = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            if (i === 0) {
+                a.setAttribute('d', 'm35,35l-9.3,-9.3');
+            } else if (i === 1) {
+                a.setAttribute('d', 'm35,35l9.3,9.3');
+            } else if (i === 2) {
+                a.setAttribute('d', 'm35,35l-9.3,9.3');
+            } else if (i === 3) {
+                a.setAttribute('d', 'm35,35l9.3,-9.3');
+            }
+
+            laddaErrorSVG.appendChild(a);
+        }
+        button.appendChild(laddaErrorSVG);
+    }
 
     this._timer = null; // Timer used to delay starting/stopping the spinner
     this._statusTimer = null; // Timer used to delay removing a success/failure status
@@ -268,7 +338,69 @@ LaddaButton.prototype._clearStatus = function () {
 /**
  * Exit the loading, success, or failure state.
  */
-LaddaButton.prototype.stop = function () {
+LaddaButton.prototype.stop = function (status) {
+    if (typeof this._options !== 'undefined' && typeof this._options.showEndingStatus === 'boolean') {
+        var endLoading = function () {
+            // first undraw progress stroke.
+            //self.progressEl.draw(0);
+            // Kill the animation after a delay to make sure it
+            // runs for the duration of the button transition
+            clearTimeout(timer);
+
+            if (spinner) {
+                timer = setTimeout(function () {
+                    spinner.stop();
+                }, 1000);
+            }
+
+            if (typeof status === 'number') {
+                var successEl = new SVGEl(button.querySelector('svg.ladda-checkmark'));
+                var errorEl = new SVGEl(button.querySelector('svg.ladda-cross'));
+                var statusClass = status >= 0 ? 'success' : 'error';
+                var statusEl = status >= 0 ? successEl : errorEl;
+
+                // draw stroke of success (check mark) or error (cross).
+                statusEl.draw(1);
+                // add respective class to the element
+                button.classList.add(statusClass);
+                // after options.statusTime remove status and undraw the respective stroke. Also enable the button.
+                setTimeout(function () {
+                    button.classList.remove(statusClass);
+                    statusEl.draw(0);
+                    instance.enable();
+                }, typeof options.statusTime !== 'undefined' ? options.statusTime : 2000);
+            } else {
+                instance.enable();
+            }
+            // finally remove class loading.
+            if (instance.isLoading()) {
+                button.classList.remove('loading');
+                button.removeAttribute('data-loading');
+            }
+        };
+
+        // give it a time (ideally the same like the transition time) so that the last progress increment animation is still visible.
+        setTimeout(endLoading, 300);
+    } else {
+        if (instance.isLoading()) {
+            button.disabled = false;
+            button.classList.remove('loading');
+            button.removeAttribute('data-loading');
+        }
+
+        // Kill the animation after a delay to make sure it
+        // runs for the duration of the button transition
+        clearTimeout(timer);
+
+        if (spinner) {
+            timer = setTimeout(function () {
+                spinner.stop();
+            }, 1000);
+        }
+    }
+
+    // todo: cleanup old code
+
     if (this.isLoading()) {
         this._button.disabled = false;
         this._button.removeAttribute('data-loading');

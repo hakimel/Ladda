@@ -52,6 +52,67 @@ $spinnerSize: 32px !default;
 }
 
 
+.ladda-button span {
+    transition: opacity 0.3s 0.1s;
+}
+
+.ladda-button svg {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    pointer-events: none;
+}
+
+.ladda-button svg path {
+    opacity: 0;
+    fill: none;
+}
+
+.ladda-button svg.ladda-checkmark path,
+.ladda-button svg.ladda-cross path {
+    stroke: #fff;
+    stroke-linecap: round;
+    stroke-width: 4;
+    transition: opacity 0.1s;
+}
+
+.loading.ladda-button span {
+    transition: opacity 0.15s !important;
+    opacity: 0 !important;
+}
+
+.success.ladda-button span,
+.error.ladda-button span {
+    opacity: 0 !important;
+}
+
+.success.ladda-button,
+.error.ladda-button {
+    transition: background-color 0.3s, width 0.3s, border-width 0.3s !important;
+}
+
+.success.ladda-button {
+    border-color: #4BB543 !important;
+    background-color: #4BB543 !important;
+}
+
+.error.ladda-button {
+    border-color: #FB797E !important;
+    background-color: #FB797E !important;
+}
+
+.loading.ladda-button svg.progress-circle path,
+.success.ladda-button svg.ladda-checkmark path,
+.error.ladda-button svg.ladda-cross path {
+    opacity: 1 !important;
+    transition: stroke-dashoffset 0.3s !important;
+}
+
+
 /* Spinner animation */
 .ladda-button .ladda-spinner {
     position: absolute;
