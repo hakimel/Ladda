@@ -34,7 +34,7 @@ $mint: #16a085;
     -webkit-font-smoothing: antialiased;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 
-    &:hover {
+    &:hover:not([data-failed]):not([data-success]) {
         border-color: rgba( 0, 0, 0, 0.07 );
         background-color: #888;
     }
@@ -45,14 +45,13 @@ $mint: #16a085;
     @include buttonColor( 'purple', $purple );
     @include buttonColor( 'mint', $mint );
 
-    &[disabled],
-    &[data-loading] {
+    &[disabled], &[data-loading] {
         border-color: rgba( 0, 0, 0, 0.07 );
+        cursor: default;
+    }
 
-        &, &:hover {
-            cursor: default;
-            background-color: #999;
-        }
+    &[disabled]:not([data-failed]):not([data-success]), &[data-loading] {
+        background-color: #999;
     }
 
     &[data-size=xs] {
