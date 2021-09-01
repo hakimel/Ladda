@@ -1,6 +1,6 @@
 {
   "name": "ladda",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Buttons with built-in loading indicators",
   "homepage": "https://lab.hakim.se/ladda/",
   "files": [
@@ -9,12 +9,13 @@
     "js/ladda.d.ts",
     "js/ladda.js"
   ],
+  "type": "module",
   "main": "./js/ladda.js",
   "types": "./js/ladda.d.ts",
   "scripts": {
-    "test": "grunt jshint",
-    "prepare": "grunt && rollup -c",
-    "start": "grunt serve"
+    "test": "grunt jshint --gruntfile Gruntfile.cjs",
+    "prepare": "grunt --gruntfile Gruntfile.cjs && rollup -c",
+    "start": "grunt serve --gruntfile Gruntfile.cjs"
   },
   "author": "Hakim El Hattab <hakim.elhattab@gmail.com> https://hakim.se",
   "contributors": [
@@ -25,18 +26,18 @@
     "url": "git://github.com/hakimel/Ladda.git"
   },
   "devDependencies": {
-    "grunt": "^1.0.3",
-    "grunt-contrib-connect": "^2.0.0",
+    "grunt": "^1.4.1",
+    "grunt-contrib-connect": "^3.0.0",
     "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-jshint": "^2.0.0",
+    "grunt-contrib-jshint": "^3.0.0",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-sass": "^3.0.2",
-    "node-sass": "^4.11.0",
-    "rollup": "^1.1.0",
-    "rollup-plugin-node-resolve": "^4.0.0"
+    "node-sass": "^6.0.1",
+    "rollup": "^2.56.3",
+    "rollup-plugin-node-resolve": "^5.2.0"
   },
   "license": "MIT",
   "dependencies": {
-    "spin.js": "^4.0.0"
+    "spin.js": "^4.1.1"
   }
 }
