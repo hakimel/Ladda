@@ -21,11 +21,11 @@ $spinnerSize: 32px !default;
  */
 
 @mixin buttonColor( $name, $color ) {
-    &[data-color=#{$name}] {
+    &[data-color=#{$name}]:not([data-failed]):not([data-success]) {
         background: $color;
 
-        &:hover {
-            background-color: lighten( $color, 5% );
+        &:hover:not([data-loading]):not([data-failed]):not([data-success]) {
+            background: lighten( $color, 5% );
         }
     }
 }
@@ -88,6 +88,15 @@ $spinnerSize: 32px !default;
     display: block;
 }
 
+.ladda-button[data-failed] {
+    background: #dc3545;
+    border-color: #dc3545; /* necessary when using Bootstrap */
+}
+
+.ladda-button[data-success] {
+    background:#198754;
+    border-color: #198754; /* necessary when using Bootstrap */
+}
 
 /*************************************
  * EASING
@@ -436,10 +445,12 @@ $spinnerSize: 32px !default;
         margin-left: 0;
     }
 
-    &[data-loading] {
+    &[data-loading], &[data-success], &[data-failed] {
         border-radius: 50%;
         width: 52px;
+    }
 
+    &[data-loading] {
         .ladda-label {
             opacity: 0;
         }
