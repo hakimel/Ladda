@@ -1,12 +1,10 @@
-const sass = require('node-sass');
+const sass = require('sass');
 
 module.exports = function (grunt) {
 	'use strict';
 
 	// Project configuration
 	grunt.initConfig({
-		pkg: grunt.file.readJSON('package.json'),
-
 		sass: {
 			options: {
 				implementation: sass,
@@ -45,7 +43,7 @@ module.exports = function (grunt) {
 				browser: true,
 				node: true,
 			},
-			files: [ 'Gruntfile.js', 'js/ladda.js' ]
+			files: [ 'Gruntfile.cjs', 'js/ladda.js' ]
 		},
 
 		connect: {
@@ -92,10 +90,9 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 
 	// Default task
-	grunt.registerTask('default', ['js', 'css']);
+	grunt.registerTask('default', ['jshint', 'css']);
 
 	// Theme task
-	grunt.registerTask('js', ['jshint']);
 	grunt.registerTask('css', ['sass', 'copy']);
 
 	// Serve presentation locally

@@ -11,6 +11,8 @@
  * CONFIG
  */
 
+@use "sass:math";
+
 $spinnerSize: 32px !default;
 
 
@@ -113,12 +115,12 @@ $spinnerSize: 32px !default;
 
 .ladda-button[data-style=expand-right] {
     .ladda-spinner {
-        right: $spinnerSize/-2 + 10;
+        right: math.div($spinnerSize, -2) + 10;
     }
 
     &[data-size="s"] .ladda-spinner,
     &[data-size="xs"] .ladda-spinner {
-        right: $spinnerSize/-2 + 4;
+        right: math.div($spinnerSize, -2) + 4;
     }
 
     &[data-loading] {
@@ -142,7 +144,7 @@ $spinnerSize: 32px !default;
 
 .ladda-button[data-style=expand-left] {
     .ladda-spinner {
-        left: $spinnerSize/2 + 10;
+        left: $spinnerSize * 0.5 + 10;
     }
 
     &[data-size="s"] .ladda-spinner,
@@ -183,7 +185,7 @@ $spinnerSize: 32px !default;
 
         .ladda-spinner {
             opacity: 1;
-            top: ($spinnerSize/ 2) + 10;
+            top: ($spinnerSize * 0.5) + 10;
             margin-top: 0;
         }
 
@@ -274,7 +276,7 @@ $spinnerSize: 32px !default;
     .ladda-spinner {
         right: 100%;
         margin-left: 0;
-        left: $spinnerSize/2;
+        left: $spinnerSize * 0.5;
 
         [dir="rtl"] & {
             right: auto;
@@ -402,7 +404,7 @@ $spinnerSize: 32px !default;
 
     .ladda-spinner {
         left: 50%;
-        margin-left: $spinnerSize/-2;
+        margin-left: math.div($spinnerSize, -2);
         transform: scale(0.2);
     }
     

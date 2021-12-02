@@ -1,6 +1,6 @@
 {
   "name": "ladda",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Buttons with built-in loading indicators",
   "homepage": "https://lab.hakim.se/ladda/",
   "files": [
@@ -29,12 +29,12 @@
     "grunt": "^1.4.1",
     "grunt-contrib-connect": "^3.0.0",
     "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-jshint": "^3.0.0",
+    "grunt-contrib-jshint": "^3.1.1",
     "grunt-contrib-watch": "^1.1.0",
-    "grunt-sass": "^3.0.2",
-    "node-sass": "^6.0.1",
-    "rollup": "^2.56.3",
-    "rollup-plugin-node-resolve": "^5.2.0"
+    "grunt-sass": "^3.1.0",
+    "rollup": "^2.60.2",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "sass": "^1.44.0"
   },
   "license": "MIT",
   "dependencies": {
